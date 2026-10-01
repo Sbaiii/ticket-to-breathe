@@ -1,0 +1,22 @@
+[project]
+name = "ticket-to-breathe"
+version = "0.1.0"
+description = "Did nearly-free public transport clean Germany's air? Causal evaluation of the 9-Euro-Ticket and Deutschlandticket on urban NO2."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "duckdb>=1.5.6",
+    "pandas>=3.0.6",
+    "pyarrow>=25.0.1",
+    "python-dotenv>=1.2.4",
+    "requests>=2.34.2",
+]
+
+[dependency-groups]
+dev = [
+    "ipykernel>=7.4.0",
+    "ruff>=0.16.9",
+]
+
+[tool.ruff]
+line-length = 100
