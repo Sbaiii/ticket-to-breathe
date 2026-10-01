@@ -1,0 +1,36 @@
+# Secrets
+.env
+
+# Data (pulled by the pipeline, never committed)
+data/*
+!data/README.md
+*.duckdb
+*.duckdb.wal
+*.parquet
+*.zip
+
+# Models (trained artefacts are rebuilt, not committed)
+models/artifacts/
+
+# Python
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.ruff_cache/
+
+# dbt
+warehouse/target/
+warehouse/dbt_packages/
+warehouse/logs/
+
+# OS / editors
+.DS_Store
+.vscode/*
+!.vscode/extensions.json
+
+# Obsidian: keep the vault config, ignore personal UI state
+lab-notebook/.obsidian/workspace*.json
+lab-notebook/.obsidian/graph.json
+lab-notebook/.obsidian/cache
+lab-notebook/.trash/
