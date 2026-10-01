@@ -25,6 +25,9 @@ Read `lab-notebook/01 Project Brief.md` and `lab-notebook/02 Roadmap.md` before 
 - Treatment windows are defined ONCE in `pipeline/config.py` (or a dbt seed) and imported everywhere.
 - File names `snake_case`; dbt models `stg_`, `int_`, `fct_`, `dim_`.
 - Commits: Conventional Commits (`feat:`, `fix:`, `docs:`, `chore:`, `refactor:`, `test:`). Small and frequent.
+- **Claude writes every commit message itself** — never ask the user for one, never use placeholders like `.`.
+  Format: `type(scope): imperative summary` (≤72 chars), blank line, 1–3 bullet lines on what/why if useful.
+  Commit after each finished sub-step, then push. Example: `feat(pipeline): add EEA download with retry and skip-existing`.
 - Never commit `.env`, `data/`, `*.duckdb`, `*.parquet`, or model artefacts.
 
 ## Working rules
