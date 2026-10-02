@@ -110,3 +110,10 @@ so they are kept (dropping them would bias low-concentration hours upwards).
 | is_oof, oof_hours | all hours out-of-fold (pre-treatment); never mixed with post hours (tested) |
 | pred_source, noblh_hours | main / noblh / mixed (edges of the BLH gap) |
 | country_code, role, station_type, pre_mean_no2 | station attributes; pre-treatment mean NO2 |
+
+### Additions (ADR-009, exploratory)
+| object | column | meaning |
+|---|---|---|
+| `fct_station_day` | stringency_index | OxCGRT national COVID stringency (0–100) for the country-day; null before 2020 and after 2023-02-28 |
+| `stg_oxcgrt__stringency` | country_code, stringency_date, stringency_index | OxCGRT `OxCGRT_timeseries_StringencyIndex_v1.csv`, national rows (`pipeline/oxcgrt_download.py`) |
+| `policy_calendar` seed | category = covid | event rows: date a COVID measure ended (start_date = end_date = effective date) |
