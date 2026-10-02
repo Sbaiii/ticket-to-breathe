@@ -13,9 +13,9 @@
 - [x] First commits pushed to GitHub
 
 ## Day 2 — Policy calendar, dbt, deweathering
-- [ ] Policy calendar seed (9-Euro-Ticket, Deutschlandticket, Tankrabatt, control fuel discounts, KlimaTicket, school holidays) — every row with a source URL
-- [ ] dbt: `stg_` (ts_utc = Start − 1 h, valid codes) → `int_` → `fct_station_day`, `dim_station`; tests (unique, not_null, ranges)
-- [ ] Decide the BLH gap (Jan–Jun 2024) handling
+- [x] Policy calendar seed (9-Euro-Ticket, Deutschlandticket + price changes, Tankrabatt, control fuel measures, KlimaTicket, CZ fare discount, FR Pass Rail) — every row with a fetched source; public holidays seed (school holidays out of scope)
+- [x] dbt: `stg_` (ts_utc = Start − 1 h, valid codes) → `int_` → `fct_station_hour`, `fct_station_day`, `dim_station`; 36 tests, `dbt build` passes (2 documented warnings)
+- [x] BLH gap probed → `docs/blh_gap.md` (no Open-Meteo fill; recommended: companion no-BLH model for H1 2024)
 - [ ] Deweathering: LightGBM per station group, trained on pre-treatment only (2018–19 + Jan–May 2022)
 - [ ] Out-of-sample metrics on a held-out pre-period block (R², RMSE); start with DE + downloaded controls
 - [ ] Sanity check: 2020 lockdown dip in raw NO2 (no deweathered 2020 — ADR-005)
