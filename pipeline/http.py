@@ -8,7 +8,8 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
 
-def make_session(pool_size: int = 10) -> requests.Session:
+def make_session(pool_size: int = 10, retry_on_429: bool = True) -> requests.Session:
+    """`retry_on_429=False` leaves rate-limit responses to the caller (e.g. a unit-aware throttle)."""
     load_dotenv()
     contact = os.getenv("CONTACT_EMAIL", "").strip()
     agent = "ticket-to-breathe/0.1 (portfolio research; +https://sbaiii.com"
@@ -16,7 +17,7 @@ def make_session(pool_size: int = 10) -> requests.Session:
     retry = Retry(
         total=5,
         backoff_factor=2,
-        status_forcelist=[429, 500, 502, 503, 504],
+        status_forcelist=[429, 500, 502, 503, 504] if retry_on_429 else [500, 502, 503, 504],
         allowed_methods=["GET", "HEAD", "POST"],
     )
     session = requests.Session()
