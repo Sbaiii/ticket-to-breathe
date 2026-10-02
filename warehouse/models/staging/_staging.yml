@@ -91,18 +91,27 @@ models:
             columns: [location_id, ts_utc]
 
   - name: stg_deweather__predictions
-    description: Hourly deweathering predictions per station (models/deweather.py; ADR-006), only hours with weather.
+    description: >
+      Hourly deweathering predictions per station (models/deweather.py; ADR-006, ADR-007), only hours
+      with weather. Pre-treatment hours: out-of-fold predictions; post-treatment hours: mean of the
+      K fold models.
     columns:
       - name: pred
         description: Main model (all features); null where BLH features are missing.
       - name: pred_noblh
         description: Companion model without BLH features (always filled).
-      - name: pred_holdout_jja2019
-        description: Placebo model trained without Jun–Aug 2019; filled only for Jun–Aug 2019.
       - name: blh_available
         description: BLH and its rolling means are present for the hour.
-      - name: is_train
-        description: Hour was used to fit the final models (pre-treatment windows).
+      - name: is_oof
+        description: Pre-treatment hour with an out-of-fold prediction.
+        data_tests: [not_null]
+      - name: cv_fold
+        description: Cross-fitting fold whose model predicted this hour (0–4); null post-treatment.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [0, 1, 2, 3, 4]
+                quote: false
     data_tests:
       - unique_combination:
           arguments:
@@ -114,6 +123,6 @@ models:
       - name: sampling_point_id
         description: EEA sampling point id.
         data_tests: [unique, not_null]
-      - name: train_mean_no2
-        description: Mean observed NO2 over the training hours (denominator of resid_pct).
+      - name: pre_mean_no2
+        description: Mean observed NO2 over the station's pre-treatment hours.
         data_tests: [not_null]

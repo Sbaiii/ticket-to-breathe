@@ -4,7 +4,7 @@ select
     no2_ugm3,
     pred,
     pred_noblh,
-    pred_holdout_jja2019,
     blh_available,
-    is_train
+    is_oof,
+    cv_fold
 from {{ source('raw', 'deweather_predictions') }}

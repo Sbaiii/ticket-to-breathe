@@ -31,7 +31,7 @@ sources:
       - name: deweather_predictions
         description: >
           Per-station hourly predictions from `models/deweather.py` (ADR-006): main model, no-BLH
-          companion, Jun–Aug 2019 hold-out; one Parquet file per station.
+          companion (out-of-fold before 2022-06-01, fold-model mean after; ADR-007); one Parquet file per station.
         config:
           meta:
             external_location: "read_parquet('../data/processed/deweather/pred/*.parquet')"
