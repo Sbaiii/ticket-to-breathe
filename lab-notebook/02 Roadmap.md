@@ -24,7 +24,9 @@
 
 ## Day 3 — Causal inference
 - [ ] `make all` once the weather download completes (all 587 controls)
-- [ ] DiD on `ratio_pct` (primary) and `resid_ugm3` (station + date FE, SE clustered by station); traffic / background separately + pooled
+- [x] ADR-008 analysis plan pre-registered (committed before any estimate)
+- [x] PROVISIONAL run of every ADR-008 estimate → `docs/results_provisional.md` (`make analysis`)
+- [ ] FINAL: DiD on `ratio_pct` (primary) and `resid_ugm3` (station + date FE, SE clustered by station); traffic / background separately + pooled
 - [ ] Event study around 2022-06-01, 2022-09-01, 2023-05-01; pre-trend check
 - [ ] Synthetic control (Germany vs donor countries)
 - [ ] Placebos: fake dates (2019), fake treated country, industrial stations; leave-one-country-out (esp. FR); country-balanced weights

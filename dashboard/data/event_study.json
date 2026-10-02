@@ -1,0 +1,1446 @@
+{
+ "status": "PROVISIONAL",
+ "outcome": "ratio_pct, DE \u2212 controls, % points",
+ "series": [
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2018-01",
+   "estimate": 14.0624641592,
+   "se": 2.7927800381,
+   "ci_low": 8.5741488666,
+   "ci_high": 19.5507794518,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2018-02",
+   "estimate": 6.4818566016,
+   "se": 1.4870599,
+   "ci_low": 3.5595163244,
+   "ci_high": 9.4041968787,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2018-03",
+   "estimate": 4.6539000892,
+   "se": 1.9003810864,
+   "ci_low": 0.9193093101,
+   "ci_high": 8.3884908682,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2018-04",
+   "estimate": 9.8844201338,
+   "se": 2.0225656665,
+   "ci_low": 5.9097146697,
+   "ci_high": 13.859125598,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2018-05",
+   "estimate": 9.7880288616,
+   "se": 2.2578374418,
+   "ci_low": 5.3509720254,
+   "ci_high": 14.2250856978,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2018-06",
+   "estimate": 7.3606206974,
+   "se": 1.7461942164,
+   "ci_low": 3.9290348615,
+   "ci_high": 10.7922065334,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2018-07",
+   "estimate": 4.1342713946,
+   "se": 1.9504044224,
+   "ci_low": 0.3013757594,
+   "ci_high": 7.9671670298,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2018-08",
+   "estimate": 8.3206985536,
+   "se": 1.9571074168,
+   "ci_low": 4.4746303282,
+   "ci_high": 12.1667667791,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2018-09",
+   "estimate": 7.6153465071,
+   "se": 1.8407641194,
+   "ci_low": 3.9979137953,
+   "ci_high": 11.2327792189,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2018-10",
+   "estimate": 5.2757128011,
+   "se": 2.172006992,
+   "ci_low": 1.0073282425,
+   "ci_high": 9.5440973597,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2018-11",
+   "estimate": 7.5937966324,
+   "se": 1.8293569101,
+   "ci_low": 3.9987811394,
+   "ci_high": 11.1888121254,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2018-12",
+   "estimate": 3.2252798972,
+   "se": 1.7701349245,
+   "ci_low": -0.2533537381,
+   "ci_high": 6.7039135324,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2019-01",
+   "estimate": 4.2420642623,
+   "se": 2.459330774,
+   "ci_low": -0.5909632273,
+   "ci_high": 9.0750917519,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2019-02",
+   "estimate": 10.9104465376,
+   "se": 1.7859565496,
+   "ci_low": 7.4007205621,
+   "ci_high": 14.420172513,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2019-03",
+   "estimate": 7.0822194972,
+   "se": 2.3603966611,
+   "ci_low": 2.4436153411,
+   "ci_high": 11.7208236532,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2019-04",
+   "estimate": 3.4185966675,
+   "se": 1.6919898212,
+   "ci_low": 0.0935322213,
+   "ci_high": 6.7436611136,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2019-05",
+   "estimate": 8.3055816402,
+   "se": 2.0750495437,
+   "ci_low": 4.2277359136,
+   "ci_high": 12.3834273668,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2019-06",
+   "estimate": 1.5331035296,
+   "se": 1.668000233,
+   "ci_low": -1.7448170592,
+   "ci_high": 4.8110241183,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2019-07",
+   "estimate": 3.3500330381,
+   "se": 1.4678103727,
+   "ci_low": 0.4655215457,
+   "ci_high": 6.2345445304,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2019-08",
+   "estimate": 5.0378049929,
+   "se": 1.3900873913,
+   "ci_low": 2.3060331442,
+   "ci_high": 7.7695768416,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2019-09",
+   "estimate": 2.1875785026,
+   "se": 1.4037633623,
+   "ci_low": -0.5710690899,
+   "ci_high": 4.9462260952,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2019-10",
+   "estimate": 2.5798915934,
+   "se": 1.9468460166,
+   "ci_low": -1.2460111342,
+   "ci_high": 6.4057943211,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2019-11",
+   "estimate": 4.9648109176,
+   "se": 1.3115610842,
+   "ci_low": 2.387357392,
+   "ci_high": 7.5422644432,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2019-12",
+   "estimate": 5.4762520088,
+   "se": 1.7390555003,
+   "ci_low": 2.0586950344,
+   "ci_high": 8.8938089832,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2022-01",
+   "estimate": -2.3841565212,
+   "se": 1.0122215492,
+   "ci_low": -4.3733539991,
+   "ci_high": -0.3949590433,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2022-02",
+   "estimate": 0.1831079763,
+   "se": 0.9611295457,
+   "ci_low": -1.7056845215,
+   "ci_high": 2.071900474,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2022-03",
+   "estimate": 0.3018503421,
+   "se": 1.2754536256,
+   "ci_low": -2.2046455304,
+   "ci_high": 2.8083462146,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2022-04",
+   "estimate": 1.2560941705,
+   "se": 0.9243465478,
+   "ci_low": -0.5604131179,
+   "ci_high": 3.072601459,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2022-05",
+   "estimate": 0.6431040323,
+   "se": 1.1416221635,
+   "ci_low": -1.6003889362,
+   "ci_high": 2.8865970009,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2022-06",
+   "estimate": 2.7262628723,
+   "se": 1.2638381256,
+   "ci_low": 0.2425935473,
+   "ci_high": 5.2099321974,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2022-07",
+   "estimate": 4.0169286584,
+   "se": 1.2064009087,
+   "ci_low": 1.6461337996,
+   "ci_high": 6.3877235173,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2022-08",
+   "estimate": 0.9664044209,
+   "se": 1.259706565,
+   "ci_low": -1.5091456441,
+   "ci_high": 3.441954486,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2022-09",
+   "estimate": 1.524085704,
+   "se": 1.1883608819,
+   "ci_low": -0.8112572562,
+   "ci_high": 3.8594286643,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2022-10",
+   "estimate": 1.5510478367,
+   "se": 1.2647811163,
+   "ci_low": -0.9344746349,
+   "ci_high": 4.0365703082,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2022-11",
+   "estimate": 4.6135022492,
+   "se": 1.1324215074,
+   "ci_low": 2.3880902253,
+   "ci_high": 6.8389142731,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2022-12",
+   "estimate": 7.0912016189,
+   "se": 1.4798092802,
+   "ci_low": 4.1831101143,
+   "ci_high": 9.9992931234,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2023-01",
+   "estimate": 3.0440093517,
+   "se": 1.4738615586,
+   "ci_low": 0.1476061904,
+   "ci_high": 5.940412513,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2023-02",
+   "estimate": 1.7135223537,
+   "se": 1.4349183467,
+   "ci_low": -1.106350389,
+   "ci_high": 4.5333950964,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2023-03",
+   "estimate": 2.0342199971,
+   "se": 1.1421124594,
+   "ci_low": -0.2102364912,
+   "ci_high": 4.2786764854,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2023-04",
+   "estimate": 2.2061621127,
+   "se": 1.3360749272,
+   "ci_low": -0.4194655253,
+   "ci_high": 4.8317897507,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2023-05",
+   "estimate": 1.2205933494,
+   "se": 1.0554745587,
+   "ci_low": -0.853604075,
+   "ci_high": 3.2947907737,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2023-06",
+   "estimate": 2.4330601723,
+   "se": 1.3006148711,
+   "ci_low": -0.122882075,
+   "ci_high": 4.9890024195,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2023-07",
+   "estimate": 2.7400091152,
+   "se": 1.4265210085,
+   "ci_low": -0.0633613469,
+   "ci_high": 5.5433795773,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2023-08",
+   "estimate": -3.0095908454,
+   "se": 1.3094739817,
+   "ci_low": -5.582942839,
+   "ci_high": -0.4362388517,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2023-09",
+   "estimate": -1.7433777426,
+   "se": 1.3266369477,
+   "ci_low": -4.3504580527,
+   "ci_high": 0.8637025676,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2023-10",
+   "estimate": 0.2109347719,
+   "se": 1.2403982269,
+   "ci_low": -2.2266709344,
+   "ci_high": 2.6485404783,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2023-11",
+   "estimate": -1.5719936474,
+   "se": 1.327420661,
+   "ci_low": -4.1806140952,
+   "ci_high": 1.0366268004,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2023-12",
+   "estimate": 0.1513613082,
+   "se": 1.9735746725,
+   "ci_low": -3.7270680377,
+   "ci_high": 4.0297906541,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2024-01",
+   "estimate": 2.2082928162,
+   "se": 1.9767277342,
+   "ci_low": -1.6763328631,
+   "ci_high": 6.0929184956,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2024-02",
+   "estimate": 0.7406305988,
+   "se": 1.3126224,
+   "ci_low": -1.8389086034,
+   "ci_high": 3.320169801,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2024-03",
+   "estimate": 5.1500410933,
+   "se": 1.5695090928,
+   "ci_low": 2.0656733169,
+   "ci_high": 8.2344088696,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2024-04",
+   "estimate": 3.8896821973,
+   "se": 1.2762468674,
+   "ci_low": 1.3816274619,
+   "ci_high": 6.3977369328,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2024-05",
+   "estimate": -0.1160105558,
+   "se": 1.2542696475,
+   "ci_low": -2.5808760997,
+   "ci_high": 2.3488549881,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2024-06",
+   "estimate": 0.4998049302,
+   "se": 1.1901254749,
+   "ci_low": -1.8390057729,
+   "ci_high": 2.8386156332,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2024-07",
+   "estimate": -1.3693195849,
+   "se": 1.3235634602,
+   "ci_low": -3.9703599391,
+   "ci_high": 1.2317207692,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2024-08",
+   "estimate": -3.7976148578,
+   "se": 1.4265623894,
+   "ci_low": -6.6010666408,
+   "ci_high": -0.9941630748,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2024-09",
+   "estimate": -0.8072186267,
+   "se": 1.7596435161,
+   "ci_low": -4.2652347567,
+   "ci_high": 2.6507975032,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2024-10",
+   "estimate": 1.4382875378,
+   "se": 1.1156147254,
+   "ci_low": -0.7540961354,
+   "ci_high": 3.630671211,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2024-11",
+   "estimate": 0.8204797817,
+   "se": 1.46894946,
+   "ci_low": -2.066270222,
+   "ci_high": 3.7072297855,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2024-12",
+   "estimate": 0.7356550982,
+   "se": 1.2235364169,
+   "ci_low": -1.6688141176,
+   "ci_high": 3.1401243141,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2025-01",
+   "estimate": 6.1814657795,
+   "se": 1.4846857744,
+   "ci_low": 3.2637910865,
+   "ci_high": 9.0991404725,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2025-02",
+   "estimate": 4.3907727626,
+   "se": 1.2768583608,
+   "ci_low": 1.8815163326,
+   "ci_high": 6.9000291926,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2025-03",
+   "estimate": 8.7529112021,
+   "se": 1.0951623368,
+   "ci_low": 6.6007201527,
+   "ci_high": 10.9051022515,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2025-04",
+   "estimate": 6.7412309247,
+   "se": 1.254672253,
+   "ci_low": 4.2755741885,
+   "ci_high": 9.2068876609,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2025-05",
+   "estimate": 4.5019737814,
+   "se": 1.1955369421,
+   "ci_low": 2.1525285718,
+   "ci_high": 6.8514189911,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2025-06",
+   "estimate": 3.0392518609,
+   "se": 1.2652400857,
+   "ci_low": 0.552827432,
+   "ci_high": 5.5256762897,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2025-07",
+   "estimate": 2.6519994655,
+   "se": 1.1686661511,
+   "ci_low": 0.355360195,
+   "ci_high": 4.9486387359,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2025-08",
+   "estimate": -0.282440337,
+   "se": 1.1407251809,
+   "ci_low": -2.5241705733,
+   "ci_high": 1.9592898994,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2025-09",
+   "estimate": 2.1383351251,
+   "se": 1.0941266573,
+   "ci_low": -0.0118206277,
+   "ci_high": 4.2884908779,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2025-10",
+   "estimate": 1.4192985956,
+   "se": 1.197030694,
+   "ci_low": -0.9330821055,
+   "ci_high": 3.7716792966,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2025-11",
+   "estimate": 2.6778701909,
+   "se": 1.686274812,
+   "ci_low": -0.6359632338,
+   "ci_high": 5.9917036156,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "reference Jan\u2013May 2022",
+   "month": "2025-12",
+   "estimate": 5.3104801869,
+   "se": 1.7252535129,
+   "ci_low": 1.9200466014,
+   "ci_high": 8.7009137725,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2018-01",
+   "estimate": 4.9101999485,
+   "se": 1.7048474677,
+   "ci_low": 1.5598679134,
+   "ci_high": 8.2605319835,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2018-02",
+   "estimate": -2.214294968,
+   "se": 0.901081965,
+   "ci_low": -3.9850831651,
+   "ci_high": -0.4435067709,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2018-03",
+   "estimate": -1.214159704,
+   "se": 1.2985105666,
+   "ci_low": -3.7659666143,
+   "ci_high": 1.3376472064,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2018-04",
+   "estimate": 3.2329117332,
+   "se": 1.1439017597,
+   "ci_low": 0.9849389479,
+   "ci_high": 5.4808845184,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2018-05",
+   "estimate": 0.7412236107,
+   "se": 1.3445281777,
+   "ci_low": -1.9010161857,
+   "ci_high": 3.383463407,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2018-06",
+   "estimate": 2.9137585839,
+   "se": 1.1705506804,
+   "ci_low": 0.6134158744,
+   "ci_high": 5.2141012935,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2018-07",
+   "estimate": 0.3921191783,
+   "se": 1.2618822041,
+   "ci_low": -2.0877064092,
+   "ci_high": 2.8719447657,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2018-08",
+   "estimate": 1.6414467804,
+   "se": 1.2550449078,
+   "ci_low": -0.8249422896,
+   "ci_high": 4.1078358503,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2018-09",
+   "estimate": 2.7138840022,
+   "se": 1.1436634184,
+   "ci_low": 0.4663796004,
+   "ci_high": 4.9613884041,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2018-10",
+   "estimate": 1.3479106038,
+   "se": 1.4480375506,
+   "ci_low": -1.4977437352,
+   "ci_high": 4.1935649429,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2018-11",
+   "estimate": 1.3144928574,
+   "se": 1.0454960662,
+   "ci_low": -0.7400950336,
+   "ci_high": 3.3690807485,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2018-12",
+   "estimate": -1.1254860558,
+   "se": 1.207955995,
+   "ci_low": -3.4993369391,
+   "ci_high": 1.2483648274,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2019-01",
+   "estimate": -4.9101999485,
+   "se": 1.7048474677,
+   "ci_low": -8.2605319835,
+   "ci_high": -1.5598679134,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2019-02",
+   "estimate": 2.214294968,
+   "se": 0.901081965,
+   "ci_low": 0.4435067709,
+   "ci_high": 3.9850831651,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2019-03",
+   "estimate": 1.214159704,
+   "se": 1.2985105666,
+   "ci_low": -1.3376472064,
+   "ci_high": 3.7659666143,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2019-04",
+   "estimate": -3.2329117332,
+   "se": 1.1439017597,
+   "ci_low": -5.4808845184,
+   "ci_high": -0.9849389479,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2019-05",
+   "estimate": -0.7412236107,
+   "se": 1.3445281777,
+   "ci_low": -3.383463407,
+   "ci_high": 1.9010161857,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2019-06",
+   "estimate": -2.9137585839,
+   "se": 1.1705506804,
+   "ci_low": -5.2141012935,
+   "ci_high": -0.6134158744,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2019-07",
+   "estimate": -0.3921191783,
+   "se": 1.2618822041,
+   "ci_low": -2.8719447657,
+   "ci_high": 2.0877064092,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2019-08",
+   "estimate": -1.6414467804,
+   "se": 1.2550449078,
+   "ci_low": -4.1078358503,
+   "ci_high": 0.8249422896,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2019-09",
+   "estimate": -2.7138840022,
+   "se": 1.1436634184,
+   "ci_low": -4.9613884041,
+   "ci_high": -0.4663796004,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2019-10",
+   "estimate": -1.3479106038,
+   "se": 1.4480375506,
+   "ci_low": -4.1935649429,
+   "ci_high": 1.4977437352,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2019-11",
+   "estimate": -1.3144928574,
+   "se": 1.0454960662,
+   "ci_low": -3.3690807485,
+   "ci_high": 0.7400950336,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2019-12",
+   "estimate": 1.1254860558,
+   "se": 1.207955995,
+   "ci_low": -1.2483648274,
+   "ci_high": 3.4993369391,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2022-01",
+   "estimate": -11.536420732,
+   "se": 2.3040668202,
+   "ci_low": -16.064326615,
+   "ci_high": -7.0085148489,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2022-02",
+   "estimate": -8.5130435933,
+   "se": 1.7228338407,
+   "ci_low": -11.8987220878,
+   "ci_high": -5.1273650988,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2022-03",
+   "estimate": -5.5662094511,
+   "se": 2.2728532192,
+   "ci_low": -10.0327749916,
+   "ci_high": -1.0996439105,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2022-04",
+   "estimate": -5.3954142301,
+   "se": 1.7523408897,
+   "ci_low": -8.8390793852,
+   "ci_high": -1.9517490751,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2022-05",
+   "estimate": -8.4037012185,
+   "se": 2.2169045903,
+   "ci_low": -12.7603176364,
+   "ci_high": -4.0470848007,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2022-06",
+   "estimate": -1.7205992412,
+   "se": 1.7003703578,
+   "ci_low": -5.0621329496,
+   "ci_high": 1.6209344673,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2022-07",
+   "estimate": 0.2747764421,
+   "se": 1.5645115123,
+   "ci_low": -2.7997701894,
+   "ci_high": 3.3493230736,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2022-08",
+   "estimate": -5.7128473523,
+   "se": 1.5078912524,
+   "ci_low": -8.6761249851,
+   "ci_high": -2.7495697195,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2022-09",
+   "estimate": -3.3773768008,
+   "se": 1.3908412249,
+   "ci_low": -6.1106300683,
+   "ci_high": -0.6441235334,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2022-10",
+   "estimate": -2.3767543606,
+   "se": 1.6782023105,
+   "ci_low": -5.6747238674,
+   "ci_high": 0.9212151462,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2022-11",
+   "estimate": -1.6658015258,
+   "se": 1.3349031033,
+   "ci_low": -4.289126319,
+   "ci_high": 0.9575232674,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2022-12",
+   "estimate": 2.7404356659,
+   "se": 1.7005690658,
+   "ci_low": -0.6014885396,
+   "ci_high": 6.0823598713,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2023-01",
+   "estimate": -6.108254859,
+   "se": 2.1731131706,
+   "ci_low": -10.3788132575,
+   "ci_high": -1.8376964605,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2023-02",
+   "estimate": -6.9826292159,
+   "se": 1.6048717286,
+   "ci_low": -10.1364909345,
+   "ci_high": -3.8287674972,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2023-03",
+   "estimate": -3.8338397961,
+   "se": 1.7253308641,
+   "ci_low": -7.2244253908,
+   "ci_high": -0.4432542013,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2023-04",
+   "estimate": -4.4453462879,
+   "se": 1.6552174438,
+   "ci_low": -7.6981463958,
+   "ci_high": -1.19254618,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2023-05",
+   "estimate": -7.8262119015,
+   "se": 1.7103613114,
+   "ci_low": -11.1873796316,
+   "ci_high": -4.4650441714,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2023-06",
+   "estimate": -2.0138019412,
+   "se": 1.6165723226,
+   "ci_low": -5.1906574324,
+   "ci_high": 1.16305355,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2023-07",
+   "estimate": -1.0021431012,
+   "se": 1.6221147991,
+   "ci_low": -4.1898905559,
+   "ci_high": 2.1856043536,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2023-08",
+   "estimate": -9.6888426186,
+   "se": 1.4727612887,
+   "ci_low": -12.5830835516,
+   "ci_high": -6.7946016857,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2023-09",
+   "estimate": -6.6448402474,
+   "se": 1.5182153276,
+   "ci_low": -9.6284065457,
+   "ci_high": -3.6612739492,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2023-10",
+   "estimate": -3.7168674253,
+   "se": 1.6453548661,
+   "ci_low": -6.9502857935,
+   "ci_high": -0.4834490572,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2023-11",
+   "estimate": -7.8512974224,
+   "se": 1.5189136973,
+   "ci_low": -10.8362361428,
+   "ci_high": -4.866358702,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2023-12",
+   "estimate": -4.1994046448,
+   "se": 2.1636078822,
+   "ci_low": -8.4512834413,
+   "ci_high": 0.0524741518,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2024-01",
+   "estimate": -6.9439713945,
+   "se": 2.5666477544,
+   "ci_low": -11.9878960607,
+   "ci_high": -1.9000467283,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2024-02",
+   "estimate": -7.9555209708,
+   "se": 1.4549418636,
+   "ci_low": -10.8147435271,
+   "ci_high": -5.0962984145,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2024-03",
+   "estimate": -0.7180186999,
+   "se": 1.9892862337,
+   "ci_low": -4.6273240906,
+   "ci_high": 3.1912866908,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2024-04",
+   "estimate": -2.7618262033,
+   "se": 1.6390516079,
+   "ci_low": -5.9828575349,
+   "ci_high": 0.4592051282,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2024-05",
+   "estimate": -9.1628158067,
+   "se": 1.8635471421,
+   "ci_low": -12.8250212576,
+   "ci_high": -5.5006103558,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2024-06",
+   "estimate": -3.9470571834,
+   "se": 1.5040132263,
+   "ci_low": -6.9027137971,
+   "ci_high": -0.9914005696,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2024-07",
+   "estimate": -5.1114718012,
+   "se": 1.5788737614,
+   "ci_low": -8.2142428364,
+   "ci_high": -2.0087007661,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2024-08",
+   "estimate": -10.4768666311,
+   "se": 1.625487497,
+   "ci_low": -13.6712420441,
+   "ci_high": -7.2824912181,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2024-09",
+   "estimate": -5.7086811316,
+   "se": 1.9475201134,
+   "ci_low": -9.5359085807,
+   "ci_high": -1.8814536825,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2024-10",
+   "estimate": -2.4895146595,
+   "se": 1.5767094966,
+   "ci_low": -5.5880325248,
+   "ci_high": 0.6090032058,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2024-11",
+   "estimate": -5.4588239933,
+   "se": 1.6587293924,
+   "ci_low": -8.7185257121,
+   "ci_high": -2.1991222744,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2024-12",
+   "estimate": -3.6151108548,
+   "se": 1.4336201814,
+   "ci_low": -6.4324324691,
+   "ci_high": -0.7977892404,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2025-01",
+   "estimate": -2.9707984312,
+   "se": 2.1610574124,
+   "ci_low": -7.2176650957,
+   "ci_high": 1.2760682332,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2025-02",
+   "estimate": -4.305378807,
+   "se": 1.4787296761,
+   "ci_low": -7.2113486952,
+   "ci_high": -1.3994089187,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2025-03",
+   "estimate": 2.8848514089,
+   "se": 1.6874134241,
+   "ci_low": -0.4312195934,
+   "ci_high": 6.2009224113,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2025-04",
+   "estimate": 0.089722524,
+   "se": 1.6317707692,
+   "ci_low": -3.1170006495,
+   "ci_high": 3.2964456975,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2025-05",
+   "estimate": -4.5448314695,
+   "se": 1.8379209292,
+   "ci_low": -8.1566768009,
+   "ci_high": -0.932986138,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2025-06",
+   "estimate": -1.4076102526,
+   "se": 1.6108188042,
+   "ci_low": -4.573159045,
+   "ci_high": 1.7579385397,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2025-07",
+   "estimate": -1.0901527509,
+   "se": 1.4728465307,
+   "ci_low": -3.9845611997,
+   "ci_high": 1.804255698,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2025-08",
+   "estimate": -6.9616921102,
+   "se": 1.3763433618,
+   "ci_low": -9.6664544679,
+   "ci_high": -4.2569297526,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2025-09",
+   "estimate": -2.7631273797,
+   "se": 1.3030296503,
+   "ci_low": -5.3238151027,
+   "ci_high": -0.2024396568,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2025-10",
+   "estimate": -2.5085036017,
+   "se": 1.6350169881,
+   "ci_low": -5.7216061795,
+   "ci_high": 0.7045989761,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2025-11",
+   "estimate": -3.6014335841,
+   "se": 1.8366554799,
+   "ci_low": -7.2107920799,
+   "ci_high": 0.0079249118,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  },
+  {
+   "version": "same-season adjusted",
+   "month": "2025-12",
+   "estimate": 0.959714234,
+   "se": 1.8930555441,
+   "ci_low": -2.7604805363,
+   "ci_high": 4.6799090042,
+   "outcome": "ratio_pct",
+   "n_station_days": 976891
+  }
+ ]
+}
