@@ -28,7 +28,9 @@ Answered 2026-10-02 — numbers in `docs/probe_report.md`.
 - [x] Time zone of `Start`/`End` — **naive** timestamps. DE sample: no duplicates, no DST gap or repeat
   (exactly one 02:00 row on every DST switch day 2013–2025) ⇒ a fixed-offset clock, not local summer time.
   Metadata `Timezone` = `UTC+01` for all DE rows; BE, CZ, FR, LU mix `UTC` and `UTC+01`.
-  ⇒ Convert with the per-sampling-point `Timezone` from metadata (rule to confirm in Data Dictionary).
+  ⇒ ~~Convert with the per-sampling-point `Timezone`~~ — superseded: the empirical check shows the label does
+  not describe the raw clock; proposed rule `ts_utc = Start − 1 h` for all mainland files (ADR-003,
+  `docs/timezone_check.md`).
 - [x] Number of NO₂ sampling points per country, total bytes — URL lists: 1,955 E1a + 1,308 E2a files
   for DE + 9 controls (DE: 493 / 402). Est. total ≈ 3.2 GB (50-file sample).
 - [x] Station metadata download URL and columns — `config.EEA_METADATA_URL` works (zip, 4.0 MB, 70 columns

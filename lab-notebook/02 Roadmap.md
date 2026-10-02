@@ -5,12 +5,15 @@
 - [x] Scaffold repo + lab-notebook
 - [x] `uv` environment + core dependencies
 - [x] Live probe of EEA API (coverage, schema, time zone, file counts) and Open-Meteo (variables, limits) → `docs/probe_report.md`
-- [ ] ADR-002 control countries & station filter · ADR-003 weather locations
+- [x] ADR-002 control countries & station filter · ADR-003 time-zone rule · ADR-004 analysis window — drafted as *proposed*
+- [ ] ADR-005 weather locations
 - [x] First commit pushed to GitHub
 
 ## Phase 1 — Data engineering (Day 3–6)
-- [ ] EEA download (DE + controls, NO2 hourly, 2018→latest), idempotent, logged
-- [ ] Station metadata download + station filter (type/area, coverage ≥75% per year)
+- [x] EEA download (DE + controls, NO2 hourly, E1a verified, full history), idempotent, logged → `pipeline/eea_download.py`
+- [x] Station metadata download → `pipeline/eea_metadata.py`
+- [x] Station funnel measured → `docs/station_funnel.md`; time-zone check → `docs/timezone_check.md`
+- [ ] Station filter applied (after ADR-002 is accepted)
 - [ ] Weather locations (grid-cell/city clusters) + Open-Meteo download, rate-limit aware
 - [ ] Policy calendar seed (treatments, confounders, holidays) with sources
 - [ ] dbt: `stg_` → `int_` → `fct_station_day`, `dim_station`; tests (unique, not_null, ranges)

@@ -10,7 +10,7 @@
 ## Limits — this shapes the design
 - 600/min · 5,000/h · 10,000/day · 300,000/month
 - >10 variables or >2 weeks per location = multiple call-units → ~210 units per location for 8 years
-- ⇒ fetch per grid cell / city cluster (few hundred points), not per station. See ADR-003 (to write).
+- ⇒ fetch per grid cell / city cluster (few hundred points), not per station. See ADR-005 (to write).
 
 ## Open questions
 - [x] `boundary_layer_height` available in the archive endpoint for ERA5? — **Yes** (m), 336/336 non-null
