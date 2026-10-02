@@ -1,0 +1,142 @@
+version: 2
+
+models:
+  - name: dim_station
+    description: Study stations (`in_study`, ADR-002) with role, type, area, coordinates, time zone and weather location.
+    columns:
+      - name: sampling_point_id
+        description: EEA sampling point id (primary key).
+        data_tests: [unique, not_null]
+      - name: country_code
+        description: ISO alpha-2 country code.
+        data_tests: [not_null]
+      - name: role
+        description: treated (DE) or control.
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [treated, control]
+      - name: station_type
+        description: traffic / background / industrial (industrial = placebo only).
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: [traffic, background, industrial]
+      - name: station_area
+        description: urban or suburban.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [urban, suburban]
+      - name: lat
+        description: Latitude (WGS84).
+      - name: lon
+        description: Longitude (WGS84).
+      - name: time_zone
+        description: IANA time zone of the country, used for local time.
+      - name: location_id
+        description: Weather location (ADR-005).
+        data_tests: [not_null]
+
+  - name: fct_station_hour
+    description: >
+      Hourly valid NO2 for study stations 2018-2025 (UTC hour start), joined to hourly weather
+      (left join; `has_weather` false where the location-year is not downloaded yet) and local
+      calendar fields. Table.
+    columns:
+      - name: sampling_point_id
+        description: EEA sampling point id.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_station')
+                field: sampling_point_id
+      - name: ts_utc
+        description: Start of the hour, UTC.
+        data_tests: [not_null]
+      - name: ts_local
+        description: Start of the hour in local civil time.
+      - name: local_date
+        description: Local calendar date.
+      - name: local_hour
+        description: Local hour 0-23 (use broad windows, ADR-003).
+      - name: is_public_holiday
+        description: National public holiday in the station's country on the local date.
+      - name: no2_ugm3
+        description: >
+          NO2, µg/m³, as reported (valid codes only; small negative values are kept as reported).
+          Error test: plausibility range −10 to 2000. Warn test: the 0-1000 range, whose violations
+          (≈ 0.1 % small negatives, one value of 1015) are logged in the Quality Log.
+        data_tests:
+          - value_between:
+              name: no2_hourly_plausible_range
+              arguments:
+                min_value: -10
+                max_value: 2000
+          - value_between:
+              name: no2_hourly_within_0_1000
+              arguments:
+                min_value: 0
+                max_value: 1000
+              config:
+                severity: warn
+      - name: has_weather
+        description: True if a weather row exists for the station's location and hour.
+    data_tests:
+      - unique_combination:
+          arguments:
+            columns: [sampling_point_id, ts_utc]
+
+  - name: fct_station_day
+    description: >
+      Station × local day panel: mean NO2 where at least `min_valid_hours_per_day` (18) valid
+      hours exist, daily weather (means; precipitation summed; wind direction as vector mean),
+      calendar and policy flags. The unit of the causal estimates (ADR-003).
+    columns:
+      - name: sampling_point_id
+        description: EEA sampling point id.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_station')
+                field: sampling_point_id
+      - name: local_date
+        description: Local calendar date.
+        data_tests: [not_null]
+      - name: valid_hours
+        description: Number of valid NO2 hours in the local day (≥ 18).
+      - name: no2_ugm3
+        description: Daily mean NO2, µg/m³.
+        data_tests:
+          - value_between:
+              name: no2_daily_plausible_range
+              arguments:
+                min_value: -10
+                max_value: 2000
+          - value_between:
+              name: no2_daily_within_0_1000
+              arguments:
+                min_value: 0
+                max_value: 1000
+              config:
+                severity: warn
+      - name: weather_hours
+        description: Hours with weather available (0 while the location-year is not downloaded).
+      - name: blh_hours
+        description: Hours with a non-null boundary layer height (0 in H1 2024, source gap).
+      - name: is_nine_euro
+        description: DE and the day is inside the 9-Euro-Ticket window.
+      - name: is_tankrabatt
+        description: DE and the day is inside the Tankrabatt window.
+      - name: is_deutschlandticket
+        description: DE and the day is on/after 2023-05-01.
+      - name: is_fuel_price_measure
+        description: A national fuel-price measure from the policy calendar covers the country-day.
+    data_tests:
+      - unique_combination:
+          arguments:
+            columns: [sampling_point_id, local_date]

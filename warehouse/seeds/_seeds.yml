@@ -1,0 +1,28 @@
+version: 2
+
+seeds:
+  - name: policy_calendar
+    description: >
+      Hand-researched policy calendar (treatments, fuel-price measures, transit offers). Every row
+      cites a fetched source; `verified` = false where a date could not be confirmed. Blank dates =
+      "none found" rows (no flag effect). See lab-notebook/03 Data/Data Dictionary.md.
+    columns:
+      - name: policy
+        description: Policy key; nine_euro, tankrabatt and deutschlandticket must match config.POLICY_WINDOWS.
+      - name: category
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [treatment, fuel_price, transit, other]
+  - name: public_holidays
+    description: National public holidays 2018-2025 for DE + controls from the `holidays` package (version per row).
+  - name: config_policy_windows
+    description: Generated from config.POLICY_WINDOWS by pipeline/build_seeds.py.
+  - name: config_valid_codes
+    description: Generated from config.VALID_CODES.
+  - name: config_coverage_years
+    description: Generated from config.COVERAGE_YEARS.
+  - name: config_countries
+    description: Generated from config (treated + controls, role, IANA time zone).
+  - name: config_params
+    description: Generated scalar parameters (min valid hours per day, analysis years).

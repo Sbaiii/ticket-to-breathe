@@ -1,0 +1,91 @@
+version: 2
+
+models:
+  - name: stg_eea__no2_hourly
+    description: >
+      Valid hourly NO2 from the EEA E1a files, 2018-2025 in UTC. `ts_utc` = raw `Start` − 1 h for
+      every file (ADR-003); rows kept only if `Validity` is in `config.VALID_CODES` (1-4).
+      All downloaded points, not only the study set. View over the raw Parquet files.
+    columns:
+      - name: sampling_point_id
+        description: EEA sampling point id with the "<CC>/" prefix stripped (matches the metadata).
+        data_tests: [not_null]
+      - name: ts_utc
+        description: Start of the measurement hour, UTC (naive timestamp).
+        data_tests: [not_null]
+      - name: no2_ugm3
+        description: NO2 concentration, µg/m³ (raw `Value` cast to DOUBLE).
+      - name: validity
+        description: Eionet observation validity code (1 valid, 2/3 below detection limit, 4 ozone only).
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [1, 2, 3, 4]
+      - name: verification
+        description: Eionet verification code (1 verified, 2 preliminary, 3 not verified).
+
+  - name: stg_stations
+    description: >
+      One row per downloaded sampling point from `data/processed/station_candidates.parquet`:
+      latest metadata row, funnel flags (`in_study`, `role`) and valid-hour coverage per year.
+    columns:
+      - name: sampling_point_id
+        description: EEA sampling point id.
+        data_tests: [unique, not_null]
+      - name: country_code
+        description: ISO 3166-1 alpha-2 country code.
+      - name: role
+        description: treated (DE) / control (ADR-002 controls) / null (excluded country).
+      - name: in_study
+        description: True if the point passes every ADR-002 filter.
+      - name: station_type
+        description: EEA station type (traffic, background, industrial).
+      - name: station_area
+        description: EEA area type (urban, suburban, rural...).
+      - name: metadata_timezone_label
+        description: EEA metadata `Timezone` label — NOT used for conversion (ADR-003).
+
+  - name: stg_station_weather_map
+    description: Station → weather location (1.0° ERA5 grid point, ADR-005), with snap distance in degrees.
+    columns:
+      - name: sampling_point_id
+        description: EEA sampling point id.
+        data_tests: [unique, not_null]
+      - name: location_id
+        description: Weather location id (e.g. g1p00_+051p00_+007p00).
+        data_tests: [not_null]
+
+  - name: stg_weather_hourly
+    description: >
+      Hourly ERA5 weather from Open-Meteo for the downloaded location-years (incomplete while
+      `pipeline/weather_download.py` runs). `boundary_layer_height` is null for 2024-01-01 → 2024-06-30
+      (source gap, docs/blh_gap.md).
+    columns:
+      - name: location_id
+        description: Weather location id.
+        data_tests: [not_null]
+      - name: ts_utc
+        description: Hour (UTC, naive timestamp).
+        data_tests: [not_null]
+      - name: temperature_2m
+        description: Air temperature at 2 m, °C.
+      - name: relative_humidity_2m
+        description: Relative humidity at 2 m, %.
+      - name: wind_speed_10m
+        description: Wind speed at 10 m, km/h.
+      - name: wind_direction_10m
+        description: Wind direction at 10 m, degrees.
+      - name: precipitation
+        description: Precipitation in the hour, mm.
+      - name: surface_pressure
+        description: Surface pressure, hPa.
+      - name: shortwave_radiation
+        description: Shortwave radiation, W/m².
+      - name: cloud_cover
+        description: Total cloud cover, %.
+      - name: boundary_layer_height
+        description: Planetary boundary layer height, m.
+    data_tests:
+      - unique_combination:
+          arguments:
+            columns: [location_id, ts_utc]

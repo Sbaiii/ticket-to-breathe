@@ -1,0 +1,36 @@
+name: ticket_to_breathe
+version: "0.1.0"
+config-version: 2
+profile: ticket_to_breathe
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+test-paths: ["tests"]
+macro-paths: ["macros"]
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+models:
+  ticket_to_breathe:
+    staging:
+      +materialized: view
+    intermediate:
+      +materialized: view
+    marts:
+      +materialized: table
+
+seeds:
+  ticket_to_breathe:
+    policy_calendar:
+      +column_types:
+        start_date: date
+        end_date: date
+        verified: boolean
+    config_policy_windows:
+      +column_types:
+        start_date: date
+        end_date: date
+    public_holidays:
+      +column_types:
+        holiday_date: date
+        holidays_pkg_version: varchar

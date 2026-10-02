@@ -1,0 +1,11 @@
+# Local DuckDB warehouse; no secrets. Run dbt from this folder: `cd warehouse && uv run dbt build`.
+ticket_to_breathe:
+  target: dev
+  outputs:
+    dev:
+      type: duckdb
+      path: ../data/warehouse.duckdb
+      threads: 4
+      extensions: [icu]
+      settings:
+        TimeZone: UTC

@@ -1,0 +1,20 @@
+version: 2
+
+models:
+  - name: int_station_hour_local
+    description: >
+      Valid NO2 hours of in-study stations only, with local civil time (`ts_local`) from the
+      country's time zone (`config.COUNTRY_TZ`, summer time included) and the weather location.
+
+  - name: int_country_day_policy
+    description: >
+      Study country × local calendar day 2018-2025. Flags from the `policy_calendar` seed
+      (treatment policies are DE-only by construction) and national public holidays
+      (`public_holidays` seed, `holidays` package).
+    columns:
+      - name: is_fuel_price_measure
+        description: True if any fuel_price row of the calendar with a start date covers the day for the country.
+    data_tests:
+      - unique_combination:
+          arguments:
+            columns: [country_code, day_date]

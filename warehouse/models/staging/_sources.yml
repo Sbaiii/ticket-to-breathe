@@ -1,0 +1,30 @@
+version: 2
+
+sources:
+  - name: raw
+    description: Raw files produced by `pipeline/` and read in place (no copies in the warehouse).
+    tables:
+      - name: eea_e1a_no2_hourly
+        description: >
+          EEA E1a (verified) hourly NO2, one Parquet file per sampling point
+          (`pipeline/eea_download.py`). `Start` is tz-naive on a fixed UTC+01 clock (ADR-003).
+        config:
+          meta:
+            external_location: "read_parquet('../data/raw/eea/e1a/*/*.parquet')"
+      - name: station_candidates
+        description: One row per downloaded sampling point with metadata and funnel flags (`pipeline/station_funnel.py`).
+        config:
+          meta:
+            external_location: "read_parquet('../data/processed/station_candidates.parquet')"
+      - name: station_weather_location
+        description: Station → weather location mapping (`pipeline/weather_locations.py`, ADR-005).
+        config:
+          meta:
+            external_location: "read_parquet('../data/processed/station_weather_location.parquet')"
+      - name: weather_hourly
+        description: >
+          Open-Meteo ERA5 hourly weather, one file per location and year
+          (`pipeline/weather_download.py`). Incomplete while the download runs.
+        config:
+          meta:
+            external_location: "read_parquet('../data/raw/weather/*/*.parquet', union_by_name = true)"
