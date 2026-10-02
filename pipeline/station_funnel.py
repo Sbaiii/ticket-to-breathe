@@ -14,14 +14,20 @@ import duckdb
 import pandas as pd
 
 from pipeline.config import (
+    BBOX,
+    CONTROL_COUNTRIES,
     COUNTRY_NAMES,
-    COVERAGE_THRESHOLD,
+    COVERAGE_MIN,
     COVERAGE_YEARS,
     DATA_PROCESSED,
     DOCS,
     EEA_E1A_DIR,
     EEA_MANIFEST,
-    MAINLAND_BBOX,
+    MIN_CONTROL_POINTS,
+    REPORT_YEARS,
+    STUDY_AREAS,
+    STUDY_STATION_TYPES,
+    TREATED,
     VALID_CODES,
     YEAR_SETS,
 )
@@ -114,7 +120,7 @@ def load(con: duckdb.DuckDBPyConnection, meta_csv: str) -> None:
     year_cols = ", ".join(
         f"count(distinct \"Start\") filter (where year(\"Start\") = {y} "
         f"and \"Validity\" in ({valid})) / {366 if y % 4 == 0 else 365}.0 / 24 as cov_{y}"
-        for y in COVERAGE_YEARS
+        for y in REPORT_YEARS
     )
     con.execute(f"""
         create table coverage as
@@ -126,8 +132,8 @@ def load(con: duckdb.DuckDBPyConnection, meta_csv: str) -> None:
 
 
 def build_candidates(con: duckdb.DuckDBPyConnection) -> pd.DataFrame:
-    b = MAINLAND_BBOX
-    cov_cols = ", ".join(f"coalesce(cv.cov_{y}, 0) as cov_{y}" for y in COVERAGE_YEARS)
+    b = BBOX
+    cov_cols = ", ".join(f"coalesce(cv.cov_{y}, 0) as cov_{y}" for y in REPORT_YEARS)
     df = con.execute(f"""
         select f.country, f.sampling_point_id, f.file_point_id, f.n_point_ids_in_file,
                f.n_rows, f.start_min, f.start_max,
@@ -158,9 +164,17 @@ def build_candidates(con: duckdb.DuckDBPyConnection) -> pd.DataFrame:
     df["in_bbox"] = (
         df["lat"].between(b["lat_min"], b["lat_max"]) & df["lon"].between(b["lon_min"], b["lon_max"])
     )
-    df["is_urban_suburban"] = df["station_area"].isin(["urban", "suburban"])
+    df["is_urban_suburban"] = df["station_area"].isin(STUDY_AREAS)
     for name, years in YEAR_SETS.items():
-        df[f"meets_{name}"] = (df[[f"cov_{y}" for y in years]] >= COVERAGE_THRESHOLD).all(axis=1)
+        df[f"meets_{name}"] = (df[[f"cov_{y}" for y in years]] >= COVERAGE_MIN).all(axis=1)
+    df["meets_coverage"] = (df[[f"cov_{y}" for y in COVERAGE_YEARS]] >= COVERAGE_MIN).all(axis=1)
+    df["role"] = df["country"].map(
+        {TREATED: "treated", **dict.fromkeys(CONTROL_COUNTRIES, "control")}
+    )
+    df["in_study"] = (
+        df["in_metadata"] & df["in_bbox"] & df["is_urban_suburban"] & df["meets_coverage"]
+        & df["station_type"].isin(STUDY_STATION_TYPES) & df["role"].notna()
+    )
     df["meta_inconsistent"] = (
         df[["n_timezone", "n_station_type", "n_station_area", "n_coords"]].fillna(1).gt(1).any(axis=1)
     )
@@ -177,15 +191,55 @@ def with_total(df: pd.DataFrame) -> pd.DataFrame:
     return pd.concat([df, pd.DataFrame([total])], ignore_index=True)
 
 
+def study_set_section(df: pd.DataFrame) -> list[str]:
+    """The accepted study set (ADR-002) and the check of the control-country rule."""
+    out = ["## Study set (ADR-002, accepted)", ""]
+    out.append(f"`in_study` = matched to metadata, inside bbox, area in {list(STUDY_AREAS)}, ≥ "
+               f"{COVERAGE_MIN:.0%} valid hours in every year of {COVERAGE_YEARS}, station type in "
+               f"{list(STUDY_STATION_TYPES)}, country = {TREATED} (treated) or in "
+               f"{CONTROL_COUNTRIES} (control).")
+    out.append("")
+    study = df[df["in_study"]]
+    by_type = (study.pivot_table(index=["role", "country"], columns="station_type",
+                                 values="sampling_point_id", aggfunc="count", fill_value=0)
+                    .reindex(columns=list(STUDY_STATION_TYPES), fill_value=0))
+    by_type["traffic_plus_background"] = by_type["traffic"] + by_type["background"]
+    by_type["all_types"] = by_type[list(STUDY_STATION_TYPES)].sum(axis=1)
+    by_type = by_type.reset_index().sort_values(["role", "country"], ascending=[False, True])
+    total = {"role": "", "country": "TOTAL",
+             **{c: by_type[c].sum() for c in by_type.columns[2:]}}
+    out += [md_table(pd.concat([by_type, pd.DataFrame([total])], ignore_index=True)), ""]
+
+    # Control-country rule, evaluated on every candidate country on disk.
+    qualifying = df[df["in_metadata"] & df["in_bbox"] & df["is_urban_suburban"]
+                    & df["meets_coverage"] & df["station_type"].isin(["traffic", "background"])]
+    counts = qualifying.groupby("country").size().reindex(COUNTRIES, fill_value=0)
+    rule = pd.DataFrame({
+        "country": counts.index,
+        "qualifying_traffic_background": counts.values,
+        f"meets_min_{MIN_CONTROL_POINTS}": counts.values >= MIN_CONTROL_POINTS,
+        "in_CONTROL_COUNTRIES": [c in CONTROL_COUNTRIES for c in counts.index],
+    })
+    rule = rule[rule["country"] != TREATED]
+    out += [f"Control-country rule: ≥ {MIN_CONTROL_POINTS} qualifying traffic + background points.",
+            "", md_table(rule), ""]
+    mismatch = rule[rule[f"meets_min_{MIN_CONTROL_POINTS}"] != rule["in_CONTROL_COUNTRIES"]]
+    out += [(f"- Countries where the rule and `config.CONTROL_COUNTRIES` disagree: "
+            f"{mismatch['country'].tolist() or 'none'}"), ""]
+    return out
+
+
 def report(con: duckdb.DuckDBPyConnection, df: pd.DataFrame, meta_csv: str) -> str:
     out = ["# Station funnel — EEA E1a hourly NO2", ""]
     out.append(f"Generated by `pipeline/station_funnel.py` on "
                f"{datetime.now(UTC).strftime('%Y-%m-%d %H:%M UTC')}. Facts only.")
     out.append(f"Metadata: `{meta_csv.split('/data/', 1)[-1]}`. Valid = `Validity` in {VALID_CODES}. "
                f"Coverage = distinct valid hours / hours in calendar year, year taken from raw "
-               f"(not UTC-converted) `Start`. Threshold ≥ {COVERAGE_THRESHOLD:.0%}.")
+               f"(not UTC-converted) `Start`. Threshold ≥ {COVERAGE_MIN:.0%}. bbox: lat "
+               f"{BBOX['lat_min']}–{BBOX['lat_max']}, lon {BBOX['lon_min']}–{BBOX['lon_max']}.")
     out.append("")
 
+    out += study_set_section(df)
     manifest = pd.read_parquet(EEA_MANIFEST)
     out += ["## Download manifest", ""]
     mt = manifest.pivot_table(index="country", columns="action", values="url", aggfunc="count",
@@ -227,10 +281,10 @@ def report(con: duckdb.DuckDBPyConnection, df: pd.DataFrame, meta_csv: str) -> s
     totals = by_type.groupby("station_type")[["d_points", *YEAR_SETS]].sum().reset_index()
     out += ["Totals by station type:", "", md_table(totals), ""]
 
-    out += [(f"## Points with ≥ {COVERAGE_THRESHOLD:.0%} valid hours, per single year "
+    out += [(f"## Points with ≥ {COVERAGE_MIN:.0%} valid hours, per single year "
             "(step-d set)"), ""]
-    per_year = pd.concat([per_country(urban[urban[f"cov_{y}"] >= COVERAGE_THRESHOLD], str(y))
-                          for y in COVERAGE_YEARS], axis=1)
+    per_year = pd.concat([per_country(urban[urban[f"cov_{y}"] >= COVERAGE_MIN], str(y))
+                          for y in REPORT_YEARS], axis=1)
     out += [md_table(with_total(per_year)), ""]
 
     # --- Matching both ways ---
@@ -257,8 +311,8 @@ def report(con: duckdb.DuckDBPyConnection, df: pd.DataFrame, meta_csv: str) -> s
     }
     out += ["## Integrity checks", ""] + [f"- {k}: {v}" for k, v in checks.items()] + [""]
 
-    out += ["## c) Matched points outside the mainland bbox", ""]
-    b = MAINLAND_BBOX
+    out += ["## c) Matched points outside the bbox", ""]
+    b = BBOX
     out.append(f"bbox: lat {b['lat_min']}–{b['lat_max']}, lon {b['lon_min']}–{b['lon_max']}.")
     out.append("")
     outside = matched[~matched["in_bbox"]]

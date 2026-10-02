@@ -40,8 +40,10 @@ WEATHER_VARIABLES = [
 
 # --- Countries (ISO 3166-1 alpha-2) -------------------------------------------
 TREATED = "DE"
-CONTROL_COUNTRIES = ["AT", "NL", "BE", "DK", "FR", "CH", "CZ", "PL", "LU"]
-# Country names as they appear in the EEA metadata extract.
+# Controls per ADR-002 (accepted 2026-10-02). DK and LU were candidates but have < MIN_CONTROL_POINTS
+# qualifying points; they stay in COUNTRY_NAMES so the funnel keeps reporting them.
+CONTROL_COUNTRIES = ["AT", "BE", "CH", "CZ", "FR", "NL", "PL"]
+# Candidate countries (treated + all candidate controls), as named in the EEA metadata extract.
 COUNTRY_NAMES = {
     "DE": "Germany", "AT": "Austria", "NL": "Netherlands", "BE": "Belgium", "DK": "Denmark",
     "FR": "France", "CH": "Switzerland", "CZ": "Czechia", "PL": "Poland", "LU": "Luxembourg",
@@ -76,13 +78,31 @@ EEA_MANIFEST = EEA_RAW / "_manifest.parquet"
 EEA_META_DIR = DATA_RAW / "eea_meta"
 DATA_PROCESSED = REPO_ROOT / "data" / "processed"
 
-# --- Station funnel ------------------------------------------------------------------
-# Mainland-Europe bounding box (drops French overseas departments).
-MAINLAND_BBOX = {"lat_min": 41.0, "lat_max": 56.0, "lon_min": -6.0, "lon_max": 25.0}
-COVERAGE_YEARS = list(range(2018, 2026))
-COVERAGE_THRESHOLD = 0.75
+# --- Station filter (ADR-002, accepted) -------------------------------------------------
+# Mainland-Europe bounding box: drops French overseas departments, keeps Århus/Aalborg.
+BBOX = {"lat_min": 41.0, "lat_max": 58.0, "lon_min": -6.0, "lon_max": 25.0}
+STUDY_AREAS = ("urban", "suburban")
+STUDY_STATION_TYPES = ("traffic", "background", "industrial")  # industrial = placebo only
+COVERAGE_YEARS = [2018, 2019, 2022, 2023]  # set S2: every year needs >= COVERAGE_MIN valid hours
+COVERAGE_MIN = 0.75
+MIN_CONTROL_POINTS = 10  # qualifying traffic + background points a control country needs
+
+# --- Station funnel reporting ----------------------------------------------------------
+REPORT_YEARS = list(range(2018, 2026))
 YEAR_SETS = {
     "S1": [2018, 2019, 2022],
     "S2": [2018, 2019, 2022, 2023],
     "S3": [2018, 2019, 2021, 2022, 2023, 2024, 2025],
 }
+
+# --- Weather (ADR-005, accepted 2026-10-02) ------------------------------------------------
+# No 0.25/0.5/0.75° grid fit the ~27,000-unit budget for 2018–2025; decision: 1.0° grid and
+# skip the COVID years 2020–21 (not used in the deweathering baseline or the estimates).
+WEATHER_YEARS = [2018, 2019, 2022, 2023, 2024, 2025]
+WEATHER_MODEL = "era5"
+WEATHER_GRID_DEG = 1.0
+WEATHER_GRIDS_DEG = (0.25, 0.5, 0.75, 1.0, 1.25)  # compared in the grid table (ERA5 multiples)
+WEATHER_UNIT_BUDGET = 27_000  # target Open-Meteo call units for the full download
+WEATHER_RAW = DATA_RAW / "weather"
+# Open-Meteo free tier: 600/min, 5,000/h, 10,000/day; we stay below with a margin.
+WEATHER_LIMITS = {"minute": 550, "hour": 4_500, "day": 9_500}
