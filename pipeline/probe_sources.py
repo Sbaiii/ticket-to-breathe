@@ -8,7 +8,6 @@ Run: uv run python -m pipeline.probe_sources
 
 import io
 import json
-import os
 import random
 import traceback
 import zipfile
@@ -19,9 +18,6 @@ import pyarrow as pa
 import pyarrow.compute as pc
 import pyarrow.parquet as pq
 import requests
-from dotenv import load_dotenv
-from requests.adapters import HTTPAdapter
-from urllib3.util.retry import Retry
 
 from pipeline.config import (
     CONTROL_COUNTRIES,
@@ -37,6 +33,7 @@ from pipeline.config import (
     TREATED,
     WEATHER_VARIABLES,
 )
+from pipeline.http import make_session
 
 PROBE_DIR = DATA_RAW / "_probe"
 REPORT_PATH = DOCS / "probe_report.md"
@@ -69,23 +66,6 @@ def table(df: pd.DataFrame) -> None:
     emit("|" + "---|" * len(df.columns))
     for row in df.itertuples(index=False):
         emit("| " + " | ".join("" if pd.isna(v) else str(v) for v in row) + " |")
-
-
-def make_session() -> requests.Session:
-    load_dotenv()
-    contact = os.getenv("CONTACT_EMAIL", "").strip()
-    agent = "ticket-to-breathe/0.1 (portfolio research; +https://sbaiii.com"
-    agent += f"; mailto:{contact})" if contact else ")"
-    retry = Retry(
-        total=5,
-        backoff_factor=2,
-        status_forcelist=[429, 500, 502, 503, 504],
-        allowed_methods=["GET", "HEAD", "POST"],
-    )
-    session = requests.Session()
-    session.headers["User-Agent"] = agent
-    session.mount("https://", HTTPAdapter(max_retries=retry))
-    return session
 
 
 class HttpRangeFile(io.RawIOBase):
