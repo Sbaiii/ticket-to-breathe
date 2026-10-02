@@ -65,13 +65,14 @@ uv run python -m pipeline.weather_locations   # 1.0° weather grid (ADR-005)
 uv run python -m pipeline.weather_download    # Open-Meteo ERA5, throttled (~3 days); --status
 
 # 2) Everything downstream, in one command (re-run any time, e.g. after the weather download)
-make all   # seeds → dbt build → deweathering (models/) → dbt build of the residual marts → report
+make all   # seeds → dbt build → deweathering → residual marts → report → causal analysis
 ```
 `make all` runs `pipeline/build_seeds.py`, `dbt build` (all models except the deweathering marts),
 `models/deweather.py` (cross-fitted LightGBM per station, ADR-007; up-to-date stations are skipped),
 `dbt build` of `fct_station_hour_deweathered` / `fct_station_day_resid` with their tests, and
-`models/deweather_report.py` → `docs/deweathering_report.md`. Single steps: `make seeds`,
-`make warehouse`, `make deweather`, `make marts`, `make report`.
+`models/deweather_report.py` → `docs/deweathering_report.md`, and the ADR-008 analysis
+(`analysis/causal.py`, `figures.py`, `report.py`, notebook). Single steps: `make seeds`,
+`make warehouse`, `make deweather`, `make marts`, `make report`, `make analysis`.
 
 ## Repo map
 | Folder | What's inside |
