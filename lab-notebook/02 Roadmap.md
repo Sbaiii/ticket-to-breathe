@@ -18,11 +18,13 @@
 - [x] BLH gap probed → `docs/blh_gap.md` (no Open-Meteo fill; recommended: companion no-BLH model for H1 2024)
 - [x] Deweathering: LightGBM per station (ADR-006), trained on pre-treatment only (2018–19 + Jan–May 2022); no-BLH companion; 491/887 stations so far (weather download pending)
 - [x] Out-of-time metrics (train 2018–19, test Jan–May 2022) + Jun–Aug 2019 hold-out → `docs/deweathering_report.md`
+- [x] Deweathering v2 (ADR-007): 5-fold month-block cross-fitting with 7-day buffer → pre-period residuals out-of-fold; `ratio_pct` primary outcome; May→June 2022 step v1 vs v2 in the report
+- [x] `make all`: seeds → dbt build → deweather → dbt build (marts) → report
 - [ ] Sanity check: 2020 lockdown dip in raw NO2 (no deweathered 2020 — ADR-005)
 
 ## Day 3 — Causal inference
-- [ ] Re-run `models.deweather` + `dbt build` once the weather download completes (all 587 controls)
-- [ ] DiD (station + date FE, SE clustered by station); traffic / background separately + pooled
+- [ ] `make all` once the weather download completes (all 587 controls)
+- [ ] DiD on `ratio_pct` (primary) and `resid_ugm3` (station + date FE, SE clustered by station); traffic / background separately + pooled
 - [ ] Event study around 2022-06-01, 2022-09-01, 2023-05-01; pre-trend check
 - [ ] Synthetic control (Germany vs donor countries)
 - [ ] Placebos: fake dates (2019), fake treated country, industrial stations; leave-one-country-out (esp. FR); country-balanced weights

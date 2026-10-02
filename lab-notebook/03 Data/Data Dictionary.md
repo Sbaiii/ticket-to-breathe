@@ -88,3 +88,25 @@ so they are kept (dropping them would bias low-concentration hours upwards).
 | 1 | Verified |
 | 2 | Preliminary verified |
 | 3 | Not verified |
+
+## Deweathering marts (ADR-006, ADR-007)
+
+### `fct_station_hour_deweathered` — station × hour (stations with complete weather)
+| column | meaning |
+|---|---|
+| sampling_point_id, ts_utc, local_date | keys |
+| no2 | observed NO2, µg/m³ (negatives kept) |
+| pred, pred_noblh | main / no-BLH model prediction; out-of-fold before 2022-06-01 (local), mean of 5 fold models after |
+| pred_used, pred_source | pred where BLH available (`main`), else pred_noblh (`noblh`, H1 2024 only) |
+| resid | no2 − pred_used |
+| is_oof, cv_fold | pre-treatment hour predicted out-of-fold; fold 0–4 (null after) |
+
+### `fct_station_day_resid` — station × local day (≥ 18 hours with observation and prediction)
+| column | meaning |
+|---|---|
+| ratio_pct | **primary outcome**: 100 × (Σ observed / Σ predicted − 1); null if `ratio_guarded` (Σ predicted ≤ 0) |
+| resid_ugm3 | mean observed − mean predicted, µg/m³ |
+| no2_obs, no2_pred, sum_obs, sum_pred, valid_hours | the inputs of both outcomes |
+| is_oof, oof_hours | all hours out-of-fold (pre-treatment); never mixed with post hours (tested) |
+| pred_source, noblh_hours | main / noblh / mixed (edges of the BLH gap) |
+| country_code, role, station_type, pre_mean_no2 | station attributes; pre-treatment mean NO2 |

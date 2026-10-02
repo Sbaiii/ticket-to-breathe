@@ -1,6 +1,6 @@
 # ADR-006: Deweathering design
 
-**Date:** 2026-10-02 · **Status:** accepted (2026-10-02)
+**Date:** 2026-10-02 · **Status:** accepted (2026-10-02) · **superseded in part** by [[ADR-007 Cross-fitted deweathering and ratio outcome]] (cross-fitting replaces the single final model and the Jun–Aug 2019 hold-out; ratio outcome replaces resid_pct; pre-treatment period on local dates)
 
 ## Context
 NO2 is strongly weather-driven (mixing height, wind, temperature, radiation). To compare German and
