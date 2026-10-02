@@ -28,3 +28,15 @@ sources:
         config:
           meta:
             external_location: "read_parquet('../data/raw/weather/*/*.parquet', union_by_name = true)"
+      - name: deweather_predictions
+        description: >
+          Per-station hourly predictions from `models/deweather.py` (ADR-006): main model, no-BLH
+          companion, Jun–Aug 2019 hold-out; one Parquet file per station.
+        config:
+          meta:
+            external_location: "read_parquet('../data/processed/deweather/pred/*.parquet')"
+      - name: deweather_station_summary
+        description: Per-station training size, pre-treatment mean, validation metrics and feature gains.
+        config:
+          meta:
+            external_location: "read_parquet('../data/processed/deweather/station_summary.parquet')"

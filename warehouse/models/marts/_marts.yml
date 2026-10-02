@@ -142,3 +142,77 @@ models:
       - unique_combination:
           arguments:
             columns: [sampling_point_id, local_date]
+
+  - name: fct_station_hour_deweathered
+    description: >
+      Hourly observed NO2 vs the business-as-usual prediction (ADR-006) for stations with complete
+      weather, 2018–2019 and 2022–2025. resid = no2 − pred_used.
+    columns:
+      - name: sampling_point_id
+        description: EEA sampling point id.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_station')
+                field: sampling_point_id
+      - name: ts_utc
+        description: Hour start, UTC.
+        data_tests: [not_null]
+      - name: no2
+        description: Observed NO2, µg/m³ (negative values kept, ADR-006).
+      - name: pred
+        description: Main-model prediction (null where BLH missing).
+      - name: pred_noblh
+        description: No-BLH companion prediction.
+      - name: pred_used
+        description: pred where BLH available, else pred_noblh.
+        data_tests: [not_null]
+      - name: model_used
+        description: blh or noblh.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [blh, noblh]
+      - name: resid
+        description: no2 − pred_used, µg/m³.
+      - name: pred_holdout_jja2019
+        description: Placebo hold-out prediction for Jun–Aug 2019 only.
+      - name: is_train
+        description: Hour used to fit the final models.
+    data_tests:
+      - unique_combination:
+          arguments:
+            columns: [sampling_point_id, ts_utc]
+
+  - name: fct_station_day_resid
+    description: >
+      Station × local day: mean observed, predicted and residual NO2 on days with ≥ 18 hours that
+      have both an observation and a prediction; resid_pct = resid / station's pre-treatment mean × 100.
+    columns:
+      - name: sampling_point_id
+        description: EEA sampling point id.
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_station')
+                field: sampling_point_id
+      - name: local_date
+        description: Local calendar date.
+        data_tests: [not_null]
+      - name: valid_hours
+        description: Hours with observation and prediction (≥ 18).
+      - name: resid
+        description: Daily mean residual, µg/m³.
+        data_tests: [not_null]
+      - name: resid_pct
+        description: Daily residual in % of the station's pre-treatment mean NO2.
+      - name: noblh_hours
+        description: Hours predicted by the no-BLH companion model.
+      - name: resid_holdout_jja2019
+        description: Daily residual against the Jun–Aug 2019 hold-out model (placebo check).
+    data_tests:
+      - unique_combination:
+          arguments:
+            columns: [sampling_point_id, local_date]

@@ -19,6 +19,7 @@ from pipeline.config import (
     CONTROL_COUNTRIES,
     COUNTRY_TZ,
     COVERAGE_YEARS,
+    DEWEATHER_TRAIN_WINDOWS,
     MIN_VALID_HOURS_PER_DAY,
     POLICY_WINDOWS,
     TREATED,
@@ -46,6 +47,8 @@ def main() -> None:
     write("config_coverage_years.csv", ["year"], [[y] for y in COVERAGE_YEARS])
     write("config_countries.csv", ["country_code", "role", "time_zone"],
           [[c, "treated" if c == TREATED else "control", COUNTRY_TZ[c]] for c in COUNTRIES])
+    write("config_deweather_train_windows.csv", ["start_date", "end_date_exclusive"],
+          [[s.isoformat(), e.isoformat()] for s, e in DEWEATHER_TRAIN_WINDOWS])
     write("config_params.csv", ["param", "value"],
           [["min_valid_hours_per_day", MIN_VALID_HOURS_PER_DAY],
            ["first_year", ANALYSIS_YEARS[0]], ["last_year", ANALYSIS_YEARS[-1]]])

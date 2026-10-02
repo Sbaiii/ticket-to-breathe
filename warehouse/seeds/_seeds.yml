@@ -32,3 +32,5 @@ seeds:
     description: Generated from config (treated + controls, role, IANA time zone).
   - name: config_params
     description: Generated scalar parameters (min valid hours per day, analysis years).
+  - name: config_deweather_train_windows
+    description: Generated from config.DEWEATHER_TRAIN_WINDOWS ([start, end) UTC).

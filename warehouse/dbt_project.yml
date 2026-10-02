@@ -30,6 +30,10 @@ seeds:
       +column_types:
         start_date: date
         end_date: date
+    config_deweather_train_windows:
+      +column_types:
+        start_date: date
+        end_date_exclusive: date
     public_holidays:
       +column_types:
         holiday_date: date

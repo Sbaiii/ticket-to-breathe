@@ -89,3 +89,31 @@ models:
       - unique_combination:
           arguments:
             columns: [location_id, ts_utc]
+
+  - name: stg_deweather__predictions
+    description: Hourly deweathering predictions per station (models/deweather.py; ADR-006), only hours with weather.
+    columns:
+      - name: pred
+        description: Main model (all features); null where BLH features are missing.
+      - name: pred_noblh
+        description: Companion model without BLH features (always filled).
+      - name: pred_holdout_jja2019
+        description: Placebo model trained without Jun–Aug 2019; filled only for Jun–Aug 2019.
+      - name: blh_available
+        description: BLH and its rolling means are present for the hour.
+      - name: is_train
+        description: Hour was used to fit the final models (pre-treatment windows).
+    data_tests:
+      - unique_combination:
+          arguments:
+            columns: [sampling_point_id, ts_utc]
+
+  - name: stg_deweather__stations
+    description: Per-station deweathering summary (status ok only) — training size, pre-treatment mean, validation metrics.
+    columns:
+      - name: sampling_point_id
+        description: EEA sampling point id.
+        data_tests: [unique, not_null]
+      - name: train_mean_no2
+        description: Mean observed NO2 over the training hours (denominator of resid_pct).
+        data_tests: [not_null]
