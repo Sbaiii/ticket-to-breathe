@@ -3,10 +3,10 @@
 ## Phase 0 — Setup & source verification (Day 1–2)
 - [x] Research sources, licences, prior literature
 - [x] Scaffold repo + lab-notebook
-- [ ] `uv` environment + core dependencies
-- [ ] Live probe of EEA API (coverage, schema, time zone, file counts) and Open-Meteo (variables, limits)
+- [x] `uv` environment + core dependencies
+- [x] Live probe of EEA API (coverage, schema, time zone, file counts) and Open-Meteo (variables, limits) → `docs/probe_report.md`
 - [ ] ADR-002 control countries & station filter · ADR-003 weather locations
-- [ ] First commit pushed to GitHub
+- [x] First commit pushed to GitHub
 
 ## Phase 1 — Data engineering (Day 3–6)
 - [ ] EEA download (DE + controls, NO2 hourly, 2018→latest), idempotent, logged

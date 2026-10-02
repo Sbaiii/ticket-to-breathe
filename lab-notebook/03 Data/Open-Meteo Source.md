@@ -13,5 +13,8 @@
 - ⇒ fetch per grid cell / city cluster (few hundred points), not per station. See ADR-003 (to write).
 
 ## Open questions
-- [ ] `boundary_layer_height` available in the archive endpoint for ERA5?
-- [ ] Actual weighting observed for a 1-year request (check response / usage)
+- [x] `boundary_layer_height` available in the archive endpoint for ERA5? — **Yes** (m), 336/336 non-null
+  for Berlin 2022-06-01..14. All 9 `config.WEATHER_VARIABLES` returned fully non-null. Units: °C, %, km/h,
+  °, mm, hPa, W/m², %, m. Multi-location request returns a JSON **list**, one element per location
+  (`location_id` absent on the first element, 1, 2 … on the rest). See `docs/probe_report.md`.
+- [ ] Actual weighting observed for a 1-year request (check response / usage) — not probed yet
