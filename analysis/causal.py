@@ -71,6 +71,11 @@ def load_panel(con: duckdb.DuckDBPyConnection, types=MAIN_TYPES) -> pd.DataFrame
         left join noblh n using (sampling_point_id, local_date)
         where r.station_type in ({types_sql})
     """).df()
+    return add_keys(df)
+
+
+def add_keys(df: pd.DataFrame) -> pd.DataFrame:
+    """Calendar, treatment, FE and cluster keys for a station-day frame (local_date, country)."""
     d = df["local_date"]
     iso = d.dt.isocalendar()
     df["year"], df["month"] = d.dt.year, d.dt.month
@@ -86,9 +91,15 @@ def load_panel(con: duckdb.DuckDBPyConnection, types=MAIN_TYPES) -> pd.DataFrame
 
 
 def in_blocks(df: pd.DataFrame, blocks) -> pd.Series:
+    """Rows inside any (year, months) block; months is a sequence of month numbers or a
+    ("MM-DD", "MM-DD") inclusive day range within that year."""
     mask = pd.Series(False, index=df.index)
     for year, months in blocks:
-        mask |= (df["year"] == year) & df["month"].isin(list(months))
+        if isinstance(months, tuple) and len(months) == 2 and isinstance(months[0], str):
+            lo, hi = pd.Timestamp(f"{year}-{months[0]}"), pd.Timestamp(f"{year}-{months[1]}")
+            mask |= (df["local_date"] >= lo) & (df["local_date"] <= hi)
+        else:
+            mask |= (df["year"] == year) & df["month"].isin(list(months))
     return mask
 
 
@@ -134,8 +145,8 @@ def assign_cells(df: pd.DataFrame, design: Design) -> pd.DataFrame:
 
 
 def estimate(df: pd.DataFrame, design: Design, y: str = "ratio_pct", fe: str = "sid + date_id",
-             weights: str | None = None, treated: str = "de") -> dict:
-    d = assign_cells(df, design).dropna(subset=[y])
+             weights: str | None = None, treated: str = "de", covariates: tuple = ()) -> dict:
+    d = assign_cells(df, design).dropna(subset=[y, *covariates])
     dummies = []
     for label in design.cells:
         if label in design.refs:
@@ -143,12 +154,12 @@ def estimate(df: pd.DataFrame, design: Design, y: str = "ratio_pct", fe: str = "
         col = f"x_{label}"
         d[col] = d[treated] * (d["cell"] == label)
         dummies.append(col)
-    fit = pf.feols(f"{y} ~ {' + '.join(dummies)} | {fe}", d, vcov={"CRV1": CLUSTERS},
-                   weights=weights)
+    fit = pf.feols(f"{y} ~ {' + '.join([*dummies, *covariates])} | {fe}", d,
+                   vcov={"CRV1": CLUSTERS}, weights=weights)
     names = [str(n) for n in fit._coefnames]
-    if names != dummies:
-        raise RuntimeError(f"collinear dummies dropped: {set(dummies) - set(names)}")
-    w = np.array([design.weights.get(n[2:], 0.0) for n in names])
+    if names != [*dummies, *covariates]:
+        raise RuntimeError(f"collinear regressors dropped: {set(dummies) - set(names)}")
+    w = np.array([design.weights.get(n[2:], 0.0) if n in dummies else 0.0 for n in names])
     beta, V = np.asarray(fit._beta_hat), np.asarray(fit._vcov)
     est, se = float(w @ beta), float(np.sqrt(w @ V @ w))
     tcrit = stats.t.ppf(0.975, fit._df_t)
@@ -157,7 +168,8 @@ def estimate(df: pd.DataFrame, design: Design, y: str = "ratio_pct", fe: str = "
             "n_treated_stations": int(d.loc[d[treated] == 1, "sid"].nunique()),
             "n_control_stations": int(d.loc[d[treated] == 0, "sid"].nunique()),
             "n_station_days": int(fit._N), "n_dates": int(d["date_id"].nunique()),
-            "n_countries": int(d["country_code"].nunique())}
+            "n_countries": int(d["country_code"].nunique()),
+            **{f"coef_{c}": float(beta[names.index(c)]) for c in covariates}}
 
 
 def detrend(df: pd.DataFrame, y: str = "ratio_pct") -> pd.DataFrame:
