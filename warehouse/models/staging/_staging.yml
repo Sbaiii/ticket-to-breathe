@@ -126,3 +126,18 @@ models:
       - name: pre_mean_no2
         description: Mean observed NO2 over the station's pre-treatment hours.
         data_tests: [not_null]
+
+  - name: stg_oxcgrt__stringency
+    description: OxCGRT national stringency index per country and day (ADR-009, exploratory).
+    columns:
+      - name: stringency_index
+        description: 0–100; null where OxCGRT has no value (Jan–Feb 2023). No rows before 2020.
+        data_tests:
+          - value_between:
+              arguments:
+                min_value: 0
+                max_value: 100
+    data_tests:
+      - unique_combination:
+          arguments:
+            columns: [country_code, stringency_date]

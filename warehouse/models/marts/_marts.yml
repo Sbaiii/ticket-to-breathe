@@ -96,6 +96,10 @@ models:
       hours exist, daily weather (means; precipitation summed; wind direction as vector mean),
       calendar and policy flags. The unit of the causal estimates (ADR-003).
     columns:
+      - name: stringency_index
+        description: >
+          OxCGRT national COVID stringency index (0–100) for the country-day; null before 2020 and
+          after 2023-02-28 (ADR-009, exploratory covariate).
       - name: sampling_point_id
         description: EEA sampling point id.
         data_tests:

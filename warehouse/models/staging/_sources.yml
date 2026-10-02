@@ -28,6 +28,13 @@ sources:
         config:
           meta:
             external_location: "read_parquet('../data/raw/weather/*/*.parquet', union_by_name = true)"
+      - name: oxcgrt_stringency
+        description: >
+          OxCGRT national daily stringency index (0–100), DE + controls, 2020-01-01 → 2023-02-28
+          (`pipeline/oxcgrt_download.py`; CC BY 4.0; Hale et al. 2021). Exploratory (ADR-009).
+        config:
+          meta:
+            external_location: "read_parquet('../data/raw/oxcgrt/stringency_national.parquet')"
       - name: deweather_predictions
         description: >
           Per-station hourly predictions from `models/deweather.py` (ADR-006): main model, no-BLH

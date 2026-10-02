@@ -57,10 +57,13 @@ select
     p.is_tankrabatt,
     p.is_deutschlandticket,
     p.is_fuel_price_measure,
-    p.is_fuel_price_increase
+    p.is_fuel_price_increase,
+    o.stringency_index
 from daily as d
 cross join params
 inner join {{ ref('dim_station') }} as s on s.sampling_point_id = d.sampling_point_id
 left join {{ ref('int_country_day_policy') }} as p
     on p.country_code = d.country_code and p.day_date = d.local_date
+left join {{ ref('stg_oxcgrt__stringency') }} as o
+    on o.country_code = d.country_code and o.stringency_date = d.local_date
 where d.valid_hours >= params.min_hours
