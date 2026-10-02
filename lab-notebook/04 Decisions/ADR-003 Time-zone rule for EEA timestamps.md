@@ -1,6 +1,6 @@
 # ADR-003: Time-zone rule for EEA timestamps
 
-**Date:** 2026-10-02 · **Status:** proposed
+**Date:** 2026-10-02 · **Status:** accepted (2026-10-02)
 
 ## Context
 EEA E1a Parquet `Start`/`End` are tz-naive. The metadata `Timezone` column says `UTC+01` for DE, AT,
@@ -24,7 +24,8 @@ Key facts:
 3. Keep raw `Start` and work in "raw hours" only (no UTC claim).
 
 ## Decision
-_Proposed:_ Option 1. Option 2 is contradicted by the cross-border test: it would move BE/CZ/FR one
+**Option 1: `ts_utc = Start − 1 h` for all mainland files; the metadata `Timezone` label is
+ignored.** Option 2 is contradicted by the cross-border test: it would move BE/CZ/FR one
 hour away from their German neighbours. Store `ts_utc` plus the raw `Start` in staging so the rule
 can be changed in one place.
 
@@ -32,11 +33,17 @@ can be changed in one place.
 - Relative alignment with DE is consistent across 7 countries; AT and NL (same label as DE) give lag 0
   as a sanity check.
 - The absolute offset (UTC+01 rather than UTC) rests on DE's label and the plausible 07–08 local
-  morning peak → moderate confidence; daily aggregates are unaffected, hour-of-day results could be
-  off by at most 1 h for all countries at once (not differentially).
+  morning peak → moderate confidence. If it is wrong, all countries are off by the same hour (not
+  differentially).
 
 ## Consequences
-+ Treated and control hours are comparable; commuting-hour definitions use local time =
-  `ts_utc` + 1 h (winter) / + 2 h (summer) via `Europe/Berlin`-style rules per country.
-− LU unresolved → excluded or flagged (see ADR-002).
-− Re-check the rule if EEA republishes files (record the download date).
+- **Causal estimates use station-day means**, which are robust to a ±1 h error: at most one of
+  24 hours moves across the day boundary.
+- **Hour-of-day analyses use broad windows** (06–10 and 16–20 local time; local =
+  `ts_utc` converted with the country's civil-time rules) and are **labelled exploratory**.
+- **Residual uncertainty:** the absolute offset (moderate confidence) and the small correlation
+  margins between lag 0 and ±1 (0.01–0.03) are stated in the methods appendix.
+- Treated and control hours are on one clock.
+- LU unresolved → excluded (ADR-002).
+- Staging keeps raw `Start` next to `ts_utc`. Re-check the rule if EEA republishes files (record
+  the download date).

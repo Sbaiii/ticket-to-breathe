@@ -1,6 +1,6 @@
 # ADR-004: Analysis window
 
-**Date:** 2026-10-02 · **Status:** proposed
+**Date:** 2026-10-02 · **Status:** accepted (2026-10-02)
 
 ## Context
 The probe (`docs/probe_report.md`) showed:
@@ -21,7 +21,7 @@ with 2.5 years of Deutschlandticket after the switch.
 4. Start earlier (2013–2017) for a longer pre-trend.
 
 ## Decision
-_Proposed:_ Option 1 for all estimates; Option 2 only if time allows, labelled "unverified (E2a)".
+Option 1 for all estimates; Option 2 only if time allows, labelled "unverified (E2a)".
 Option 3 rejected: mixing verification levels in one estimate makes the result depend on data that
 can still change. Option 4 deferred: possible robustness check for pre-trends, but older years add
 fleet-composition drift (Euro 6 roll-out) and stations that closed.
@@ -35,3 +35,5 @@ fleet-composition drift (Euro 6 roll-out) and stations that closed.
 + One dataset (E1a) for the whole core pipeline; no verification-level mixing.
 − No 2026 in the headline result; the Deutschlandticket price rises (2025, 2026) are only partly covered.
 − Year set for the coverage filter (S1/S2/S3) is chosen in ADR-002.
+− Note (2026-10-02): ADR-005 downloads no weather for 2020–21, so those years have no deweathered
+  series; they were never part of the baseline or the estimates.

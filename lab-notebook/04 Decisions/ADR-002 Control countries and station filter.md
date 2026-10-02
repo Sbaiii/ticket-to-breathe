@@ -1,78 +1,70 @@
 # ADR-002: Control countries & station filter
 
-**Date:** 2026-10-02 · **Status:** proposed
+**Date:** 2026-10-02 · **Status:** accepted (2026-10-02)
 
 ## Context
-We need a donor/control pool of NO2 sampling points outside Germany and a station filter that is applied
-identically to treated and control points. All numbers below are from `docs/station_funnel.md`
-(E1a verified, hourly NO2, metadata extract of 2026-10-02; valid = `Validity` in 1–4; coverage ≥ 75 %
-valid hours in every year of the set).
+We need a control pool of NO2 sampling points outside Germany and one station filter applied
+identically to treated and control points. Numbers come from `docs/station_funnel.md`
+(`pipeline/station_funnel.py`; E1a verified hourly NO2; metadata extract of 2026-10-02; valid =
+`Validity` 1–4). Constants live in `pipeline/config.py`.
 
-Candidate year sets: S1 = {2018, 2019, 2022} · S2 = S1 + 2023 · S3 = {2018, 2019, 2021–2025}.
+Candidate year sets measured: S1 = {2018, 2019, 2022} · S2 = S1 + 2023 · S3 = {2018, 2019, 2021–2025}.
+In the draft (bbox lat ≤ 56°), urban/suburban traffic + background points meeting S1/S2/S3 were
+DE 285/284/273 and controls 587/557/491. The S1→S3 loss was concentrated in FR (270→210) and PL (85→65).
 
-Urban + suburban, inside the mainland bbox, **traffic + background** points meeting each set:
-
-| country | step-d points | S1 | S2 | S3 |
-|---|---|---|---|---|
-| DE (treated) | 385 | 285 | 284 | 273 |
-| AT | 120 | 93 | 91 | 87 |
-| BE | 50 | 23 | 23 | 20 |
-| CH | 30 | 23 | 22 | 22 |
-| CZ | 89 | 46 | 45 | 40 |
-| DK | 8 | 4 | 4 | 4 |
-| FR | 490 | 270 | 253 | 210 |
-| LU | 9 | 4 | 4 | 4 |
-| NL | 50 | 39 | 39 | 39 |
-| PL | 213 | 85 | 76 | 65 |
-| **controls total** | 1,059 | 587 | 557 | 491 |
-
-Industrial points (urban/suburban): 115 in total, 58 meet S1 (DE 16). Proposed use is a placebo only
-(see Project Brief, energy-crisis confounder).
-
-Facts that bear on the choice:
-- The bbox upper latitude 56° drops 8 DK points, among them urban Århus (56.15° N) and Aalborg (57.05° N);
-  3 urban DK points north of 56° meet S1. DK keeps only 8 urban/suburban points inside the bbox.
-- Metadata `Timezone` labels do not match the raw clock, but the empirical test shows all countries
-  except LU on the same clock as DE (`docs/timezone_check.md`, ADR-003). LU is unresolved.
-- 81 step-d points have metadata rows that disagree on time zone, type, area or coordinates; the latest
-  row is used. Across all metadata, disagreements are mostly AT type/area, BE/LU time zone and NL/CH
-  coordinates (only 6 points differ by > 0.01°).
-- Coverage loss from S1→S3 is concentrated in FR (270→210) and PL (85→65).
-
-## Known 2022 policy contamination (to check with sources before accepting)
-- **Spain** — own transit discounts from Sept 2022 → already excluded.
-- **Fuel-tax / pump-price discounts in 2022** in some control countries (France "remise carburant" and
-  others listed in the Project Brief) — they act like the Tankrabatt and partly net it out; dates per
-  country go into the policy-calendar seed.
-- **Luxembourg** — free public transport nationwide since 2020 → stable through 2022–23, so not a
-  treatment change in the window; tiny sample (4 points meet S1) and unresolved clock (ADR-003).
-- **Austria** — national KlimaTicket introduced in late 2021 (date to verify) → a transit-price change
-  just before the window; check for a level shift in AT.
-- Other control-country transit offers in 2022–2023 → to collect in the policy calendar.
-
-## Options
-1. **All 9 controls, traffic + background, urban/suburban, S1.** Largest pool (587 points); flexible for
-   the 2022 estimates. 2023 coverage not guaranteed (Deutschlandticket estimates would use an unbalanced
-   panel or the S2 subset).
-2. **All 9 controls, S2.** 557 points; one balanced panel for both the 9-Euro-Ticket and the
-   Deutschlandticket (May 2023) estimates. Costs 30 control points vs S1, mostly FR/PL.
-3. **All 9 controls, S3.** 491 points; balanced panel through 2025 incl. 2021 (useful for event-study
-   pre-trends and the persistence question), costs 96 control points vs S1.
-4. **Core neighbours only (AT, NL, BE, CH, CZ, FR, PL), dropping DK and LU** (4 points each, LU clock
-   unresolved, LU free transit). Loses 8 points under S1/S2.
-5. Widen the bbox to lat 58° to keep Århus/Aalborg (+3 S1 points in DK).
+## Options (from the draft)
+1. All 9 candidate controls, S1 (largest pool, 2023 not guaranteed).
+2. All 9 candidate controls, S2 (one balanced panel for both treatment switches).
+3. All 9 candidate controls, S3 (balanced through 2025, −96 control points vs S1).
+4. Drop DK and LU (few points, LU clock unresolved, LU free transit since 2020).
+5. Widen the bbox to lat 58° to keep Århus/Aalborg.
 
 ## Decision
-_Proposed, not decided:_ Option 2 (S2) with Option 4 (drop DK and LU), traffic and background analysed
-separately, industrial as placebo; Options 1 and 3 as robustness checks. To be confirmed after the
-policy calendar is built and the contamination checks above are sourced.
+- **bbox** lat 41–58, lon −6–25 (keeps Århus/Aalborg; still drops French overseas departments).
+- **Area:** urban or suburban.
+- **Coverage:** set **S2** — ≥ 75 % valid hours in every year of {2018, 2019, 2022, 2023}.
+- **Control-country rule:** a control country needs **≥ 10 qualifying traffic + background points**.
+  → **Controls = AT, BE, CH, CZ, FR, NL, PL.**
+  - **DK excluded:** 7 qualifying points even with the wider bbox (< 10).
+  - **LU excluded:** 4 qualifying points (< 10); also clock unresolved (ADR-003) and free public
+    transport since 2020.
+- **Station types:** traffic and background analysed **separately and pooled**; industrial =
+  **placebo only**.
+- **Robustness (planned):** country-balanced weights; leave-one-country-out, especially without FR;
+  S1 and S3 as alternative coverage sets.
+
+Resulting study set (`in_study` in `data/processed/station_candidates.parquet`):
+
+| role | country | traffic | background | industrial | traffic + background | all |
+|---|---|---|---|---|---|---|
+| treated | DE | 113 | 171 | 16 | 284 | 300 |
+| control | AT | 28 | 63 | 4 | 91 | 95 |
+| control | BE | 4 | 19 | 10 | 23 | 33 |
+| control | CH | 9 | 13 | 0 | 22 | 22 |
+| control | CZ | 12 | 33 | 1 | 45 | 46 |
+| control | FR | 69 | 184 | 13 | 253 | 266 |
+| control | NL | 20 | 19 | 7 | 39 | 46 |
+| control | PL | 12 | 64 | 3 | 76 | 79 |
+| | **total** | 267 | 566 | 54 | 833 | 887 |
 
 ## Why
-- S2 gives one balanced panel covering both treatment switches; the cost vs S1 is small (5 %).
-- DK and LU add 8 points but carry clock/contamination uncertainty that a reader would have to trust.
-- Separate traffic vs background is H2 of the brief.
+- S2 gives one balanced panel covering both switches (2022 and May 2023) at a small cost vs S1.
+- The ≥ 10-point rule is mechanical and stated in advance; it removes countries whose average would
+  rest on a handful of stations.
+- Traffic vs background is H2 of the brief; industrial stations respond to the 2022 energy crisis,
+  not to commuting, so they serve as a placebo.
+
+## Known 2022 policy contamination (to source in the policy calendar)
+- Spain — own transit discounts from Sept 2022 → excluded from the start.
+- Fuel-tax / pump-price discounts in 2022 in some control countries (e.g. France "remise carburant")
+  → act like the Tankrabatt; dates per country go into the policy-calendar seed.
+- Austria — national KlimaTicket introduced in late 2021 (date to verify) → check AT for a level shift.
+- Luxembourg — free public transport since 2020 (excluded anyway).
+- Other control-country transit offers 2022–2023 → collect in the policy calendar.
 
 ## Consequences
 + Same filter for treated and controls; every count is reproducible from `pipeline/station_funnel.py`.
-− FR dominates the control pool (≈ 45 % of points) → leave-one-country-out is mandatory.
-− PL has low coverage and lower cross-border correlations; check its influence separately.
+− FR is ≈ 46 % of control traffic + background points → leave-one-country-out without FR is mandatory,
+  and country-balanced weights are a planned robustness check.
+− BE has only 4 traffic points; CH has 9 → traffic-only results lean on AT, FR, NL.
+− Metadata for 45 points ties on recency and is resolved by a deterministic tie-break (Quality Log).
