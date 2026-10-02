@@ -10,11 +10,13 @@ import io
 import json
 import os
 import random
+import traceback
 import zipfile
-from datetime import UTC, datetime
+from datetime import UTC, date, datetime, timedelta
 
 import pandas as pd
 import pyarrow as pa
+import pyarrow.compute as pc
 import pyarrow.parquet as pq
 import requests
 from dotenv import load_dotenv
@@ -52,6 +54,7 @@ COUNTRY_NAMES = {
 }
 
 report: list[str] = []
+errors: list[str] = []
 
 
 def emit(line: str = "") -> None:
@@ -178,16 +181,15 @@ def probe_url_lists(s: requests.Session) -> dict[tuple[str, int], list[str]]:
             urls[(c, ds)] = parquet_urls(s, c, ds)
         rows.append({
             "country": c,
-            "E1a verified (dataset 2)": len(urls[(c, 2)]),
-            "E2a unverified (dataset 1)": len(urls[(c, 1)]),
+            **{f"{label} (dataset {ds})": len(urls[(c, ds)]) for ds, label in DATASETS.items()},
         })
     df = pd.DataFrame(rows)
     total = {"country": "TOTAL", **{k: int(df[k].sum()) for k in df.columns[1:]}}
     emit("")
     table(pd.concat([df, pd.DataFrame([total])]))
     emit("")
-    example = urls[(TREATED, 2)][0]
-    emit(f"- Example URL: `{example}` — one file per sampling point; no year in the file name.")
+    example = urls[(TREATED, EEA_DATASET_E1A_VERIFIED)][0]
+    emit(f"- Example URL: `{example}` — file name is the sampling point id; no year in the file name.")
     host_paths = sorted({u.rsplit("/", 2)[0] for v in urls.values() for u in v})
     emit(f"- Blob container prefixes seen: {', '.join(f'`{h}`' for h in host_paths)}")
 
@@ -203,17 +205,17 @@ def probe_url_lists(s: requests.Session) -> dict[tuple[str, int], list[str]]:
 
     r = s.post(f"{EEA_API_BASE}/DownloadSummary", json={
         "countries": ["LU"], "cities": [], "pollutants": [NO2_POLLUTANT_URI],
-        "dataset": 2, "aggregationType": "hour", "source": "API",
+        "dataset": EEA_DATASET_E1A_VERIFIED, "aggregationType": "hour", "source": "API",
     }, timeout=TIMEOUT)
-    emit(f"- `POST /DownloadSummary` for LU, NO2, dataset 2 returned `{r.text.strip()}` "
-         f"(vs {len(urls[('LU', 2)])} URLs from `/ParquetFile/urls` for the same body).")
+    emit(f"- `POST /DownloadSummary` for LU, NO2, dataset {EEA_DATASET_E1A_VERIFIED} returned "
+         f"`{r.text.strip()}` (vs {len(urls[('LU', EEA_DATASET_E1A_VERIFIED)])} URLs from `/ParquetFile/urls` for the same body).")
     emit("- Year coverage per dataset is derived from file contents in section d).")
     emit("")
     return urls
 
 
 # --- c) Sample files --------------------------------------------------------------
-def describe_file(path, label: str, url: str) -> None:
+def describe_file(path, label: str, url: str) -> str:
     pf = pq.ParquetFile(path)
     df = pf.read().to_pandas()
     emit(f"### {label}")
@@ -234,7 +236,7 @@ def describe_file(path, label: str, url: str) -> None:
     emit(f"- min/max `Start`: {df['Start'].min()} → {df['Start'].max()}")
     emit(f"- min/max `End`: {df['End'].min()} → {df['End'].max()}")
     hours = (df["End"] - df["Start"]).value_counts().head(3)
-    emit(f"- `End - Start` value counts: {dict((str(k), int(v)) for k, v in hours.items())}")
+    emit(f"- `End - Start` value counts: { {str(k): int(v) for k, v in hours.items()} }")
     starts = df["Start"]
     emit(f"- distinct `Start` minute values: {sorted(starts.dt.minute.unique().tolist())}")
     emit(f"- `Samplingpoint` values: {df['Samplingpoint'].unique().tolist()}")
@@ -251,8 +253,31 @@ def describe_file(path, label: str, url: str) -> None:
     emit(f"- `DataCapture` nulls: {int(df['DataCapture'].isna().sum()):,} of {len(df):,}")
     rows_per_year = df.groupby(df["Start"].dt.year).size().to_dict()
     emit(f"- rows per calendar year of `Start`: {rows_per_year}")
+    if not tz:
+        dst_evidence(starts)
     emit("")
     return df["Samplingpoint"].iloc[0]
+
+
+def last_sunday(year: int, month: int) -> date:
+    d = date(year, month + 1, 1) - timedelta(days=1)
+    return d - timedelta(days=(d.weekday() + 1) % 7)
+
+
+def dst_evidence(starts: pd.Series) -> None:
+    """Facts that reveal the clock of naive timestamps: a local clock with summer time skips
+    02:00 on the last Sunday of March and repeats it on the last Sunday of October."""
+    emit(f"- duplicated `Start` values: {int(starts.duplicated().sum()):,}")
+    gaps = starts.sort_values().diff().value_counts().head(3)
+    emit(f"- most common gaps between consecutive `Start`: "
+         f"{ {str(k): int(v) for k, v in gaps.items()} }")
+    emit("- rows with `Start` at 02:00 on EU DST switch days "
+         "(local summer-time clock → 0 in March, 2 in October):")
+    for y in sorted(starts.dt.year.unique()):
+        march, october = last_sunday(int(y), 3), last_sunday(int(y), 10)
+        n_mar = int(((starts.dt.date == march) & (starts.dt.hour == 2)).sum())
+        n_oct = int(((starts.dt.date == october) & (starts.dt.hour == 2)).sum())
+        emit(f"  - {y}: {march} → {n_mar}, {october} → {n_oct}")
 
 
 def probe_sample_files(s: requests.Session, urls: dict) -> list[str]:
@@ -287,7 +312,7 @@ def probe_sizes(s: requests.Session, urls: dict) -> None:
             f = pa.PythonFile(HttpRangeFile(s, url, size), mode="r")
             start = pq.read_table(f, columns=["Start"]).column("Start")
             if len(start):
-                smin, smax = pa.compute.min(start).as_py(), pa.compute.max(start).as_py()
+                smin, smax = pc.min(start).as_py(), pc.max(start).as_py()
         rows.append({"country": c, "dataset": ds, "status": h.status_code, "bytes": size,
                      "start_min": smin, "start_max": smax})
     df = pd.DataFrame(rows)
@@ -335,8 +360,7 @@ def probe_metadata(s: requests.Session, sample_ids: list[str]) -> None:
         r = s.get(EEA_METADATA_URL, timeout=600)
         r.raise_for_status()
         path.write_bytes(r.content)
-    emit(f"- URL: `{EEA_METADATA_URL}` (the URL used by the `airbase` package, "
-         "`airbase/parquet_api/client.py: METADATA_URL`)")
+    emit(f"- URL (from `config.EEA_METADATA_URL`): `{EEA_METADATA_URL}`")
     with zipfile.ZipFile(path) as z:
         names = z.namelist()
         emit(f"- Download: zip {path.stat().st_size:,} bytes containing {names}")
@@ -423,6 +447,22 @@ def probe_open_meteo(s: requests.Session) -> None:
     emit("")
 
 
+def step(name: str, fn, *args):
+    """Run one probe step; on failure record the error verbatim instead of aborting."""
+    try:
+        return fn(*args)
+    except Exception as exc:  # noqa: BLE001 — the report must show every failure
+        msg = f"step {name}: `{type(exc).__name__}: {exc}`"
+        errors.append(msg)
+        emit(f"**ERROR** in {msg}")
+        emit("")
+        emit("```")
+        emit(traceback.format_exc().strip())
+        emit("```")
+        emit("")
+        return None
+
+
 def main() -> None:
     DOCS.mkdir(exist_ok=True)
     s = make_session()
@@ -432,12 +472,17 @@ def main() -> None:
     emit(f"Generated by `pipeline/probe_sources.py` on {now}. Facts only — no interpretation.")
     emit(f"User-Agent: `{s.headers['User-Agent']}`")
     emit("")
-    probe_swagger(s)
-    urls = probe_url_lists(s)
-    sample_ids = probe_sample_files(s, urls)
-    probe_sizes(s, urls)
-    probe_metadata(s, sample_ids)
-    probe_open_meteo(s)
+    step("a) swagger", probe_swagger, s)
+    urls = step("b) url lists", probe_url_lists, s)
+    sample_ids = step("c) sample files", probe_sample_files, s, urls) if urls else None
+    if urls:
+        step("d) sizes", probe_sizes, s, urls)
+    step("e) metadata", probe_metadata, s, sample_ids or [])
+    step("f) open-meteo", probe_open_meteo, s)
+    emit("## Errors")
+    emit("")
+    for e in errors or ["None."]:
+        emit(f"- {e}")
     REPORT_PATH.write_text("\n".join(report) + "\n")
     print(f"\nWrote {REPORT_PATH}")
 
