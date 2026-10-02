@@ -1,4 +1,15 @@
-# analysis/ — notebooks
+# analysis/ — causal estimation (ADR-008)
 
-Numbered in reading order (`01_eda.ipynb`, `02_deweathering_check.ipynb`, `03_did.ipynb`, ...).
-Notebooks read from the warehouse marts only — no ad-hoc downloads here.
+Code first, notebooks only display results.
+
+| File | What it does |
+|---|---|
+| `causal.py` | every pre-registered estimate (triple differences, persistence, classic DiD, event study, placebo dates / countries / industrial, wild cluster bootstrap, heterogeneity, robustness, synthetic control, map data) → `data/processed/results/*.parquet` |
+| `figures.py` | PNGs → `docs/figures/` and case-study JSON → `dashboard/data/` |
+| `report.py` | `docs/results_provisional.md` (or `docs/results.md` once the run is final), with the ADR-008 decision rule applied mechanically |
+| `03_causal.ipynb` | reads the results and displays them; estimates nothing |
+
+```bash
+make analysis   # all four steps (also part of `make all`)
+```
+Every output carries `status` = PROVISIONAL while control stations still lack predictions.
