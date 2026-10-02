@@ -48,3 +48,36 @@ POLICY_WINDOWS: dict[str, tuple[date, date | None]] = {
     "deutschlandticket": (date(2023, 5, 1), None),
     "tankrabatt": (date(2022, 6, 1), date(2022, 8, 31)),
 }
+
+# --- EEA observation flags -----------------------------------------------------
+# Source: Eionet Data Dictionary vocabularies, fetched 2026-10-02:
+#   https://dd.eionet.europa.eu/vocabulary/aq/observationvalidity
+#   https://dd.eionet.europa.eu/vocabulary/aq/observationverification
+VALIDITY_CODES = {
+    -99: "Not valid due to station maintenance or calibration",
+    -1: "Not valid",
+    1: "Valid",
+    2: "Valid, but below detection limit measurement value given",
+    3: "Valid, but below detection limit and number replaced by 0.5*detection limit",
+    4: "Valid (Ozone only) using CCQM.O3.2019",
+}
+VALID_CODES = (1, 2, 3, 4)
+VERIFICATION_CODES = {1: "Verified", 2: "Preliminary verified", 3: "Not verified"}
+
+# --- EEA local storage -----------------------------------------------------------
+EEA_RAW = DATA_RAW / "eea"
+EEA_E1A_DIR = EEA_RAW / "e1a"
+EEA_MANIFEST = EEA_RAW / "_manifest.parquet"
+EEA_META_DIR = DATA_RAW / "eea_meta"
+DATA_PROCESSED = REPO_ROOT / "data" / "processed"
+
+# --- Station funnel ------------------------------------------------------------------
+# Mainland-Europe bounding box (drops French overseas departments).
+MAINLAND_BBOX = {"lat_min": 41.0, "lat_max": 56.0, "lon_min": -6.0, "lon_max": 25.0}
+COVERAGE_YEARS = list(range(2018, 2026))
+COVERAGE_THRESHOLD = 0.75
+YEAR_SETS = {
+    "S1": [2018, 2019, 2022],
+    "S2": [2018, 2019, 2022, 2023],
+    "S3": [2018, 2019, 2021, 2022, 2023, 2024, 2025],
+}
