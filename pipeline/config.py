@@ -116,3 +116,19 @@ COUNTRY_TZ = {
 ANALYSIS_YEARS = list(range(2018, 2026))  # ADR-004: verified 2018-2025
 MIN_VALID_HOURS_PER_DAY = 18
 WAREHOUSE_SEEDS = REPO_ROOT / "warehouse" / "seeds"
+
+# --- Deweathering (ADR-006) -------------------------------------------------------------------
+# Pre-treatment training windows, UTC, [start, end) — before the 9-Euro-Ticket (2022-06-01).
+DEWEATHER_TRAIN_WINDOWS = [(date(2018, 1, 1), date(2020, 1, 1)), (date(2022, 1, 1), date(2022, 6, 1))]
+# Out-of-time validation: train on the first window, test on the second.
+DEWEATHER_OOT_TRAIN = (date(2018, 1, 1), date(2020, 1, 1))
+DEWEATHER_OOT_TEST = (date(2022, 1, 1), date(2022, 6, 1))
+# Placebo hold-out: Jun–Aug 2019 removed from training and predicted out of sample.
+DEWEATHER_HOLDOUT = (date(2019, 6, 1), date(2019, 9, 1))
+LGBM_PARAMS = {  # native LightGBM names; num_boost_round = number of trees
+    "objective": "regression", "learning_rate": 0.05, "num_leaves": 31, "min_data_in_leaf": 50,
+    "seed": 42, "deterministic": True, "num_threads": 1, "verbose": -1,
+}
+LGBM_NUM_TREES = 500
+DEWEATHER_MIN_TRAIN_HOURS = 2_000
+DEWEATHER_DIR = DATA_PROCESSED / "deweather"
