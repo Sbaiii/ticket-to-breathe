@@ -42,11 +42,14 @@ select
           and cd.day_date between p.start_date and coalesce(p.end_date, date '9999-12-31')
     ) as is_{{ p }},
     {% endfor %}
+    {% for effect, col in [('decrease', 'is_fuel_price_measure'), ('increase', 'is_fuel_price_increase')] %}
     exists (
         select 1 from policy as p
-        where p.category = 'fuel_price' and p.country_code = cd.country_code
+        where p.category = 'fuel_price' and p.price_effect = '{{ effect }}'
+          and p.country_code = cd.country_code
           and cd.day_date between p.start_date and coalesce(p.end_date, date '9999-12-31')
-    ) as is_fuel_price_measure,
+    ) as {{ col }},
+    {% endfor %}
     h.holiday_name is not null as is_public_holiday,
     h.holiday_name
 from country_days as cd

@@ -53,12 +53,13 @@ via generated `config_*` seeds (`uv run python -m pipeline.build_seeds`).
 | precipitation_sum | double | mm per day (sum of available hours) |
 | local_year, local_month, local_isodow, is_weekend, is_public_holiday | | calendar |
 | is_nine_euro, is_tankrabatt, is_deutschlandticket | boolean | DE-only treatment windows from the policy calendar |
-| is_fuel_price_measure | boolean | any dated fuel_price row covering the country-day |
+| is_fuel_price_measure | boolean | a fuel-price relief (price_effect = decrease; public or private) covers the country-day |
+| is_fuel_price_increase | boolean | a fuel-price increase (AT CO2 price from 2022-10-01) covers the country-day |
 
 ## Seeds
 | seed | content |
 |---|---|
-| policy_calendar | policy, country_code, start_date, end_date (inclusive; blank = ongoing or "none found"), category (treatment / fuel_price / transit / other), description, source_url, verified |
+| policy_calendar | policy, country_code, start_date, end_date (inclusive; blank = ongoing or "none found"), category (treatment / fuel_price / transit / other), price_effect (decrease / increase / blank), description, source_url, verified |
 | public_holidays | country_code, holiday_date, holiday_name, holidays_pkg_version (`holidays` 0.105; national holidays only) |
 | config_* | generated from `pipeline/config.py` (policy windows, valid codes, coverage years, countries + time zones, parameters) |
 

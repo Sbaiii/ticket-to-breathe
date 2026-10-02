@@ -56,7 +56,8 @@ select
     p.is_nine_euro,
     p.is_tankrabatt,
     p.is_deutschlandticket,
-    p.is_fuel_price_measure
+    p.is_fuel_price_measure,
+    p.is_fuel_price_increase
 from daily as d
 cross join params
 inner join {{ ref('dim_station') }} as s on s.sampling_point_id = d.sampling_point_id

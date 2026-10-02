@@ -135,7 +135,9 @@ models:
       - name: is_deutschlandticket
         description: DE and the day is on/after 2023-05-01.
       - name: is_fuel_price_measure
-        description: A national fuel-price measure from the policy calendar covers the country-day.
+        description: A fuel-price relief (price_effect = decrease) from the policy calendar covers the country-day.
+      - name: is_fuel_price_increase
+        description: A fuel-price increase (e.g. AT CO2 price) covers the country-day.
     data_tests:
       - unique_combination:
           arguments:

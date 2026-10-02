@@ -9,6 +9,12 @@ seeds:
     columns:
       - name: policy
         description: Policy key; nine_euro, tankrabatt and deutschlandticket must match config.POLICY_WINDOWS.
+      - name: price_effect
+        description: decrease / increase for fuel_price rows with dates; blank otherwise.
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [decrease, increase]
       - name: category
         data_tests:
           - accepted_values:
