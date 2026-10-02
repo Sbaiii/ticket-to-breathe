@@ -1,11 +1,14 @@
-"""Deweather hourly NO2 with one LightGBM model per study station (ADR-006).
+"""Deweather hourly NO2 with cross-fitted LightGBM models per study station (ADR-006, ADR-007).
 
 For every in-study station whose weather location is complete:
-- main model (all weather features) and companion model without BLH, both trained only on
-  pre-treatment hours (config.DEWEATHER_TRAIN_WINDOWS);
-- out-of-time validation (train 2018–2019, test 2022-01 → 2022-05) for both models;
-- placebo hold-out model (Jun–Aug 2019 removed from training, then predicted);
-- predictions for every valid NO2 hour with weather, 2018–2025.
+- cross-fitting on the pre-treatment period (config.DEWEATHER_TRAIN_WINDOWS, local dates): its
+  calendar months go round-robin into K folds; each fold model is trained on the other folds minus
+  a buffer of config.DEWEATHER_CV_BUFFER_DAYS around every held-out month, and predicts the
+  held-out months → an out-of-fold (OOF) prediction for every pre-treatment hour;
+- post-treatment prediction = mean of the K fold models;
+- the same for the companion model without BLH (used downstream only where BLH is null);
+- out-of-time stress test (train 2018–2019, test 2022-01 → 2022-05) for both feature sets;
+- hourly and daily validation metrics per station.
 
 Writes, per station, data/processed/deweather/pred/<sampling_point_id>.parquet and
 data/processed/deweather/stations/<sampling_point_id>.json; then combines the JSONs into
@@ -28,14 +31,16 @@ import numpy as np
 import pandas as pd
 
 from pipeline.config import (
+    DEWEATHER_CV_BUFFER_DAYS,
+    DEWEATHER_CV_FOLDS,
     DEWEATHER_DIR,
-    DEWEATHER_HOLDOUT,
     DEWEATHER_MIN_TRAIN_HOURS,
     DEWEATHER_OOT_TEST,
     DEWEATHER_OOT_TRAIN,
     DEWEATHER_TRAIN_WINDOWS,
     LGBM_NUM_TREES,
     LGBM_PARAMS,
+    MIN_VALID_HOURS_PER_DAY,
     REPO_ROOT,
     WEATHER_RAW,
     WEATHER_YEARS,
@@ -61,15 +66,40 @@ MODEL_SPEC = hashlib.sha256(json.dumps({
     "trees": LGBM_NUM_TREES,
     "train": [list(map(str, w)) for w in DEWEATHER_TRAIN_WINDOWS],
     "oot": [str(d) for d in (*DEWEATHER_OOT_TRAIN, *DEWEATHER_OOT_TEST)],
-    "holdout": [str(d) for d in DEWEATHER_HOLDOUT], "version": 1,
+    "cv": [DEWEATHER_CV_FOLDS, DEWEATHER_CV_BUFFER_DAYS], "version": 2,
 }, sort_keys=True).encode()).hexdigest()[:12]
 
 
-def in_windows(ts: pd.Series, windows) -> pd.Series:
-    mask = pd.Series(False, index=ts.index)
+def in_windows(dates: pd.Series, windows) -> pd.Series:
+    mask = pd.Series(False, index=dates.index)
     for start, end in windows:
-        mask |= (ts >= pd.Timestamp(start)) & (ts < pd.Timestamp(end))
+        mask |= (dates >= pd.Timestamp(start)) & (dates < pd.Timestamp(end))
     return mask
+
+
+def pretreatment_months() -> list[pd.Period]:
+    """Calendar months of the pre-treatment period, in time order."""
+    return [m for start, end in DEWEATHER_TRAIN_WINDOWS
+            for m in pd.period_range(start, pd.Timestamp(end) - pd.Timedelta(days=1), freq="M")]
+
+
+# Month → fold, round-robin in time order (identical for every station).
+FOLD_OF_MONTH = {m: i % DEWEATHER_CV_FOLDS for i, m in enumerate(pretreatment_months())}
+
+
+def fold_masks(local_date: pd.Series, pre: pd.Series, k: int) -> tuple[pd.Series, pd.Series]:
+    """(training rows, held-out rows) for fold k. Training drops the held-out months and
+    DEWEATHER_CV_BUFFER_DAYS on both sides of each of them."""
+    buffer = pd.Timedelta(days=DEWEATHER_CV_BUFFER_DAYS)
+    months = [m for m, f in FOLD_OF_MONTH.items() if f == k]
+    held = pre & local_date.dt.to_period("M").isin(months)
+    excluded = pd.Series(False, index=local_date.index)
+    for m in months:
+        excluded |= ((local_date >= m.start_time - buffer)
+                     & (local_date < (m + 1).start_time + buffer))
+    train = pre & ~excluded
+    assert not (train & held).any()
+    return train, held
 
 
 def weather_fingerprint(location_id: str) -> tuple[bool, str, int]:
@@ -105,7 +135,8 @@ def weather_features(con: duckdb.DuckDBPyConnection, location_id: str) -> pd.Dat
 
 def station_hours(con: duckdb.DuckDBPyConnection, spid: str) -> pd.DataFrame:
     return con.execute("""
-        select ts_utc, no2_ugm3, local_hour, local_isodow, dayofyear(ts_local) as local_doy,
+        select ts_utc, local_date::timestamp as local_date, no2_ugm3, local_hour, local_isodow,
+               dayofyear(ts_local) as local_doy,
                is_public_holiday::int as is_public_holiday
         from fct_station_hour where sampling_point_id = ?
     """, [spid]).df()
@@ -125,8 +156,27 @@ def metrics(y: pd.Series, p: np.ndarray) -> dict:
             "rmse": float(np.sqrt((resid ** 2).mean())), "bias": float((p - y.to_numpy()).mean())}
 
 
+def daily_metrics(local_date: pd.Series, y: pd.Series, p: np.ndarray) -> dict:
+    """Metrics on daily means over local days with ≥ MIN_VALID_HOURS_PER_DAY hours."""
+    d = pd.DataFrame({"day": local_date.to_numpy(), "y": y.to_numpy(), "p": p}).dropna()
+    d = d.groupby("day").agg(n=("y", "size"), y=("y", "mean"), p=("p", "mean"))
+    d = d[d["n"] >= MIN_VALID_HOURS_PER_DAY]
+    res = metrics(d["y"], d["p"].to_numpy())
+    res["corr2"] = float(d["y"].corr(d["p"]) ** 2) if len(d) > 2 else None
+    return {f"daily_{k}": v for k, v in res.items()}
+
+
+def fit_and_score(df: pd.DataFrame, train: pd.Series, test: pd.Series, feats: list[str]) -> dict:
+    """Fit on train rows, score on test rows (hourly and daily)."""
+    if train.sum() < DEWEATHER_MIN_TRAIN_HOURS or test.sum() == 0:
+        return {"n": 0}
+    p = fit(df.loc[train, feats], df.loc[train, "no2_ugm3"]).predict(df.loc[test, feats])
+    y = df.loc[test, "no2_ugm3"]
+    return metrics(y, p) | daily_metrics(df.loc[test, "local_date"], y, p)
+
+
 def process_location(location_id: str, stations: list[dict], weather_fp: str) -> list[dict]:
-    """Fit, validate and predict every station of one weather location."""
+    """Cross-fit, validate and predict every station of one weather location."""
     con = duckdb.connect(str(WAREHOUSE), read_only=True)
     wx = weather_features(con, location_id)
     results = []
@@ -134,56 +184,69 @@ def process_location(location_id: str, stations: list[dict], weather_fp: str) ->
         spid = st["sampling_point_id"]
         t0 = time.time()
         df = station_hours(con, spid).merge(wx, on="ts_utc", how="inner")
-        df = df.dropna(subset=[c for c in BASE_WEATHER if c != "boundary_layer_height"])
-        train = in_windows(df["ts_utc"], DEWEATHER_TRAIN_WINDOWS) & df["no2_ugm3"].notna()
+        df = df.dropna(subset=["no2_ugm3", *[c for c in BASE_WEATHER if c != "boundary_layer_height"]])
+        df = df.reset_index(drop=True)
+        pre = in_windows(df["local_date"], DEWEATHER_TRAIN_WINDOWS)
+        post = ~pre
+        blh_ok = df[BLH_FEATURES].notna().all(axis=1)
         summary = {**st, "location_id": location_id, "model_spec": MODEL_SPEC,
                    "weather_fp": weather_fp, "n_rows_with_weather": len(df),
-                   "n_train": int(train.sum())}
-        if train.sum() < DEWEATHER_MIN_TRAIN_HOURS:
-            summary["status"] = f"skipped: {int(train.sum())} training hours < {DEWEATHER_MIN_TRAIN_HOURS}"
+                   "n_pre": int(pre.sum())}
+        folds = [fold_masks(df["local_date"], pre, k) for k in range(DEWEATHER_CV_FOLDS)]
+        min_train = min(int(tr.sum()) for tr, _ in folds)
+        summary["min_fold_train"] = min_train
+        if min_train < DEWEATHER_MIN_TRAIN_HOURS:
+            summary["status"] = (f"skipped: smallest fold has {min_train} training hours "
+                                 f"< {DEWEATHER_MIN_TRAIN_HOURS}")
             results.append(summary)
             continue
-        tr = df[train]
-        y = tr["no2_ugm3"]
 
-        # Out-of-time validation (both feature sets).
-        oot_tr = in_windows(df["ts_utc"], [DEWEATHER_OOT_TRAIN]) & train
-        oot_te = in_windows(df["ts_utc"], [DEWEATHER_OOT_TEST]) & train
+        # Out-of-time stress test (both feature sets).
+        oot_tr = pre & in_windows(df["local_date"], [DEWEATHER_OOT_TRAIN])
+        oot_te = pre & in_windows(df["local_date"], [DEWEATHER_OOT_TEST])
         for name, feats in (("blh", FEATURES), ("noblh", FEATURES_NOBLH)):
-            if oot_tr.sum() >= DEWEATHER_MIN_TRAIN_HOURS and oot_te.sum() > 0:
-                m = fit(df.loc[oot_tr, feats], df.loc[oot_tr, "no2_ugm3"])
-                res = metrics(df.loc[oot_te, "no2_ugm3"], m.predict(df.loc[oot_te, feats]))
-            else:
-                res = metrics(pd.Series(dtype=float), np.array([]))
-            summary |= {f"oot_{name}_{k}": v for k, v in res.items()}
+            summary |= {f"oot_{name}_{k}": v
+                        for k, v in fit_and_score(df, oot_tr, oot_te, feats).items()}
 
-        # Final models on all pre-treatment hours.
-        main = fit(tr[FEATURES], y)
-        noblh = fit(tr[FEATURES_NOBLH], y)
-        blh_ok = df[BLH_FEATURES].notna().all(axis=1)
+        # Cross-fitting: OOF on pre-treatment hours, fold-model mean on post-treatment hours.
         pred = np.full(len(df), np.nan)
-        pred[blh_ok.to_numpy()] = main.predict(df.loc[blh_ok, FEATURES])
-        pred_noblh = noblh.predict(df[FEATURES_NOBLH])
-        in_sample = main.predict(tr[FEATURES])
-        summary |= {f"insample_{k}": v for k, v in metrics(y, in_sample).items()}
-        summary["train_mean_no2"] = float(y.mean())
-        summary["train_mean_resid"] = float((y - in_sample).mean())
-        gain = main.feature_importance(importance_type="gain")
-        summary |= {f"gain_{f}": float(g) for f, g in zip(FEATURES, gain / gain.sum(), strict=True)}
+        pred_noblh = np.full(len(df), np.nan)
+        cv_fold = np.full(len(df), -1)
+        post_main = post & blh_ok
+        pred[post_main.to_numpy()] = 0.0
+        pred_noblh[post.to_numpy()] = 0.0
+        gains = []
+        for k, (tr, held) in enumerate(folds):
+            y = df.loc[tr, "no2_ugm3"]
+            main = fit(df.loc[tr, FEATURES], y)
+            noblh = fit(df.loc[tr, FEATURES_NOBLH], y)
+            held_main = held & blh_ok
+            pred[held_main.to_numpy()] = main.predict(df.loc[held_main, FEATURES])
+            pred_noblh[held.to_numpy()] = noblh.predict(df.loc[held, FEATURES_NOBLH])
+            cv_fold[held.to_numpy()] = k
+            if post_main.any():
+                pred[post_main.to_numpy()] += main.predict(df.loc[post_main, FEATURES]) / DEWEATHER_CV_FOLDS
+            if post.any():
+                pred_noblh[post.to_numpy()] += (noblh.predict(df.loc[post, FEATURES_NOBLH])
+                                                / DEWEATHER_CV_FOLDS)
+            g = main.feature_importance(importance_type="gain")
+            gains.append(g / g.sum())
+        assert (cv_fold[pre.to_numpy()] >= 0).all() and (cv_fold[post.to_numpy()] == -1).all()
 
-        # Placebo hold-out: Jun–Aug 2019 removed from training, then predicted.
-        hold = in_windows(df["ts_utc"], [DEWEATHER_HOLDOUT])
-        pred_hold = np.full(len(df), np.nan)
-        if (hold & df["no2_ugm3"].notna()).sum() > 0:
-            m = fit(df.loc[train & ~hold, FEATURES], df.loc[train & ~hold, "no2_ugm3"])
-            pred_hold[hold.to_numpy()] = m.predict(df.loc[hold, FEATURES])
-            summary |= {f"holdout_{k}": v for k, v in
-                        metrics(df.loc[hold, "no2_ugm3"], pred_hold[hold.to_numpy()]).items()}
+        y_pre = df.loc[pre, "no2_ugm3"]
+        for name, p in (("blh", pred), ("noblh", pred_noblh)):
+            p_pre = p[pre.to_numpy()]
+            summary |= {f"oof_{name}_{k}": v for k, v in (
+                metrics(y_pre, p_pre) | daily_metrics(df.loc[pre, "local_date"], y_pre, p_pre)
+            ).items()}
+        summary["pre_mean_no2"] = float(y_pre.mean())
+        summary |= {f"gain_{f}": float(g) for f, g in zip(FEATURES, np.mean(gains, axis=0), strict=True)}
 
         out = pd.DataFrame({
             "sampling_point_id": spid, "ts_utc": df["ts_utc"], "no2_ugm3": df["no2_ugm3"],
-            "pred": pred, "pred_noblh": pred_noblh, "pred_holdout_jja2019": pred_hold,
-            "blh_available": blh_ok.to_numpy(), "is_train": train.to_numpy(),
+            "pred": pred, "pred_noblh": pred_noblh, "blh_available": blh_ok.to_numpy(),
+            "is_oof": pre.to_numpy(),
+            "cv_fold": pd.array(np.where(cv_fold >= 0, cv_fold, None), dtype="Int8"),
         })
         tmp = PRED_DIR / f"{spid}.parquet.part"
         out.to_parquet(tmp, index=False)

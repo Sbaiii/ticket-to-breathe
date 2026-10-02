@@ -117,14 +117,17 @@ ANALYSIS_YEARS = list(range(2018, 2026))  # ADR-004: verified 2018-2025
 MIN_VALID_HOURS_PER_DAY = 18
 WAREHOUSE_SEEDS = REPO_ROOT / "warehouse" / "seeds"
 
-# --- Deweathering (ADR-006) -------------------------------------------------------------------
-# Pre-treatment training windows, UTC, [start, end) — before the 9-Euro-Ticket (2022-06-01).
+# --- Deweathering (ADR-006, cross-fitting ADR-007) -------------------------------------------
+# Pre-treatment period, local calendar dates [start, end) — before the 9-Euro-Ticket (2022-06-01).
+# Every pre-treatment hour gets an out-of-fold prediction; nothing after it is used for fitting.
 DEWEATHER_TRAIN_WINDOWS = [(date(2018, 1, 1), date(2020, 1, 1)), (date(2022, 1, 1), date(2022, 6, 1))]
-# Out-of-time validation: train on the first window, test on the second.
+# Cross-fitting: calendar months of the pre-treatment period → K folds, round-robin in time order;
+# training data drops BUFFER days on both sides of every held-out month.
+DEWEATHER_CV_FOLDS = 5
+DEWEATHER_CV_BUFFER_DAYS = 7
+# Out-of-time stress test only: train on the first window, test on the second.
 DEWEATHER_OOT_TRAIN = (date(2018, 1, 1), date(2020, 1, 1))
 DEWEATHER_OOT_TEST = (date(2022, 1, 1), date(2022, 6, 1))
-# Placebo hold-out: Jun–Aug 2019 removed from training and predicted out of sample.
-DEWEATHER_HOLDOUT = (date(2019, 6, 1), date(2019, 9, 1))
 LGBM_PARAMS = {  # native LightGBM names; num_boost_round = number of trees
     "objective": "regression", "learning_rate": 0.05, "num_leaves": 31, "min_data_in_leaf": 50,
     "seed": 42, "deterministic": True, "num_threads": 1, "verbose": -1,
