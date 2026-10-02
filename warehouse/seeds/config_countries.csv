@@ -1,0 +1,9 @@
+country_code,role,time_zone
+DE,treated,Europe/Berlin
+AT,control,Europe/Vienna
+BE,control,Europe/Brussels
+CH,control,Europe/Zurich
+CZ,control,Europe/Prague
+FR,control,Europe/Paris
+NL,control,Europe/Amsterdam
+PL,control,Europe/Warsaw

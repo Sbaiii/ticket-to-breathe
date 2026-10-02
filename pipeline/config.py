@@ -106,3 +106,13 @@ WEATHER_UNIT_BUDGET = 27_000  # target Open-Meteo call units for the full downlo
 WEATHER_RAW = DATA_RAW / "weather"
 # Open-Meteo free tier: 600/min, 5,000/h, 10,000/day; we stay below with a margin.
 WEATHER_LIMITS = {"minute": 550, "hour": 4_500, "day": 9_500}
+
+# --- Calendar ---------------------------------------------------------------------------------
+# Civil time zone per study country (local hour / local date in the warehouse).
+COUNTRY_TZ = {
+    "DE": "Europe/Berlin", "AT": "Europe/Vienna", "BE": "Europe/Brussels", "CH": "Europe/Zurich",
+    "CZ": "Europe/Prague", "FR": "Europe/Paris", "NL": "Europe/Amsterdam", "PL": "Europe/Warsaw",
+}
+ANALYSIS_YEARS = list(range(2018, 2026))  # ADR-004: verified 2018-2025
+MIN_VALID_HOURS_PER_DAY = 18
+WAREHOUSE_SEEDS = REPO_ROOT / "warehouse" / "seeds"

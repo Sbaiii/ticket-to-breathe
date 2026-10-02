@@ -23,6 +23,7 @@ __pycache__/
 warehouse/target/
 warehouse/dbt_packages/
 warehouse/logs/
+warehouse/.user.yml
 
 # OS / editors
 .DS_Store

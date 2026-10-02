@@ -1,0 +1,685 @@
+country_code,holiday_date,holiday_name,holidays_pkg_version
+DE,2018-01-01,Neujahr,0.105
+DE,2018-03-30,Karfreitag,0.105
+DE,2018-04-02,Ostermontag,0.105
+DE,2018-05-01,Erster Mai,0.105
+DE,2018-05-10,Christi Himmelfahrt,0.105
+DE,2018-05-21,Pfingstmontag,0.105
+DE,2018-10-03,Tag der Deutschen Einheit,0.105
+DE,2018-12-25,Erster Weihnachtstag,0.105
+DE,2018-12-26,Zweiter Weihnachtstag,0.105
+DE,2019-01-01,Neujahr,0.105
+DE,2019-04-19,Karfreitag,0.105
+DE,2019-04-22,Ostermontag,0.105
+DE,2019-05-01,Erster Mai,0.105
+DE,2019-05-30,Christi Himmelfahrt,0.105
+DE,2019-06-10,Pfingstmontag,0.105
+DE,2019-10-03,Tag der Deutschen Einheit,0.105
+DE,2019-12-25,Erster Weihnachtstag,0.105
+DE,2019-12-26,Zweiter Weihnachtstag,0.105
+DE,2020-01-01,Neujahr,0.105
+DE,2020-04-10,Karfreitag,0.105
+DE,2020-04-13,Ostermontag,0.105
+DE,2020-05-01,Erster Mai,0.105
+DE,2020-05-21,Christi Himmelfahrt,0.105
+DE,2020-06-01,Pfingstmontag,0.105
+DE,2020-10-03,Tag der Deutschen Einheit,0.105
+DE,2020-12-25,Erster Weihnachtstag,0.105
+DE,2020-12-26,Zweiter Weihnachtstag,0.105
+DE,2021-01-01,Neujahr,0.105
+DE,2021-04-02,Karfreitag,0.105
+DE,2021-04-05,Ostermontag,0.105
+DE,2021-05-01,Erster Mai,0.105
+DE,2021-05-13,Christi Himmelfahrt,0.105
+DE,2021-05-24,Pfingstmontag,0.105
+DE,2021-10-03,Tag der Deutschen Einheit,0.105
+DE,2021-12-25,Erster Weihnachtstag,0.105
+DE,2021-12-26,Zweiter Weihnachtstag,0.105
+DE,2022-01-01,Neujahr,0.105
+DE,2022-04-15,Karfreitag,0.105
+DE,2022-04-18,Ostermontag,0.105
+DE,2022-05-01,Erster Mai,0.105
+DE,2022-05-26,Christi Himmelfahrt,0.105
+DE,2022-06-06,Pfingstmontag,0.105
+DE,2022-10-03,Tag der Deutschen Einheit,0.105
+DE,2022-12-25,Erster Weihnachtstag,0.105
+DE,2022-12-26,Zweiter Weihnachtstag,0.105
+DE,2023-01-01,Neujahr,0.105
+DE,2023-04-07,Karfreitag,0.105
+DE,2023-04-10,Ostermontag,0.105
+DE,2023-05-01,Erster Mai,0.105
+DE,2023-05-18,Christi Himmelfahrt,0.105
+DE,2023-05-29,Pfingstmontag,0.105
+DE,2023-10-03,Tag der Deutschen Einheit,0.105
+DE,2023-12-25,Erster Weihnachtstag,0.105
+DE,2023-12-26,Zweiter Weihnachtstag,0.105
+DE,2024-01-01,Neujahr,0.105
+DE,2024-03-29,Karfreitag,0.105
+DE,2024-04-01,Ostermontag,0.105
+DE,2024-05-01,Erster Mai,0.105
+DE,2024-05-09,Christi Himmelfahrt,0.105
+DE,2024-05-20,Pfingstmontag,0.105
+DE,2024-10-03,Tag der Deutschen Einheit,0.105
+DE,2024-12-25,Erster Weihnachtstag,0.105
+DE,2024-12-26,Zweiter Weihnachtstag,0.105
+DE,2025-01-01,Neujahr,0.105
+DE,2025-04-18,Karfreitag,0.105
+DE,2025-04-21,Ostermontag,0.105
+DE,2025-05-01,Erster Mai,0.105
+DE,2025-05-29,Christi Himmelfahrt,0.105
+DE,2025-06-09,Pfingstmontag,0.105
+DE,2025-10-03,Tag der Deutschen Einheit,0.105
+DE,2025-12-25,Erster Weihnachtstag,0.105
+DE,2025-12-26,Zweiter Weihnachtstag,0.105
+AT,2018-01-01,Neujahr,0.105
+AT,2018-01-06,Heilige Drei Könige,0.105
+AT,2018-04-02,Ostermontag,0.105
+AT,2018-05-01,Staatsfeiertag,0.105
+AT,2018-05-10,Christi Himmelfahrt,0.105
+AT,2018-05-21,Pfingstmontag,0.105
+AT,2018-05-31,Fronleichnam,0.105
+AT,2018-08-15,Mariä Himmelfahrt,0.105
+AT,2018-10-26,Nationalfeiertag,0.105
+AT,2018-11-01,Allerheiligen,0.105
+AT,2018-12-08,Mariä Empfängnis,0.105
+AT,2018-12-25,Christtag,0.105
+AT,2018-12-26,Stephanstag,0.105
+AT,2019-01-01,Neujahr,0.105
+AT,2019-01-06,Heilige Drei Könige,0.105
+AT,2019-04-22,Ostermontag,0.105
+AT,2019-05-01,Staatsfeiertag,0.105
+AT,2019-05-30,Christi Himmelfahrt,0.105
+AT,2019-06-10,Pfingstmontag,0.105
+AT,2019-06-20,Fronleichnam,0.105
+AT,2019-08-15,Mariä Himmelfahrt,0.105
+AT,2019-10-26,Nationalfeiertag,0.105
+AT,2019-11-01,Allerheiligen,0.105
+AT,2019-12-08,Mariä Empfängnis,0.105
+AT,2019-12-25,Christtag,0.105
+AT,2019-12-26,Stephanstag,0.105
+AT,2020-01-01,Neujahr,0.105
+AT,2020-01-06,Heilige Drei Könige,0.105
+AT,2020-04-13,Ostermontag,0.105
+AT,2020-05-01,Staatsfeiertag,0.105
+AT,2020-05-21,Christi Himmelfahrt,0.105
+AT,2020-06-01,Pfingstmontag,0.105
+AT,2020-06-11,Fronleichnam,0.105
+AT,2020-08-15,Mariä Himmelfahrt,0.105
+AT,2020-10-26,Nationalfeiertag,0.105
+AT,2020-11-01,Allerheiligen,0.105
+AT,2020-12-08,Mariä Empfängnis,0.105
+AT,2020-12-25,Christtag,0.105
+AT,2020-12-26,Stephanstag,0.105
+AT,2021-01-01,Neujahr,0.105
+AT,2021-01-06,Heilige Drei Könige,0.105
+AT,2021-04-05,Ostermontag,0.105
+AT,2021-05-01,Staatsfeiertag,0.105
+AT,2021-05-13,Christi Himmelfahrt,0.105
+AT,2021-05-24,Pfingstmontag,0.105
+AT,2021-06-03,Fronleichnam,0.105
+AT,2021-08-15,Mariä Himmelfahrt,0.105
+AT,2021-10-26,Nationalfeiertag,0.105
+AT,2021-11-01,Allerheiligen,0.105
+AT,2021-12-08,Mariä Empfängnis,0.105
+AT,2021-12-25,Christtag,0.105
+AT,2021-12-26,Stephanstag,0.105
+AT,2022-01-01,Neujahr,0.105
+AT,2022-01-06,Heilige Drei Könige,0.105
+AT,2022-04-18,Ostermontag,0.105
+AT,2022-05-01,Staatsfeiertag,0.105
+AT,2022-05-26,Christi Himmelfahrt,0.105
+AT,2022-06-06,Pfingstmontag,0.105
+AT,2022-06-16,Fronleichnam,0.105
+AT,2022-08-15,Mariä Himmelfahrt,0.105
+AT,2022-10-26,Nationalfeiertag,0.105
+AT,2022-11-01,Allerheiligen,0.105
+AT,2022-12-08,Mariä Empfängnis,0.105
+AT,2022-12-25,Christtag,0.105
+AT,2022-12-26,Stephanstag,0.105
+AT,2023-01-01,Neujahr,0.105
+AT,2023-01-06,Heilige Drei Könige,0.105
+AT,2023-04-10,Ostermontag,0.105
+AT,2023-05-01,Staatsfeiertag,0.105
+AT,2023-05-18,Christi Himmelfahrt,0.105
+AT,2023-05-29,Pfingstmontag,0.105
+AT,2023-06-08,Fronleichnam,0.105
+AT,2023-08-15,Mariä Himmelfahrt,0.105
+AT,2023-10-26,Nationalfeiertag,0.105
+AT,2023-11-01,Allerheiligen,0.105
+AT,2023-12-08,Mariä Empfängnis,0.105
+AT,2023-12-25,Christtag,0.105
+AT,2023-12-26,Stephanstag,0.105
+AT,2024-01-01,Neujahr,0.105
+AT,2024-01-06,Heilige Drei Könige,0.105
+AT,2024-04-01,Ostermontag,0.105
+AT,2024-05-01,Staatsfeiertag,0.105
+AT,2024-05-09,Christi Himmelfahrt,0.105
+AT,2024-05-20,Pfingstmontag,0.105
+AT,2024-05-30,Fronleichnam,0.105
+AT,2024-08-15,Mariä Himmelfahrt,0.105
+AT,2024-10-26,Nationalfeiertag,0.105
+AT,2024-11-01,Allerheiligen,0.105
+AT,2024-12-08,Mariä Empfängnis,0.105
+AT,2024-12-25,Christtag,0.105
+AT,2024-12-26,Stephanstag,0.105
+AT,2025-01-01,Neujahr,0.105
+AT,2025-01-06,Heilige Drei Könige,0.105
+AT,2025-04-21,Ostermontag,0.105
+AT,2025-05-01,Staatsfeiertag,0.105
+AT,2025-05-29,Christi Himmelfahrt,0.105
+AT,2025-06-09,Pfingstmontag,0.105
+AT,2025-06-19,Fronleichnam,0.105
+AT,2025-08-15,Mariä Himmelfahrt,0.105
+AT,2025-10-26,Nationalfeiertag,0.105
+AT,2025-11-01,Allerheiligen,0.105
+AT,2025-12-08,Mariä Empfängnis,0.105
+AT,2025-12-25,Christtag,0.105
+AT,2025-12-26,Stephanstag,0.105
+BE,2018-01-01,Nieuwjaar,0.105
+BE,2018-04-01,Pasen,0.105
+BE,2018-04-02,Paasmaandag,0.105
+BE,2018-05-01,Dag van de Arbeid,0.105
+BE,2018-05-10,O. L. H. Hemelvaart,0.105
+BE,2018-05-20,Pinksteren,0.105
+BE,2018-05-21,Pinkstermaandag,0.105
+BE,2018-07-21,Nationale feestdag,0.105
+BE,2018-08-15,O. L. V. Hemelvaart,0.105
+BE,2018-11-01,Allerheiligen,0.105
+BE,2018-11-11,Wapenstilstand,0.105
+BE,2018-12-25,Kerstmis,0.105
+BE,2019-01-01,Nieuwjaar,0.105
+BE,2019-04-21,Pasen,0.105
+BE,2019-04-22,Paasmaandag,0.105
+BE,2019-05-01,Dag van de Arbeid,0.105
+BE,2019-05-30,O. L. H. Hemelvaart,0.105
+BE,2019-06-09,Pinksteren,0.105
+BE,2019-06-10,Pinkstermaandag,0.105
+BE,2019-07-21,Nationale feestdag,0.105
+BE,2019-08-15,O. L. V. Hemelvaart,0.105
+BE,2019-11-01,Allerheiligen,0.105
+BE,2019-11-11,Wapenstilstand,0.105
+BE,2019-12-25,Kerstmis,0.105
+BE,2020-01-01,Nieuwjaar,0.105
+BE,2020-04-12,Pasen,0.105
+BE,2020-04-13,Paasmaandag,0.105
+BE,2020-05-01,Dag van de Arbeid,0.105
+BE,2020-05-21,O. L. H. Hemelvaart,0.105
+BE,2020-05-31,Pinksteren,0.105
+BE,2020-06-01,Pinkstermaandag,0.105
+BE,2020-07-21,Nationale feestdag,0.105
+BE,2020-08-15,O. L. V. Hemelvaart,0.105
+BE,2020-11-01,Allerheiligen,0.105
+BE,2020-11-11,Wapenstilstand,0.105
+BE,2020-12-25,Kerstmis,0.105
+BE,2021-01-01,Nieuwjaar,0.105
+BE,2021-04-04,Pasen,0.105
+BE,2021-04-05,Paasmaandag,0.105
+BE,2021-05-01,Dag van de Arbeid,0.105
+BE,2021-05-13,O. L. H. Hemelvaart,0.105
+BE,2021-05-23,Pinksteren,0.105
+BE,2021-05-24,Pinkstermaandag,0.105
+BE,2021-07-21,Nationale feestdag,0.105
+BE,2021-08-15,O. L. V. Hemelvaart,0.105
+BE,2021-11-01,Allerheiligen,0.105
+BE,2021-11-11,Wapenstilstand,0.105
+BE,2021-12-25,Kerstmis,0.105
+BE,2022-01-01,Nieuwjaar,0.105
+BE,2022-04-17,Pasen,0.105
+BE,2022-04-18,Paasmaandag,0.105
+BE,2022-05-01,Dag van de Arbeid,0.105
+BE,2022-05-26,O. L. H. Hemelvaart,0.105
+BE,2022-06-05,Pinksteren,0.105
+BE,2022-06-06,Pinkstermaandag,0.105
+BE,2022-07-21,Nationale feestdag,0.105
+BE,2022-08-15,O. L. V. Hemelvaart,0.105
+BE,2022-11-01,Allerheiligen,0.105
+BE,2022-11-11,Wapenstilstand,0.105
+BE,2022-12-25,Kerstmis,0.105
+BE,2023-01-01,Nieuwjaar,0.105
+BE,2023-04-09,Pasen,0.105
+BE,2023-04-10,Paasmaandag,0.105
+BE,2023-05-01,Dag van de Arbeid,0.105
+BE,2023-05-18,O. L. H. Hemelvaart,0.105
+BE,2023-05-28,Pinksteren,0.105
+BE,2023-05-29,Pinkstermaandag,0.105
+BE,2023-07-21,Nationale feestdag,0.105
+BE,2023-08-15,O. L. V. Hemelvaart,0.105
+BE,2023-11-01,Allerheiligen,0.105
+BE,2023-11-11,Wapenstilstand,0.105
+BE,2023-12-25,Kerstmis,0.105
+BE,2024-01-01,Nieuwjaar,0.105
+BE,2024-03-31,Pasen,0.105
+BE,2024-04-01,Paasmaandag,0.105
+BE,2024-05-01,Dag van de Arbeid,0.105
+BE,2024-05-09,O. L. H. Hemelvaart,0.105
+BE,2024-05-19,Pinksteren,0.105
+BE,2024-05-20,Pinkstermaandag,0.105
+BE,2024-07-21,Nationale feestdag,0.105
+BE,2024-08-15,O. L. V. Hemelvaart,0.105
+BE,2024-11-01,Allerheiligen,0.105
+BE,2024-11-11,Wapenstilstand,0.105
+BE,2024-12-25,Kerstmis,0.105
+BE,2025-01-01,Nieuwjaar,0.105
+BE,2025-04-20,Pasen,0.105
+BE,2025-04-21,Paasmaandag,0.105
+BE,2025-05-01,Dag van de Arbeid,0.105
+BE,2025-05-29,O. L. H. Hemelvaart,0.105
+BE,2025-06-08,Pinksteren,0.105
+BE,2025-06-09,Pinkstermaandag,0.105
+BE,2025-07-21,Nationale feestdag,0.105
+BE,2025-08-15,O. L. V. Hemelvaart,0.105
+BE,2025-11-01,Allerheiligen,0.105
+BE,2025-11-11,Wapenstilstand,0.105
+BE,2025-12-25,Kerstmis,0.105
+CH,2018-01-01,Neujahrstag,0.105
+CH,2018-05-10,Auffahrt,0.105
+CH,2018-08-01,Nationalfeiertag,0.105
+CH,2018-12-25,Weihnachten,0.105
+CH,2019-01-01,Neujahrstag,0.105
+CH,2019-05-30,Auffahrt,0.105
+CH,2019-08-01,Nationalfeiertag,0.105
+CH,2019-12-25,Weihnachten,0.105
+CH,2020-01-01,Neujahrstag,0.105
+CH,2020-05-21,Auffahrt,0.105
+CH,2020-08-01,Nationalfeiertag,0.105
+CH,2020-12-25,Weihnachten,0.105
+CH,2021-01-01,Neujahrstag,0.105
+CH,2021-05-13,Auffahrt,0.105
+CH,2021-08-01,Nationalfeiertag,0.105
+CH,2021-12-25,Weihnachten,0.105
+CH,2022-01-01,Neujahrstag,0.105
+CH,2022-05-26,Auffahrt,0.105
+CH,2022-08-01,Nationalfeiertag,0.105
+CH,2022-12-25,Weihnachten,0.105
+CH,2023-01-01,Neujahrstag,0.105
+CH,2023-05-18,Auffahrt,0.105
+CH,2023-08-01,Nationalfeiertag,0.105
+CH,2023-12-25,Weihnachten,0.105
+CH,2024-01-01,Neujahrstag,0.105
+CH,2024-05-09,Auffahrt,0.105
+CH,2024-08-01,Nationalfeiertag,0.105
+CH,2024-12-25,Weihnachten,0.105
+CH,2025-01-01,Neujahrstag,0.105
+CH,2025-05-29,Auffahrt,0.105
+CH,2025-08-01,Nationalfeiertag,0.105
+CH,2025-12-25,Weihnachten,0.105
+CZ,2018-01-01,Den obnovy samostatného českého státu; Nový rok,0.105
+CZ,2018-03-30,Velký pátek,0.105
+CZ,2018-04-02,Velikonoční pondělí,0.105
+CZ,2018-05-01,Svátek práce,0.105
+CZ,2018-05-08,Den vítězství,0.105
+CZ,2018-07-05,Den slovanských věrozvěstů Cyrila a Metoděje,0.105
+CZ,2018-07-06,Den upálení mistra Jana Husa,0.105
+CZ,2018-09-28,Den české státnosti,0.105
+CZ,2018-10-28,Den vzniku samostatného československého státu,0.105
+CZ,2018-11-17,Den boje za svobodu a demokracii,0.105
+CZ,2018-12-24,Štědrý den,0.105
+CZ,2018-12-25,1. svátek vánoční,0.105
+CZ,2018-12-26,2. svátek vánoční,0.105
+CZ,2019-01-01,Den obnovy samostatného českého státu; Nový rok,0.105
+CZ,2019-04-19,Velký pátek,0.105
+CZ,2019-04-22,Velikonoční pondělí,0.105
+CZ,2019-05-01,Svátek práce,0.105
+CZ,2019-05-08,Den vítězství,0.105
+CZ,2019-07-05,Den slovanských věrozvěstů Cyrila a Metoděje,0.105
+CZ,2019-07-06,Den upálení mistra Jana Husa,0.105
+CZ,2019-09-28,Den české státnosti,0.105
+CZ,2019-10-28,Den vzniku samostatného československého státu,0.105
+CZ,2019-11-17,Den boje za svobodu a demokracii a Mezinárodní den studentstva,0.105
+CZ,2019-12-24,Štědrý den,0.105
+CZ,2019-12-25,1. svátek vánoční,0.105
+CZ,2019-12-26,2. svátek vánoční,0.105
+CZ,2020-01-01,Den obnovy samostatného českého státu; Nový rok,0.105
+CZ,2020-04-10,Velký pátek,0.105
+CZ,2020-04-13,Velikonoční pondělí,0.105
+CZ,2020-05-01,Svátek práce,0.105
+CZ,2020-05-08,Den vítězství,0.105
+CZ,2020-07-05,Den slovanských věrozvěstů Cyrila a Metoděje,0.105
+CZ,2020-07-06,Den upálení mistra Jana Husa,0.105
+CZ,2020-09-28,Den české státnosti,0.105
+CZ,2020-10-28,Den vzniku samostatného československého státu,0.105
+CZ,2020-11-17,Den boje za svobodu a demokracii a Mezinárodní den studentstva,0.105
+CZ,2020-12-24,Štědrý den,0.105
+CZ,2020-12-25,1. svátek vánoční,0.105
+CZ,2020-12-26,2. svátek vánoční,0.105
+CZ,2021-01-01,Den obnovy samostatného českého státu; Nový rok,0.105
+CZ,2021-04-02,Velký pátek,0.105
+CZ,2021-04-05,Velikonoční pondělí,0.105
+CZ,2021-05-01,Svátek práce,0.105
+CZ,2021-05-08,Den vítězství,0.105
+CZ,2021-07-05,Den slovanských věrozvěstů Cyrila a Metoděje,0.105
+CZ,2021-07-06,Den upálení mistra Jana Husa,0.105
+CZ,2021-09-28,Den české státnosti,0.105
+CZ,2021-10-28,Den vzniku samostatného československého státu,0.105
+CZ,2021-11-17,Den boje za svobodu a demokracii a Mezinárodní den studentstva,0.105
+CZ,2021-12-24,Štědrý den,0.105
+CZ,2021-12-25,1. svátek vánoční,0.105
+CZ,2021-12-26,2. svátek vánoční,0.105
+CZ,2022-01-01,Den obnovy samostatného českého státu; Nový rok,0.105
+CZ,2022-04-15,Velký pátek,0.105
+CZ,2022-04-18,Velikonoční pondělí,0.105
+CZ,2022-05-01,Svátek práce,0.105
+CZ,2022-05-08,Den vítězství,0.105
+CZ,2022-07-05,Den slovanských věrozvěstů Cyrila a Metoděje,0.105
+CZ,2022-07-06,Den upálení mistra Jana Husa,0.105
+CZ,2022-09-28,Den české státnosti,0.105
+CZ,2022-10-28,Den vzniku samostatného československého státu,0.105
+CZ,2022-11-17,Den boje za svobodu a demokracii a Mezinárodní den studentstva,0.105
+CZ,2022-12-24,Štědrý den,0.105
+CZ,2022-12-25,1. svátek vánoční,0.105
+CZ,2022-12-26,2. svátek vánoční,0.105
+CZ,2023-01-01,Den obnovy samostatného českého státu; Nový rok,0.105
+CZ,2023-04-07,Velký pátek,0.105
+CZ,2023-04-10,Velikonoční pondělí,0.105
+CZ,2023-05-01,Svátek práce,0.105
+CZ,2023-05-08,Den vítězství,0.105
+CZ,2023-07-05,Den slovanských věrozvěstů Cyrila a Metoděje,0.105
+CZ,2023-07-06,Den upálení mistra Jana Husa,0.105
+CZ,2023-09-28,Den české státnosti,0.105
+CZ,2023-10-28,Den vzniku samostatného československého státu,0.105
+CZ,2023-11-17,Den boje za svobodu a demokracii a Mezinárodní den studentstva,0.105
+CZ,2023-12-24,Štědrý den,0.105
+CZ,2023-12-25,1. svátek vánoční,0.105
+CZ,2023-12-26,2. svátek vánoční,0.105
+CZ,2024-01-01,Den obnovy samostatného českého státu; Nový rok,0.105
+CZ,2024-03-29,Velký pátek,0.105
+CZ,2024-04-01,Velikonoční pondělí,0.105
+CZ,2024-05-01,Svátek práce,0.105
+CZ,2024-05-08,Den vítězství,0.105
+CZ,2024-07-05,Den slovanských věrozvěstů Cyrila a Metoděje,0.105
+CZ,2024-07-06,Den upálení mistra Jana Husa,0.105
+CZ,2024-09-28,Den české státnosti,0.105
+CZ,2024-10-28,Den vzniku samostatného československého státu,0.105
+CZ,2024-11-17,Den boje za svobodu a demokracii a Mezinárodní den studentstva,0.105
+CZ,2024-12-24,Štědrý den,0.105
+CZ,2024-12-25,1. svátek vánoční,0.105
+CZ,2024-12-26,2. svátek vánoční,0.105
+CZ,2025-01-01,Den obnovy samostatného českého státu; Nový rok,0.105
+CZ,2025-04-18,Velký pátek,0.105
+CZ,2025-04-21,Velikonoční pondělí,0.105
+CZ,2025-05-01,Svátek práce,0.105
+CZ,2025-05-08,Den vítězství,0.105
+CZ,2025-07-05,Den slovanských věrozvěstů Cyrila a Metoděje,0.105
+CZ,2025-07-06,Den upálení mistra Jana Husa,0.105
+CZ,2025-09-28,Den české státnosti,0.105
+CZ,2025-10-28,Den vzniku samostatného československého státu,0.105
+CZ,2025-11-17,Den boje za svobodu a demokracii a Mezinárodní den studentstva,0.105
+CZ,2025-12-24,Štědrý den,0.105
+CZ,2025-12-25,1. svátek vánoční,0.105
+CZ,2025-12-26,2. svátek vánoční,0.105
+FR,2018-01-01,Jour de l'an,0.105
+FR,2018-04-02,Lundi de Pâques,0.105
+FR,2018-05-01,Fête du Travail,0.105
+FR,2018-05-08,Fête de la Victoire,0.105
+FR,2018-05-10,Ascension,0.105
+FR,2018-05-21,Lundi de Pentecôte,0.105
+FR,2018-07-14,Fête nationale,0.105
+FR,2018-08-15,Assomption,0.105
+FR,2018-11-01,Toussaint,0.105
+FR,2018-11-11,Armistice,0.105
+FR,2018-12-25,Noël,0.105
+FR,2019-01-01,Jour de l'an,0.105
+FR,2019-04-22,Lundi de Pâques,0.105
+FR,2019-05-01,Fête du Travail,0.105
+FR,2019-05-08,Fête de la Victoire,0.105
+FR,2019-05-30,Ascension,0.105
+FR,2019-06-10,Lundi de Pentecôte,0.105
+FR,2019-07-14,Fête nationale,0.105
+FR,2019-08-15,Assomption,0.105
+FR,2019-11-01,Toussaint,0.105
+FR,2019-11-11,Armistice,0.105
+FR,2019-12-25,Noël,0.105
+FR,2020-01-01,Jour de l'an,0.105
+FR,2020-04-13,Lundi de Pâques,0.105
+FR,2020-05-01,Fête du Travail,0.105
+FR,2020-05-08,Fête de la Victoire,0.105
+FR,2020-05-21,Ascension,0.105
+FR,2020-06-01,Lundi de Pentecôte,0.105
+FR,2020-07-14,Fête nationale,0.105
+FR,2020-08-15,Assomption,0.105
+FR,2020-11-01,Toussaint,0.105
+FR,2020-11-11,Armistice,0.105
+FR,2020-12-25,Noël,0.105
+FR,2021-01-01,Jour de l'an,0.105
+FR,2021-04-05,Lundi de Pâques,0.105
+FR,2021-05-01,Fête du Travail,0.105
+FR,2021-05-08,Fête de la Victoire,0.105
+FR,2021-05-13,Ascension,0.105
+FR,2021-05-24,Lundi de Pentecôte,0.105
+FR,2021-07-14,Fête nationale,0.105
+FR,2021-08-15,Assomption,0.105
+FR,2021-11-01,Toussaint,0.105
+FR,2021-11-11,Armistice,0.105
+FR,2021-12-25,Noël,0.105
+FR,2022-01-01,Jour de l'an,0.105
+FR,2022-04-18,Lundi de Pâques,0.105
+FR,2022-05-01,Fête du Travail,0.105
+FR,2022-05-08,Fête de la Victoire,0.105
+FR,2022-05-26,Ascension,0.105
+FR,2022-06-06,Lundi de Pentecôte,0.105
+FR,2022-07-14,Fête nationale,0.105
+FR,2022-08-15,Assomption,0.105
+FR,2022-11-01,Toussaint,0.105
+FR,2022-11-11,Armistice,0.105
+FR,2022-12-25,Noël,0.105
+FR,2023-01-01,Jour de l'an,0.105
+FR,2023-04-10,Lundi de Pâques,0.105
+FR,2023-05-01,Fête du Travail,0.105
+FR,2023-05-08,Fête de la Victoire,0.105
+FR,2023-05-18,Ascension,0.105
+FR,2023-05-29,Lundi de Pentecôte,0.105
+FR,2023-07-14,Fête nationale,0.105
+FR,2023-08-15,Assomption,0.105
+FR,2023-11-01,Toussaint,0.105
+FR,2023-11-11,Armistice,0.105
+FR,2023-12-25,Noël,0.105
+FR,2024-01-01,Jour de l'an,0.105
+FR,2024-04-01,Lundi de Pâques,0.105
+FR,2024-05-01,Fête du Travail,0.105
+FR,2024-05-08,Fête de la Victoire,0.105
+FR,2024-05-09,Ascension,0.105
+FR,2024-05-20,Lundi de Pentecôte,0.105
+FR,2024-07-14,Fête nationale,0.105
+FR,2024-08-15,Assomption,0.105
+FR,2024-11-01,Toussaint,0.105
+FR,2024-11-11,Armistice,0.105
+FR,2024-12-25,Noël,0.105
+FR,2025-01-01,Jour de l'an,0.105
+FR,2025-04-21,Lundi de Pâques,0.105
+FR,2025-05-01,Fête du Travail,0.105
+FR,2025-05-08,Fête de la Victoire,0.105
+FR,2025-05-29,Ascension,0.105
+FR,2025-06-09,Lundi de Pentecôte,0.105
+FR,2025-07-14,Fête nationale,0.105
+FR,2025-08-15,Assomption,0.105
+FR,2025-11-01,Toussaint,0.105
+FR,2025-11-11,Armistice,0.105
+FR,2025-12-25,Noël,0.105
+NL,2018-01-01,Nieuwjaarsdag,0.105
+NL,2018-03-30,Goede vrijdag,0.105
+NL,2018-04-01,Eerste paasdag,0.105
+NL,2018-04-02,Tweede paasdag,0.105
+NL,2018-04-27,Koningsdag,0.105
+NL,2018-05-10,Hemelvaartsdag,0.105
+NL,2018-05-20,Eerste pinksterdag,0.105
+NL,2018-05-21,Tweede pinksterdag,0.105
+NL,2018-12-25,Eerste kerstdag,0.105
+NL,2018-12-26,Tweede kerstdag,0.105
+NL,2019-01-01,Nieuwjaarsdag,0.105
+NL,2019-04-19,Goede vrijdag,0.105
+NL,2019-04-21,Eerste paasdag,0.105
+NL,2019-04-22,Tweede paasdag,0.105
+NL,2019-04-27,Koningsdag,0.105
+NL,2019-05-30,Hemelvaartsdag,0.105
+NL,2019-06-09,Eerste pinksterdag,0.105
+NL,2019-06-10,Tweede pinksterdag,0.105
+NL,2019-12-25,Eerste kerstdag,0.105
+NL,2019-12-26,Tweede kerstdag,0.105
+NL,2020-01-01,Nieuwjaarsdag,0.105
+NL,2020-04-10,Goede vrijdag,0.105
+NL,2020-04-12,Eerste paasdag,0.105
+NL,2020-04-13,Tweede paasdag,0.105
+NL,2020-04-27,Koningsdag,0.105
+NL,2020-05-05,Bevrijdingsdag,0.105
+NL,2020-05-21,Hemelvaartsdag,0.105
+NL,2020-05-31,Eerste pinksterdag,0.105
+NL,2020-06-01,Tweede pinksterdag,0.105
+NL,2020-12-25,Eerste kerstdag,0.105
+NL,2020-12-26,Tweede kerstdag,0.105
+NL,2021-01-01,Nieuwjaarsdag,0.105
+NL,2021-04-02,Goede vrijdag,0.105
+NL,2021-04-04,Eerste paasdag,0.105
+NL,2021-04-05,Tweede paasdag,0.105
+NL,2021-04-27,Koningsdag,0.105
+NL,2021-05-13,Hemelvaartsdag,0.105
+NL,2021-05-23,Eerste pinksterdag,0.105
+NL,2021-05-24,Tweede pinksterdag,0.105
+NL,2021-12-25,Eerste kerstdag,0.105
+NL,2021-12-26,Tweede kerstdag,0.105
+NL,2022-01-01,Nieuwjaarsdag,0.105
+NL,2022-04-15,Goede vrijdag,0.105
+NL,2022-04-17,Eerste paasdag,0.105
+NL,2022-04-18,Tweede paasdag,0.105
+NL,2022-04-27,Koningsdag,0.105
+NL,2022-05-26,Hemelvaartsdag,0.105
+NL,2022-06-05,Eerste pinksterdag,0.105
+NL,2022-06-06,Tweede pinksterdag,0.105
+NL,2022-12-25,Eerste kerstdag,0.105
+NL,2022-12-26,Tweede kerstdag,0.105
+NL,2023-01-01,Nieuwjaarsdag,0.105
+NL,2023-04-07,Goede vrijdag,0.105
+NL,2023-04-09,Eerste paasdag,0.105
+NL,2023-04-10,Tweede paasdag,0.105
+NL,2023-04-27,Koningsdag,0.105
+NL,2023-05-18,Hemelvaartsdag,0.105
+NL,2023-05-28,Eerste pinksterdag,0.105
+NL,2023-05-29,Tweede pinksterdag,0.105
+NL,2023-12-25,Eerste kerstdag,0.105
+NL,2023-12-26,Tweede kerstdag,0.105
+NL,2024-01-01,Nieuwjaarsdag,0.105
+NL,2024-03-29,Goede vrijdag,0.105
+NL,2024-03-31,Eerste paasdag,0.105
+NL,2024-04-01,Tweede paasdag,0.105
+NL,2024-04-27,Koningsdag,0.105
+NL,2024-05-09,Hemelvaartsdag,0.105
+NL,2024-05-19,Eerste pinksterdag,0.105
+NL,2024-05-20,Tweede pinksterdag,0.105
+NL,2024-12-25,Eerste kerstdag,0.105
+NL,2024-12-26,Tweede kerstdag,0.105
+NL,2025-01-01,Nieuwjaarsdag,0.105
+NL,2025-04-18,Goede vrijdag,0.105
+NL,2025-04-20,Eerste paasdag,0.105
+NL,2025-04-21,Tweede paasdag,0.105
+NL,2025-04-26,Koningsdag,0.105
+NL,2025-05-05,Bevrijdingsdag,0.105
+NL,2025-05-29,Hemelvaartsdag,0.105
+NL,2025-06-08,Eerste pinksterdag,0.105
+NL,2025-06-09,Tweede pinksterdag,0.105
+NL,2025-12-25,Eerste kerstdag,0.105
+NL,2025-12-26,Tweede kerstdag,0.105
+PL,2018-01-01,Nowy Rok,0.105
+PL,2018-01-06,Święto Trzech Króli,0.105
+PL,2018-04-01,Niedziela Wielkanocna,0.105
+PL,2018-04-02,Poniedziałek Wielkanocny,0.105
+PL,2018-05-01,Święto Państwowe,0.105
+PL,2018-05-03,Święto Narodowe Trzeciego Maja,0.105
+PL,2018-05-20,Zielone Świątki,0.105
+PL,2018-05-31,Dzień Bożego Ciała,0.105
+PL,2018-08-15,Wniebowzięcie Najświętszej Marii Panny,0.105
+PL,2018-11-01,Uroczystość Wszystkich Świętych,0.105
+PL,2018-11-11,Narodowe Święto Niepodległości,0.105
+PL,2018-11-12,Narodowe Święto Niepodległości - 100-lecie,0.105
+PL,2018-12-25,Boże Narodzenie (pierwszy dzień),0.105
+PL,2018-12-26,Boże Narodzenie (drugi dzień),0.105
+PL,2019-01-01,Nowy Rok,0.105
+PL,2019-01-06,Święto Trzech Króli,0.105
+PL,2019-04-21,Niedziela Wielkanocna,0.105
+PL,2019-04-22,Poniedziałek Wielkanocny,0.105
+PL,2019-05-01,Święto Państwowe,0.105
+PL,2019-05-03,Święto Narodowe Trzeciego Maja,0.105
+PL,2019-06-09,Zielone Świątki,0.105
+PL,2019-06-20,Dzień Bożego Ciała,0.105
+PL,2019-08-15,Wniebowzięcie Najświętszej Marii Panny,0.105
+PL,2019-11-01,Uroczystość Wszystkich Świętych,0.105
+PL,2019-11-11,Narodowe Święto Niepodległości,0.105
+PL,2019-12-25,Boże Narodzenie (pierwszy dzień),0.105
+PL,2019-12-26,Boże Narodzenie (drugi dzień),0.105
+PL,2020-01-01,Nowy Rok,0.105
+PL,2020-01-06,Święto Trzech Króli,0.105
+PL,2020-04-12,Niedziela Wielkanocna,0.105
+PL,2020-04-13,Poniedziałek Wielkanocny,0.105
+PL,2020-05-01,Święto Państwowe,0.105
+PL,2020-05-03,Święto Narodowe Trzeciego Maja,0.105
+PL,2020-05-31,Zielone Świątki,0.105
+PL,2020-06-11,Dzień Bożego Ciała,0.105
+PL,2020-08-15,Wniebowzięcie Najświętszej Marii Panny,0.105
+PL,2020-11-01,Uroczystość Wszystkich Świętych,0.105
+PL,2020-11-11,Narodowe Święto Niepodległości,0.105
+PL,2020-12-25,Boże Narodzenie (pierwszy dzień),0.105
+PL,2020-12-26,Boże Narodzenie (drugi dzień),0.105
+PL,2021-01-01,Nowy Rok,0.105
+PL,2021-01-06,Święto Trzech Króli,0.105
+PL,2021-04-04,Niedziela Wielkanocna,0.105
+PL,2021-04-05,Poniedziałek Wielkanocny,0.105
+PL,2021-05-01,Święto Państwowe,0.105
+PL,2021-05-03,Święto Narodowe Trzeciego Maja,0.105
+PL,2021-05-23,Zielone Świątki,0.105
+PL,2021-06-03,Dzień Bożego Ciała,0.105
+PL,2021-08-15,Wniebowzięcie Najświętszej Marii Panny,0.105
+PL,2021-11-01,Uroczystość Wszystkich Świętych,0.105
+PL,2021-11-11,Narodowe Święto Niepodległości,0.105
+PL,2021-12-25,Boże Narodzenie (pierwszy dzień),0.105
+PL,2021-12-26,Boże Narodzenie (drugi dzień),0.105
+PL,2022-01-01,Nowy Rok,0.105
+PL,2022-01-06,Święto Trzech Króli,0.105
+PL,2022-04-17,Niedziela Wielkanocna,0.105
+PL,2022-04-18,Poniedziałek Wielkanocny,0.105
+PL,2022-05-01,Święto Państwowe,0.105
+PL,2022-05-03,Święto Narodowe Trzeciego Maja,0.105
+PL,2022-06-05,Zielone Świątki,0.105
+PL,2022-06-16,Dzień Bożego Ciała,0.105
+PL,2022-08-15,Wniebowzięcie Najświętszej Marii Panny,0.105
+PL,2022-11-01,Uroczystość Wszystkich Świętych,0.105
+PL,2022-11-11,Narodowe Święto Niepodległości,0.105
+PL,2022-12-25,Boże Narodzenie (pierwszy dzień),0.105
+PL,2022-12-26,Boże Narodzenie (drugi dzień),0.105
+PL,2023-01-01,Nowy Rok,0.105
+PL,2023-01-06,Święto Trzech Króli,0.105
+PL,2023-04-09,Niedziela Wielkanocna,0.105
+PL,2023-04-10,Poniedziałek Wielkanocny,0.105
+PL,2023-05-01,Święto Państwowe,0.105
+PL,2023-05-03,Święto Narodowe Trzeciego Maja,0.105
+PL,2023-05-28,Zielone Świątki,0.105
+PL,2023-06-08,Dzień Bożego Ciała,0.105
+PL,2023-08-15,Wniebowzięcie Najświętszej Marii Panny,0.105
+PL,2023-11-01,Uroczystość Wszystkich Świętych,0.105
+PL,2023-11-11,Narodowe Święto Niepodległości,0.105
+PL,2023-12-25,Boże Narodzenie (pierwszy dzień),0.105
+PL,2023-12-26,Boże Narodzenie (drugi dzień),0.105
+PL,2024-01-01,Nowy Rok,0.105
+PL,2024-01-06,Święto Trzech Króli,0.105
+PL,2024-03-31,Niedziela Wielkanocna,0.105
+PL,2024-04-01,Poniedziałek Wielkanocny,0.105
+PL,2024-05-01,Święto Państwowe,0.105
+PL,2024-05-03,Święto Narodowe Trzeciego Maja,0.105
+PL,2024-05-19,Zielone Świątki,0.105
+PL,2024-05-30,Dzień Bożego Ciała,0.105
+PL,2024-08-15,Wniebowzięcie Najświętszej Marii Panny,0.105
+PL,2024-11-01,Uroczystość Wszystkich Świętych,0.105
+PL,2024-11-11,Narodowe Święto Niepodległości,0.105
+PL,2024-12-25,Boże Narodzenie (pierwszy dzień),0.105
+PL,2024-12-26,Boże Narodzenie (drugi dzień),0.105
+PL,2025-01-01,Nowy Rok,0.105
+PL,2025-01-06,Święto Trzech Króli,0.105
+PL,2025-04-20,Niedziela Wielkanocna,0.105
+PL,2025-04-21,Poniedziałek Wielkanocny,0.105
+PL,2025-05-01,Święto Państwowe,0.105
+PL,2025-05-03,Święto Narodowe Trzeciego Maja,0.105
+PL,2025-06-08,Zielone Świątki,0.105
+PL,2025-06-19,Dzień Bożego Ciała,0.105
+PL,2025-08-15,Wniebowzięcie Najświętszej Marii Panny,0.105
+PL,2025-11-01,Uroczystość Wszystkich Świętych,0.105
+PL,2025-11-11,Narodowe Święto Niepodległości,0.105
+PL,2025-12-24,Wigilia Bożego Narodzenia,0.105
+PL,2025-12-25,Boże Narodzenie (pierwszy dzień),0.105
+PL,2025-12-26,Boże Narodzenie (drugi dzień),0.105
