@@ -52,16 +52,33 @@ def load(con: duckdb.DuckDBPyConnection, meta_csv: str) -> None:
     """)
 
     # Latest row per sampling point: Year desc (NULL last), then most recent process/operation start.
-    con.execute("""
+    # The remaining keys only make ties deterministic (alphabetical); they carry no meaning.
+    recency = """try_cast("Year" as int) desc nulls last,
+                 process_begin desc nulls last, operational_begin desc nulls last"""
+    tiebreak = ", ".join(f'"{c}"' for c in [
+        "Process Id", "Air Quality Station Area", "Air Quality Station Type",
+        "Timezone", "Latitude", "Longitude",
+    ])
+    con.execute(f"""
         create table meta_latest as
-        select * exclude (rn) from (
-            select *, row_number() over (
-                partition by "Sampling Point Id"
-                order by try_cast("Year" as int) desc nulls last,
-                         process_begin desc nulls last, operational_begin desc nulls last
-            ) as rn
+        select * exclude (rn, recency_rank) from (
+            select *,
+                   row_number() over (partition by "Sampling Point Id"
+                                      order by {recency}, {tiebreak}) as rn,
+                   rank() over (partition by "Sampling Point Id" order by {recency}) as recency_rank
             from meta_rows
         ) where rn = 1
+    """)
+    # Points where rows tied on recency disagree on an attribute we use.
+    con.execute(f"""
+        create table meta_ties as
+        select "Sampling Point Id" as sampling_point_id
+        from (select *, rank() over (partition by "Sampling Point Id" order by {recency}) as rk
+              from meta_rows)
+        where rk = 1
+        group by 1
+        having count(distinct ("Air Quality Station Area", "Air Quality Station Type", "Timezone",
+                               "Latitude", "Longitude")) > 1
     """)
 
     con.execute("""
@@ -74,9 +91,9 @@ def load(con: duckdb.DuckDBPyConnection, meta_csv: str) -> None:
                count(distinct ("Latitude", "Longitude")) as n_coords,
                max(try_cast("Latitude" as double)) - min(try_cast("Latitude" as double)) as lat_spread,
                max(try_cast("Longitude" as double)) - min(try_cast("Longitude" as double)) as lon_spread,
-               string_agg(distinct "Timezone", ' / ') as timezones,
-               string_agg(distinct "Air Quality Station Type", ' / ') as station_types,
-               string_agg(distinct "Air Quality Station Area", ' / ') as station_areas
+               string_agg(distinct "Timezone", ' / ' order by "Timezone") as timezones,
+               string_agg(distinct "Air Quality Station Type", ' / ' order by "Air Quality Station Type") as station_types,
+               string_agg(distinct "Air Quality Station Area", ' / ' order by "Air Quality Station Area") as station_areas
         from meta_rows group by 1
     """)
 
@@ -130,11 +147,13 @@ def build_candidates(con: duckdb.DuckDBPyConnection) -> pd.DataFrame:
                m."Measurement Method" as measurement_method,
                s.meta_rows, s.n_timezone, s.n_station_type, s.n_station_area, s.n_coords,
                s.lat_spread, s.lon_spread, s.timezones, s.station_types, s.station_areas,
+               t.sampling_point_id is not null as latest_row_tie,
                {cov_cols}
         from files f
         left join meta_latest m on m."Sampling Point Id" = f.sampling_point_id
         left join meta_spread s on s.sampling_point_id = f.sampling_point_id
         left join coverage cv on cv.sampling_point_id = f.sampling_point_id
+        left join meta_ties t on t.sampling_point_id = f.sampling_point_id
     """).df()
     df["in_bbox"] = (
         df["lat"].between(b["lat_min"], b["lat_max"]) & df["lon"].between(b["lon_min"], b["lon_max"])
@@ -250,7 +269,8 @@ def report(con: duckdb.DuckDBPyConnection, df: pd.DataFrame, meta_csv: str) -> s
     out += ["## Metadata rows that disagree for the same sampling point", ""]
     out.append("Counted over all NO2 metadata rows of a sampling point (latest row is used for "
                "attributes: `Year` desc, NULL last, then `Process Activity Begin` desc, then "
-               "`Operational Activity Begin` desc).")
+               "`Operational Activity Begin` desc; remaining ties broken alphabetically by "
+               "`Process Id`, area, type, time zone, coordinates).")
     out.append("")
     spread = con.execute("""
         select r.country,
@@ -269,6 +289,10 @@ def report(con: duckdb.DuckDBPyConnection, df: pd.DataFrame, meta_csv: str) -> s
     inc = df[df["meta_inconsistent"]]
     out.append(f"Downloaded + matched points with any disagreement: {len(inc)}; of these in the "
                f"step-d set: {int((inc['in_bbox'] & inc['is_urban_suburban']).sum())}.")
+    ties = df[df["latest_row_tie"]]
+    out.append(f"Downloaded points whose most recent rows tie on recency but disagree on area, type, "
+               f"time zone or coordinates (attributes then set by the alphabetical tie-break): "
+               f"{len(ties)} ({ties.groupby('country').size().to_dict()}).")
     out.append("")
     cols = ["country", "sampling_point_id", "meta_rows", "timezones", "station_types",
             "station_areas", "lat_spread", "lon_spread", "timezone", "station_type", "station_area"]

@@ -10,7 +10,8 @@ def md_table(df: pd.DataFrame) -> str:
         if v is None or (isinstance(v, float) and pd.isna(v)) or v is pd.NA:
             return ""
         if isinstance(v, float):
-            return f"{v:.3f}"
+            whole = abs(v - round(v)) < 1e-9 and abs(v) >= 1
+            return str(round(v)) if whole else f"{v:.3f}"
         return str(v)
 
     lines = ["| " + " | ".join(str(c) for c in df.columns) + " |", "|" + "---|" * len(df.columns)]
