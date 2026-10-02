@@ -10,3 +10,4 @@
 | [[ADR-006 Deweathering design]] | Deweathering: per-station LightGBM, pre-treatment only, no-BLH companion; negatives kept | superseded in part by ADR-007 | 2026-10-02 |
 | [[ADR-007 Cross-fitted deweathering and ratio outcome]] | Deweathering v2: 5-fold month-block cross-fitting (7-day buffer), fold-mean post predictions; ratio_pct primary outcome | accepted | 2026-10-02 |
 | [[ADR-008 Analysis plan]] | Pre-registered analysis plan: triple difference (same-season baseline) primary, event study, synthetic control, placebo-based detection rule | accepted | 2026-10-02 |
+| [[ADR-009 Post-hoc diagnostics]] | Post-hoc, exploratory diagnostics of the provisional result (COVID reference, commute excess, scale, energy crisis); cannot change the ADR-008 verdict | accepted | 2026-10-03 |
