@@ -54,9 +54,24 @@ controls, explicit deweathering, both ticket episodes, and every step reproducib
 ```bash
 git clone https://github.com/Sbaiii/ticket-to-breathe.git
 cd ticket-to-breathe
-uv sync
-# pipeline / warehouse / model commands are added here as they are built
+uv sync                                       # Python 3.12 + dependencies
+brew install libomp                           # macOS only: OpenMP runtime for LightGBM
+
+# 1) Downloads (long-running, idempotent, resumable)
+uv run python -m pipeline.eea_download        # EEA E1a NO2, hourly Parquet
+uv run python -m pipeline.eea_metadata        # station metadata
+uv run python -m pipeline.station_funnel      # study set (ADR-002)
+uv run python -m pipeline.weather_locations   # 1.0° weather grid (ADR-005)
+uv run python -m pipeline.weather_download    # Open-Meteo ERA5, throttled (~3 days); --status
+
+# 2) Everything downstream, in one command (re-run any time, e.g. after the weather download)
+make all   # seeds → dbt build → deweathering (models/) → dbt build of the residual marts → report
 ```
+`make all` runs `pipeline/build_seeds.py`, `dbt build` (all models except the deweathering marts),
+`models/deweather.py` (cross-fitted LightGBM per station, ADR-007; up-to-date stations are skipped),
+`dbt build` of `fct_station_hour_deweathered` / `fct_station_day_resid` with their tests, and
+`models/deweather_report.py` → `docs/deweathering_report.md`. Single steps: `make seeds`,
+`make warehouse`, `make deweather`, `make marts`, `make report`.
 
 ## Repo map
 | Folder | What's inside |
