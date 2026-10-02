@@ -74,9 +74,9 @@ def load(con: duckdb.DuckDBPyConnection, meta_csv: str) -> None:
                count(distinct ("Latitude", "Longitude")) as n_coords,
                max(try_cast("Latitude" as double)) - min(try_cast("Latitude" as double)) as lat_spread,
                max(try_cast("Longitude" as double)) - min(try_cast("Longitude" as double)) as lon_spread,
-               string_agg(distinct "Timezone", ' | ') as timezones,
-               string_agg(distinct "Air Quality Station Type", ' | ') as station_types,
-               string_agg(distinct "Air Quality Station Area", ' | ') as station_areas
+               string_agg(distinct "Timezone", ' / ') as timezones,
+               string_agg(distinct "Air Quality Station Type", ' / ') as station_types,
+               string_agg(distinct "Air Quality Station Area", ' / ') as station_areas
         from meta_rows group by 1
     """)
 
