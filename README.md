@@ -63,6 +63,7 @@ uv run python -m pipeline.eea_metadata        # station metadata
 uv run python -m pipeline.station_funnel      # study set (ADR-002)
 uv run python -m pipeline.weather_locations   # 1.0° weather grid (ADR-005)
 uv run python -m pipeline.weather_download    # Open-Meteo ERA5, throttled (~3 days); --status
+uv run python -m pipeline.oxcgrt_download     # OxCGRT stringency index (also run by make all)
 
 # 2) Everything downstream, in one command (re-run any time, e.g. after the weather download)
 make all   # seeds → dbt build → deweathering → residual marts → report → causal analysis
@@ -88,6 +89,8 @@ make all   # seeds → dbt build → deweathering → residual marts → report 
 ## Data & licences
 - Air quality: © European Environment Agency (EEA), Air Quality download service, reused under
   [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Verified (E1a) and up-to-date unverified (E2a) data.
+- COVID policy stringency: Oxford COVID-19 Government Response Tracker (Hale et al. 2021,
+  https://doi.org/10.1038/s41562-021-01079-8), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 - Weather: [Open-Meteo.com](https://open-meteo.com/) (ERA5 reanalysis, Copernicus Climate Change Service),
   [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/).
 
