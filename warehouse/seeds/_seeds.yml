@@ -19,7 +19,7 @@ seeds:
         data_tests:
           - accepted_values:
               arguments:
-                values: [treatment, fuel_price, transit, other]
+                values: [treatment, fuel_price, transit, covid, other]
   - name: public_holidays
     description: National public holidays 2018-2025 for DE + controls from the `holidays` package (version per row).
   - name: config_policy_windows
