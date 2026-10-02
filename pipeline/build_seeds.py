@@ -32,7 +32,7 @@ COUNTRIES = [TREATED, *CONTROL_COUNTRIES]
 def write(name: str, header: list[str], rows: list[list]) -> None:
     path = WAREHOUSE_SEEDS / name
     with open(path, "w", newline="") as fh:
-        w = csv.writer(fh)
+        w = csv.writer(fh, lineterminator="\n")
         w.writerow(header)
         w.writerows(rows)
     print(f"Wrote {path.relative_to(WAREHOUSE_SEEDS.parents[1])} ({len(rows)} rows)")
