@@ -41,6 +41,11 @@ WEATHER_VARIABLES = [
 # --- Countries (ISO 3166-1 alpha-2) -------------------------------------------
 TREATED = "DE"
 CONTROL_COUNTRIES = ["AT", "NL", "BE", "DK", "FR", "CH", "CZ", "PL", "LU"]
+# Country names as they appear in the EEA metadata extract.
+COUNTRY_NAMES = {
+    "DE": "Germany", "AT": "Austria", "NL": "Netherlands", "BE": "Belgium", "DK": "Denmark",
+    "FR": "France", "CH": "Switzerland", "CZ": "Czechia", "PL": "Poland", "LU": "Luxembourg",
+}
 
 # --- Policy windows (inclusive dates; end=None means still running) -----------
 POLICY_WINDOWS: dict[str, tuple[date, date | None]] = {
