@@ -2,15 +2,28 @@
 ### Did nearly-free public transport clean Germany's air?
 
 In summer 2022 Germany sold a **€9-a-month ticket valid on all local and regional public transport**.
-<!-- TODO(source): ticket sales figure (VDV) — add only with a linked source. -->
 Three months later it was gone, and in May 2023 the **€49 Deutschlandticket** replaced it permanently.
 Two policy switches, on, off and on again, make a natural experiment for 80 million people.
 
 This project measures whether those switches changed **urban NO₂**, the pollutant most tied to road
 traffic, using hourly data from monitoring stations in Germany and seven neighbouring countries.
 
-<!-- TODO(summary): one honest paragraph summarising the result — written by the author after the
-FINAL run, from the Results table below. Not before. -->
+Germany sold about 52 million €9 tickets in summer 2022
+([Bundesregierung](https://www.bundesregierung.de/breg-de/aktuelles/9-euro-ticket-2028756)),
+then made cheap transit permanent with the Deutschlandticket in May 2023. Comparing 284 German
+monitoring stations with 549 stations in seven neighbouring countries, after removing the effect
+of weather with a cross-fitted LightGBM model per station, **the pre-registered tests find no measurable
+reduction in urban NO2 from either policy.** The pre-registered estimate for the €9 summer is +3.6 percentage
+points relative to expected (95% CI +1.0 to +6.2), in the wrong direction for a clean-air effect
+and inside the range produced by pretending each control country was the treated one
+(−7.8 to +8.3); in µg/m³ it is +0.2 (CI −0.4 to +0.8). The Deutschlandticket estimate is −0.5
+(CI −2.8 to +1.7); two exploratory estimates outside the decision rule (2024 and 2025,
+in µg/m³) point to a small decrease, but they disappear once country-specific trends are
+allowed. This does not mean
+the tickets did nothing: a mobility study found car traffic fell by only about 1–5% during the €9
+summer ([Liebensteiner et al., CESifo WP 11229](https://www.ifo.de/DocDL/cesifo1_wp11229.pdf)),
+an effect on NO2 that would be small, and the design cannot separate the ticket from the fuel tax
+cut that ran in the same three months.
 
 ---
 
@@ -82,10 +95,23 @@ flowchart LR
 | Weekends | ratio_pct (% pts) | +4.34 [+0.57, +8.12] | – | not evaluated | 284 / 549 |
 | Commute excess, traffic (weekdays) | commute_excess (% pts) | -0.17 [-6.76, +6.41] | [-4.16, +5.60] | not evaluated | 113 / 154 |
 
-ratio_pct: observed / deweathered prediction − 1, in percentage points; negative = less NO₂ than expected. Verdict = ADR-008 rule (CI excludes 0 and outside the placebo-country range); the headline is the ratio_pct verdict, the µg/m³ verdicts are a secondary outcome (ADR-010); "not evaluated" = outside the rule. Full tables: [`docs/results_provisional.md`](docs/results_provisional.md) / `docs/results.md`, [`docs/diagnostics_provisional.md`](docs/diagnostics_provisional.md).
+ratio_pct: observed / deweathered prediction − 1, in percentage points; negative = less NO₂ than expected. Verdict = ADR-008 rule (CI excludes 0 and outside the placebo-country range); the headline is the ratio_pct verdict, the µg/m³ verdicts are a secondary outcome (ADR-010); "not evaluated" = outside the rule. Full tables: [`docs/results.md`](docs/results.md), [`docs/diagnostics.md`](docs/diagnostics.md), [`docs/deweathering_report.md`](docs/deweathering_report.md), [`docs/provisional_vs_final.md`](docs/provisional_vs_final.md).
 
 _Generated from `dashboard/data/headline.json` (2026-10-06T08:26:46Z) by `analysis/readme_results.py`._
 <!-- RESULTS:END -->
+
+## How this was done honestly
+- **Pre-registered plan.** The outcome, formula, placebos and decision rule were committed on their
+  own before any estimate was run
+  ([ADR-008](lab-notebook/04%20Decisions/ADR-008%20Analysis%20plan.md)).
+- **Post-hoc checks labelled as post hoc.** The diagnostics added after a provisional result were
+  declared as exploratory, and they cannot change the verdict
+  ([ADR-009](lab-notebook/04%20Decisions/ADR-009%20Post-hoc%20diagnostics.md)).
+- **Final-run additions declared before the final run.** These are the µg/m³ placebo ranges and
+  secondary verdicts ([ADR-010](lab-notebook/04%20Decisions/ADR-010%20Final-run%20additions.md)).
+- **Provisional vs final shown side by side.** The verdicts changed once all control stations
+  were in, and the comparison is published, not hidden
+  ([`docs/provisional_vs_final.md`](docs/provisional_vs_final.md)).
 
 ## How to run
 ```bash

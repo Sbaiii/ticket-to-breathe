@@ -22,6 +22,16 @@ def num(v) -> str:
     return "–" if v is None else f"{v:+.2f}"
 
 
+def links(status: str) -> str:
+    """Links to the full reports of the run the block was generated from."""
+    if status == "FINAL":
+        docs = ["results.md", "diagnostics.md", "deweathering_report.md",
+                "provisional_vs_final.md"]
+    else:
+        docs = ["results_provisional.md", "diagnostics_provisional.md"]
+    return ", ".join(f"[`docs/{d}`](docs/{d})" for d in docs)
+
+
 def render() -> str:
     head = json.loads((DATA / "headline.json").read_text())
     meta = json.loads((DATA / "meta.json").read_text())
@@ -45,9 +55,7 @@ def render() -> str:
                    "negative = less NO₂ than expected. Verdict = ADR-008 rule (CI excludes 0 and "
                    "outside the placebo-country range); the headline is the ratio_pct verdict, the "
                    "µg/m³ verdicts are a secondary outcome (ADR-010); \"not evaluated\" = outside "
-                   "the rule. Full tables: [`docs/results_provisional.md`]"
-                   "(docs/results_provisional.md) / `docs/results.md`, "
-                   "[`docs/diagnostics_provisional.md`](docs/diagnostics_provisional.md)."),
+                   f"the rule. Full tables: {links(head['status'])}."),
               "", (f"_Generated from `dashboard/data/headline.json` ({head['generated_utc']}) by "
                   "`analysis/readme_results.py`._")]
     return "\n".join(lines)
