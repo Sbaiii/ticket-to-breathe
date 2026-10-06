@@ -15,18 +15,44 @@ from analysis.causal import RESULTS
 from pipeline.config import DOCS
 from pipeline.md import interpretation, md_table
 
-INTERPRETATION_RUN = "PROVISIONAL, 191 control stations with predictions"
+INTERPRETATION_RUN = "FINAL, 587 control stations with predictions"
 INTERPRETATION = """
-By the pre-registered rule the primary estimate is "detected", but with a **positive** sign: +5.5 pp
-[+2.9, +8.1], just above the largest placebo country (FR +5.1). In this run, German NO2 relative to
-controls rose from Jan–May to Jun–Aug 2022, compared with 2018–19; H1 (a reduction) is not supported.
-ADR-008 listed several signs that would weaken a transport reading, and all are present: the
-estimate is larger at background (+7.3) than traffic stations (+1.5, CI includes 0) and on weekends
-than weekdays; Sep–Dec 2022 is similar (+6.7, not detected); the µg/m³ version is +0.00; the
-synthetic-control gap in Jun–Aug 2022 is about 0 (rank 8 of 8); and the same-season-adjusted event
-study shows an unusually low Jan–May 2022 reference rather than a summer change. Tankrabatt covers
-the same months. Deutschlandticket: not detected; persistence depends on the trend assumption.
-All of this is provisional (191 of 587 control stations).
+**Pre-registered verdicts (ADR-008), final run, 284 German and 549 control stations.**
+- €9-Ticket (primary): +3.60 pp [+0.98, +6.22], inside the placebo-country range [−7.76, +8.31] →
+  **not detected**. Three of seven placebo countries produce an estimate at least as large in
+  absolute value. In µg/m³ (ADR-010): +0.19 [−0.42, +0.80], not detected. Synthetic control: Jun–Aug
+  2022 gap −0.06 pp, rank 6 of 8. The wild cluster bootstrap (not part of the rule) gives p = 0.38.
+- Switch-off, Sep–Dec 2022: +6.25 pp [+3.72, +8.79], outside the placebo range [−7.97, +5.66] →
+  **detected, with HIGHER NO2 than expected**. This is not evidence that a ticket effect switched
+  off: the €9 estimate itself is not detected, and in µg/m³ the switch-off estimate (+1.16 [+0.42,
+  +1.90]) lies inside its placebo range. It says German NO2 in late 2022 was high relative to
+  controls compared with a Jan–May 2022 reference that the event study shows was unusually low.
+  Candidate explanations (energy-crisis fuel switching, the reference period) are not tested here.
+- Deutschlandticket, May–Dec 2023: −0.54 pp [−2.80, +1.72] → **not detected**; in µg/m³ −0.56
+  [−1.17, +0.05], not detected. Persistence in 2024–25 depends on the trend assumption (2025: +0.51
+  without, +6.17 with country trends) and is not evaluated.
+
+**What the rest of the evidence adds.** No variant of the €9 estimate shows a reduction except the
+classic two-way DiD (−5.73), which ADR-008 flagged in advance as biased by the pre-trend (Germany
+was already falling faster than the controls before 2022); every other €9 robustness variant in % is
+positive (lowest +2.44, controls with fuel cuts); the only negative point estimate among the €9
+breakdowns is traffic stations in µg/m³ (−0.72 [−1.72, +0.28], not significant). For the
+Deutschlandticket, the µg/m³ persistence estimates for 2024 (−0.79 [−1.25, −0.32], also below its
+placebo-country range [−0.67, +0.90]) and 2025 (−0.48 [−0.95, −0.01]) point to a small decrease, but
+they sit outside the decision rule ("not evaluated"), turn positive once country-specific trends are
+allowed (+0.27 and +1.37), and their percentage versions are not significant (−1.05 and +0.51). They
+are a lead for follow-up, not a finding. Leaving out France raises the €9 estimate to +7.40; using
+only controls with their own 2022 fuel cuts lowers it to +2.44 [−0.28, +5.16]; using only Austria
+and Switzerland (no fuel cuts) gives +8.01. The sign never turns negative. Mechanism checks are
+inconclusive: traffic stations (+1.54, CI includes 0) sit below background stations (+4.39), the
+direction a transport effect would push, but the commuting-hours measure is −0.17 [−6.76, +6.41],
+inside its placebo range.
+
+**Bottom line.** With this design (cross-country controls, deweathered NO2, same-season baselines),
+neither ticket produced an NO2 change in the pre-registered tests that is distinguishable from what
+fake treated countries produce; the only hint of a reduction (2024, µg/m³) depends on the trend
+assumption. Effects of a few percent, which is what a 1–5% fall in car traffic would imply, are
+below what the placebo spread lets this design detect.
 """
 
 def f(v, nd: int = 2) -> str:
