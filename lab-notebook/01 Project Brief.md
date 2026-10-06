@@ -10,11 +10,19 @@ If it measurably cleans city air, that is part of its value; if it doesn't, that
 
 ## Hypotheses
 - **H1** — During Jun–Aug 2022, deweathered NO₂ at German urban stations fell relative to control-country stations.
+  **Final status: not supported.** +3.60 pp [+0.98, +6.22], inside the placebo-country range → not detected (ADR-008); µg/m³ +0.19, not detected. See F-001.
 - **H2** — The effect is larger at **traffic** stations than at urban **background** stations, larger on **weekdays**
   and at **commuting hours** (mechanism check: a transport policy should hit commuting traffic).
+  **Final status: not testable as stated** (no €9 effect detected to decompose). Exploratory only: traffic +1.54 below
+  background +4.39, weekdays +3.29 below weekends +4.34, commute excess −0.17 inside its placebo range. See F-004.
 - **H3** — The effect disappears from Sept 2022 (switch-off).
+  **Final status: not testable as stated**, because no €9 effect was detected. The switch-off estimate is detected
+  with HIGHER NO₂ (+6.25 pp), against an unusually low Jan–May 2022 reference. See F-002.
 - **H4** — The Deutschlandticket (May 2023 →) produced a smaller but persistent effect (price €49 vs €9).
+  **Final status: not supported.** −0.54 pp [−2.80, +1.72] → not detected (µg/m³ −0.56, not detected); 2024–25
+  persistence is outside the rule and depends on the trend assumption. See F-003.
 - **H0 is a valid outcome** — a null or ambiguous result, honestly reported, is a deliverable.
+  **Final status: consistent with the results.** No pre-registered test finds a reduction in urban NO₂ from either ticket.
 
 ## Identification strategy (summary)
 - Outcome: hourly NO₂ (µg/m³), aggregated to station-day; deweathered with LightGBM fit on pre-treatment data.

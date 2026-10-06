@@ -20,7 +20,7 @@
 - [x] Out-of-time metrics (train 2018–19, test Jan–May 2022) + Jun–Aug 2019 hold-out → `docs/deweathering_report.md`
 - [x] Deweathering v2 (ADR-007): 5-fold month-block cross-fitting with 7-day buffer → pre-period residuals out-of-fold; `ratio_pct` primary outcome; May→June 2022 step v1 vs v2 in the report
 - [x] `make all`: seeds → dbt build → deweather → dbt build (marts) → report
-- [ ] Sanity check: 2020 lockdown dip in raw NO2 (no deweathered 2020 — ADR-005)
+- [x] Sanity check: 2020 lockdown dip in raw NO2 — closed without running it: 2020–21 are outside the analysis window and have no weather (ADR-004, ADR-005)
 
 ## Day 3 — Causal inference
 - [x] ADR-009 post-hoc diagnostics (provisional) → `docs/diagnostics_provisional.md`
@@ -37,9 +37,9 @@
 
 ## Day 4 — Confounders, methods, case study, publish
 - [x] Findings F-001…F-007 (lab-notebook/06 Findings)
-- [ ] Confounder section (Tankrabatt, COVID recovery, energy crisis, weather)
-- [ ] Methods appendix incl. residual uncertainties (time zone, weather grid, BLH gap)
-- [ ] Case study page: map, counterfactual chart, exec summary
+- [x] Confounder section (Tankrabatt, COVID recovery, energy crisis, weather) → `docs/diagnostics.md`, fuel-cut robustness in `docs/results.md`, limitations in `docs/final_prose.md` §5
+- [x] Methods appendix incl. residual uncertainties (time zone, weather grid, BLH gap) → README Method, ADR-003/005/007, `docs/blh_gap.md`, methods strings in `docs/final_prose.md` §5
+- [x] Case study page: map, counterfactual chart, exec summary → data contract `dashboard/data/` + prose in `docs/final_prose.md` §5; the page itself is built in the portfolio repo
 - [x] README results table generated from real outputs (summary paragraph: author)
-- [ ] Final reports' interpretation sections + README summary (author)
+- [x] Final reports' interpretation sections + README summary (author's prose verified against FINAL reports; deweathering/diagnostics drafted and approved)
 - [ ] Final review, publish on sbaiii.com
