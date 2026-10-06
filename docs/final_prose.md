@@ -68,7 +68,7 @@ is −0.17 [−6.76, +6.41], inside its placebo range.
 
 **Bottom line.** With this design (cross-country controls, deweathered NO2, same-season
 baselines), neither ticket produced an NO2 change in the pre-registered tests that is
-distinguishable from what fake treated countries produce; the only hint of a reduction (2024,
+distinguishable from what fake treated countries produce; the only hint of a reduction (2024–25,
 µg/m³) depends on the trend assumption. Effects of a few percent, which is what a 1–5% fall in car traffic would
 imply, are below what the placebo spread lets this design detect.
 
