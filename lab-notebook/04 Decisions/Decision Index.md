@@ -11,3 +11,4 @@
 | [[ADR-007 Cross-fitted deweathering and ratio outcome]] | Deweathering v2: 5-fold month-block cross-fitting (7-day buffer), fold-mean post predictions; ratio_pct primary outcome | accepted | 2026-10-02 |
 | [[ADR-008 Analysis plan]] | Pre-registered analysis plan: triple difference (same-season baseline) primary, event study, synthetic control, placebo-based detection rule | accepted | 2026-10-02 |
 | [[ADR-009 Post-hoc diagnostics]] | Post-hoc, exploratory diagnostics of the provisional result (COVID reference, commute excess, scale, energy crisis); cannot change the ADR-008 verdict | accepted | 2026-10-03 |
+| [[ADR-010 Final-run additions]] | Before the final run: placebo-country ranges for resid_ugm3 for every primary/secondary/heterogeneity estimate; ADR-008 rule applied to resid_ugm3 as a secondary outcome; ratio_pct keeps the headline | accepted | 2026-10-06 |
