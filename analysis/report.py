@@ -180,7 +180,7 @@ def main() -> None:
                                  lon=cmap["lon"].map("{:.2f}".format))
                      .drop(columns=["status"])), ""]
 
-    out += ["## Interpretation (bound by the ADR-008 rule; provisional)", "",
+    out += [f"## Interpretation (bound by the ADR-008 rule; {status.lower()})", "",
             interpretation(INTERPRETATION, INTERPRETATION_RUN, run_label), ""]
     out_md.write_text("\n".join(out))
     print(f"Wrote {out_md}")
