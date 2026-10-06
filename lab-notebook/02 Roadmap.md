@@ -23,7 +23,10 @@
 - [ ] Sanity check: 2020 lockdown dip in raw NO2 (no deweathered 2020 — ADR-005)
 
 ## Day 3 — Causal inference
-- [ ] `make all` once the weather download completes (all 587 controls)
+- [x] ADR-009 post-hoc diagnostics (provisional) → `docs/diagnostics_provisional.md`
+- [x] ADR-010 final-run additions (resid_ugm3 placebo ranges + secondary-outcome verdicts), committed before the final run
+- [x] Case-study data contract `dashboard/data/` (+ `dashboard/README.md`), README results block, `make all` gated on complete weather + checklist
+- [ ] **Resume the weather download** (stopped 2026-10-03 08:01 UTC at 728/1,074; process gone), then `make all` = FINAL run (all 587 controls)
 - [x] ADR-008 analysis plan pre-registered (committed before any estimate)
 - [x] PROVISIONAL run of every ADR-008 estimate → `docs/results_provisional.md` (`make analysis`)
 - [ ] FINAL: DiD on `ratio_pct` (primary) and `resid_ugm3` (station + date FE, SE clustered by station); traffic / background separately + pooled
