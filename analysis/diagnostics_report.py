@@ -24,20 +24,22 @@ from pipeline.md import interpretation, md_table
 OXCGRT = REPO_ROOT / "data" / "raw" / "oxcgrt" / "stringency_national.parquet"
 COUNTRIES = ["DE", "AT", "BE", "CH", "CZ", "FR", "NL", "PL"]
 
-INTERPRETATION_RUN = "PROVISIONAL, 191 control stations with predictions"
+INTERPRETATION_RUN = "FINAL, 587 control stations with predictions"
 INTERPRETATION = """
-**Pre-registered verdict (ADR-008), unchanged:** +5.50 pp [+2.88, +8.13], "detected", opposite sign to H1.
-**Exploratory evidence (post hoc, provisional):**
-- COVID: Germany's stringency stayed above the controls' until early April 2022. Yet an Apr–May
-  (+4.52) or 16 Apr–31 May (+5.20) reference, or a stringency covariate (+5.58), barely moves the
-  estimate, so these checks do not support "COVID depressed the reference".
-- Mechanism: traffic commute excess is −1.66 (Jan–May) and +3.91 (Apr–May), both inside the
-  placebo range. There is no transport signature either way.
-- Scale: in µg/m³ the primary is +0.00 [−0.76, +0.76]. The % result comes mostly from denominators
-  (controls' prediction falls 27.7 → 20.5 µg/m³ into summer, Germany's 25.9 → 22.3).
-  Deutschlandticket in µg/m³ is −0.72 [−1.40, −0.05]; it has no placebo comparison, so it is no result.
-- Energy: the adjusted gap turns positive in Jun–Jul 2022 at background and industrial stations,
-  not at traffic stations. That is consistent with the hypothesis, which remains untested.
+**Pre-registered verdict (ADR-008), unchanged:** +3.60 pp [+0.98, +6.22], "not detected" (inside the
+placebo-country range [−7.76, +8.31]).
+
+**Exploratory evidence (post hoc, ADR-009):**
+- COVID: in March 2022 Germany's stringency (36.7) was above every control but Austria (38.8). Yet
+  an Apr–May (+3.93) or 16 Apr–31 May (+4.48) reference, or a stringency covariate (+3.15), moves
+  the estimate by under 1 pp: no support for "COVID depressed the reference".
+- Mechanism: commute excess is −0.17 (traffic) and −2.04 (background) with the Jan–May reference,
+  +3.80 and +4.89 with Apr–May, all inside their placebo ranges. No transport signature.
+- Scale: in µg/m³ the primary is +0.19 [−0.42, +0.80]; the scales can differ because the controls'
+  predicted level falls more into summer (24.0 → 17.3 µg/m³) than Germany's (25.9 → 22.3).
+- Energy: the season-adjusted 2022 gap is positive only at industrial (Jun +4.1, Jul +2.1) and
+  background stations (Jul +0.3, Dec +0.6), never at traffic stations. A weak pattern at most; the
+  coal-for-gas hypothesis remains untested.
 """
 
 

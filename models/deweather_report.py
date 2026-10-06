@@ -43,39 +43,20 @@ POST_START = "2022-06-01"
 WEATHER_VARS = ["temperature_2m", "relative_humidity_2m", "wind_speed_10m", "precipitation_sum",
                 "surface_pressure", "shortwave_radiation", "cloud_cover", "boundary_layer_height"]
 
-INTERPRETATION_RUN = "491 stations with predictions"
+INTERPRETATION_RUN = "887 stations with predictions"
 INTERPRETATION = """
-**The artificial step at 2022-06-01 is gone.** In v1 the May → June 2022 change was −3.8 µg/m³ in
-DE and −0.8 to −4.2 µg/m³ in every control country, because May was in-sample and June was not.
-With cross-fitting it is −0.07 µg/m³ in DE and between −1.8 and +0.6 µg/m³ in the controls
-(ratio_pct: −1.1 % in DE, −7.6 to +3.1 % in the controls, on the same 491 stations). Any remaining
-June change is no longer created by the method. These are country means without inference, not
-effects.
-
-**The fit is now honest, and the trend is visible before treatment.** Out-of-fold hourly R² is 0.61
-(daily 0.69) with bias ≈ 0, against an in-sample R² of 0.89 in v1. Because Jan–May 2022 is now
-predicted by models trained mostly on 2018–19, the long-run NO2 decline no longer starts at
-2022-06-01: annual ratio_pct runs from about +5 to +11 % in 2018, to −3.4 to +0.1 % in 2019, then to
-−12 to −24 % in 2022, and −21 to −33 % in 2025. This is the same trend v1 showed, now spread over
-the whole period. The out-of-time stress test shows the same thing in another way: daily corr²
-0.80 but daily R² 0.44 and bias +4.9 µg/m³. The model gets the day-to-day weather pattern right
-and the level wrong, because there is no trend feature (by design, ADR-006).
-
-**The ratio removes most of the remaining weather signal.** After May 2022 the µg/m³ residual still
-correlates with BLH (median per-station r 0.30) and wind speed (0.23). For ratio_pct both are about
-zero (−0.07 and −0.02). The largest remaining correlation is with temperature (−0.15), which is
-small and is worth keeping in mind for the summer windows. This supports ratio_pct as the primary
-outcome.
-
-**Noise benchmark and a warning for the causal step.** Without any policy, the DE-minus-controls
-gap in ratio_pct is −1.7 % points in Jun–Aug 2019 and +1.7 % points in Jun–Aug 2018. Across all
-29 pre-treatment months it has a mean of +0.2 and an SD of 3.8 % points (range −7.2 to +8.8). It
-is not stable over time: it is mostly positive in 2018 and negative in every month of Jan–May
-2022 (−3.7 to −7.2). In ratio_pct, Germany declined faster than the pooled controls before any
-ticket existed. That is a parallel-trends risk the DiD and event study must address (station and
-date fixed effects, pre-trend tests, a 2022-only pre-period, country-specific trends as a check)
-rather than assume away. Control coverage is still partial (191 of 587 control stations), so all
-control figures are provisional.
+All 887 study stations have predictions; none skipped. This report has no causal estimate; verdicts
+are in `docs/results.md`.
+- Fit: median out-of-fold daily R² is 0.69 [0.62, 0.74], median bias −0.01 µg/m³. Traffic stations
+  fit worse than background stations in every country; weakest group: CH traffic (0.49).
+- Out of time (train 2018–19, test Jan–May 2022) the day-to-day pattern holds (daily corr² 0.79) but
+  the level does not (bias +4.09 µg/m³, daily R² 0.49): NO2 in 2022 was below what 2018–19 predicts
+  in every country, and the ratio keeps drifting down (annual mean 2018: +7.6 to +11.4 %; 2025:
+  −21.5 to −31.7 %). Only differences against controls and against 2018–19 are interpreted.
+- Weather left in the residual after June 2022 is small: every pooled |r| ≤ 0.17 in µg/m³ (largest:
+  boundary-layer height 0.17, wind 0.13) and ≤ 0.08 for ratio_pct.
+- Noise without a policy: the monthly DE − controls gap over the 29 pre-treatment months has SD 4.14
+  pp (−7.20 to +8.41); Jan–May 2022 are its five lowest months (−4.32 to −7.20).
 """
 
 
