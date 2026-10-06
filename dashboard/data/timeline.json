@@ -1,0 +1,105 @@
+{
+ "status": "PROVISIONAL",
+ "generated_utc": "2026-10-06T03:04:39Z",
+ "rows": [
+  {
+   "id": "nine_euro",
+   "cc": "DE",
+   "label": "9-Euro-Ticket",
+   "category": "treatment",
+   "start": "2022-06-01",
+   "end": "2022-08-31",
+   "verified": true
+  },
+  {
+   "id": "tankrabatt",
+   "cc": "DE",
+   "label": "Tankrabatt (fuel tax cut)",
+   "category": "fuel_price",
+   "start": "2022-06-01",
+   "end": "2022-08-31",
+   "verified": true
+  },
+  {
+   "id": "deutschlandticket",
+   "cc": "DE",
+   "label": "Deutschlandticket",
+   "category": "treatment",
+   "start": "2023-05-01",
+   "end": null,
+   "verified": true
+  },
+  {
+   "id": "deutschlandticket_price_49",
+   "cc": "DE",
+   "label": "Deutschlandticket €49",
+   "category": "treatment",
+   "start": "2023-05-01",
+   "end": "2024-12-31",
+   "verified": true
+  },
+  {
+   "id": "deutschlandticket_price_58",
+   "cc": "DE",
+   "label": "Deutschlandticket €58",
+   "category": "treatment",
+   "start": "2025-01-01",
+   "end": "2025-12-31",
+   "verified": true
+  },
+  {
+   "id": "deutschlandticket_price_63",
+   "cc": "DE",
+   "label": "Deutschlandticket €63",
+   "category": "treatment",
+   "start": "2026-01-01",
+   "end": null,
+   "verified": true
+  },
+  {
+   "id": "remise_carburant_18ct",
+   "cc": "FR",
+   "label": "Remise carburant 18 ct",
+   "category": "fuel_price",
+   "start": "2022-04-01",
+   "end": "2022-08-31",
+   "verified": true
+  },
+  {
+   "id": "remise_carburant_30ct",
+   "cc": "FR",
+   "label": "Remise carburant 30 ct",
+   "category": "fuel_price",
+   "start": "2022-09-01",
+   "end": "2022-11-15",
+   "verified": true
+  },
+  {
+   "id": "remise_carburant_10ct",
+   "cc": "FR",
+   "label": "Remise carburant 10 ct",
+   "category": "fuel_price",
+   "start": "2022-11-16",
+   "end": "2022-12-31",
+   "verified": true
+  },
+  {
+   "id": "covid_wfh_obligation_end",
+   "cc": "DE",
+   "label": "Work-from-home obligation ends",
+   "category": "covid",
+   "start": "2022-03-20",
+   "end": "2022-03-20",
+   "verified": true
+  },
+  {
+   "id": "covid_measures_end",
+   "cc": "DE",
+   "label": "Most COVID measures end",
+   "category": "covid",
+   "start": "2022-04-02",
+   "end": "2022-04-02",
+   "verified": true
+  }
+ ]
+}

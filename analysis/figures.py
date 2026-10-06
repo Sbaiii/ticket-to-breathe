@@ -1,13 +1,12 @@
-"""Figures (PNG, docs/figures/) and case-study data (JSON, dashboard/data/) from the causal results.
+"""Figures (PNG, docs/figures/) from the causal results (case-study JSON: analysis/dashboard_data.py).
 
 Reads data/processed/results/*.parquet (written by analysis/causal.py); computes nothing new.
-Every chart title and JSON file carries the run status (PROVISIONAL until all control stations
+Every chart title carries the run status (PROVISIONAL until all control stations
 have predictions).
 
 Run: uv run python -m analysis.figures
 """
 
-import json
 
 import matplotlib
 
@@ -16,10 +15,9 @@ import matplotlib.pyplot as plt
 import pandas as pd
 
 from analysis.causal import RESULTS
-from pipeline.config import DOCS, REPO_ROOT, TREATED
+from pipeline.config import DOCS, TREATED
 
 FIG_DIR = DOCS / "figures"
-JSON_DIR = REPO_ROOT / "dashboard" / "data"
 SURFACE, INK, INK2, GRID = "#fcfcfb", "#0b0b0b", "#52514e", "#e4e3df"
 SERIES, MUTED, POLICY = "#2a78d6", "#b9b8b3", "#dce9f9"
 NINE_EURO = (pd.Timestamp("2022-06-01"), pd.Timestamp("2022-09-01"))
@@ -52,20 +50,6 @@ def save(fig, name: str) -> None:
     FIG_DIR.mkdir(parents=True, exist_ok=True)
     fig.savefig(FIG_DIR / name, dpi=150, facecolor=SURFACE)
     plt.close(fig)
-
-
-def write_json(name: str, status: str, payload: dict) -> None:
-    JSON_DIR.mkdir(parents=True, exist_ok=True)
-    (JSON_DIR / name).write_text(json.dumps({"status": status, **payload}, indent=1,
-                                            default=str))
-
-
-def records(df: pd.DataFrame) -> list[dict]:
-    out = df.copy()
-    for c in out.columns:
-        if pd.api.types.is_datetime64_any_dtype(out[c]):
-            out[c] = out[c].dt.strftime("%Y-%m")
-    return json.loads(out.to_json(orient="records"))
 
 
 def event_study_fig(es: pd.DataFrame, status: str) -> None:
@@ -163,29 +147,12 @@ def main() -> None:
     es = pd.read_parquet(RESULTS / "event_study.parquet")
     paths = pd.read_parquet(RESULTS / "sc_paths.parquet")
     weights = pd.read_parquet(RESULTS / "sc_weights.parquet")
-    rmspe = pd.read_parquet(RESULTS / "sc_rmspe.parquet")
-    cmap = pd.read_parquet(RESULTS / "country_map.parquet")
 
     event_study_fig(es, status)
     synthetic_control_fig(paths, weights, status)
     placebo_fig(est, status)
 
-    keep = ["family", "spec", "outcome", "estimate", "ci_low", "ci_high", "n_stations",
-            "n_station_days"]
-    write_json("event_study.json", status, {
-        "outcome": "ratio_pct, DE − controls, % points", "series": records(es.drop(
-            columns=["status"]))})
-    write_json("synthetic_control.json", status, {
-        "weights": records(weights.drop(columns=["status"])),
-        "paths": records(paths.drop(columns=["status"])),
-        "rmspe": records(rmspe.drop(columns=["status"]))})
-    write_json("placebos.json", status, {
-        "estimates": records(est[est["family"].str.startswith(("primary", "placebo"))][keep])})
-    write_json("country_map.json", status, {
-        "definition": "per country: [mean ratio_pct(window) − mean(reference)] minus the same "
-                      "change averaged over 2018 and 2019; station-day means, no SE",
-        "countries": records(cmap.drop(columns=["status"]))})
-    print(f"Wrote figures to {FIG_DIR} and JSON to {JSON_DIR}")
+    print(f"Wrote figures to {FIG_DIR}")
 
 
 if __name__ == "__main__":

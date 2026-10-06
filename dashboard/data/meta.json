@@ -1,0 +1,51 @@
+{
+ "status": "PROVISIONAL",
+ "generated_utc": "2026-10-06T03:04:39Z",
+ "n_stations": {
+  "DE": 284,
+  "controls": 173,
+  "by_country": {
+   "AT": 53,
+   "BE": 19,
+   "CH": 3,
+   "CZ": 7,
+   "DE": 284,
+   "FR": 44,
+   "NL": 34,
+   "PL": 13
+  }
+ },
+ "n_station_days": 976897,
+ "control_stations_with_predictions": 191,
+ "control_stations_in_study": 587,
+ "control_countries": [
+  "AT",
+  "BE",
+  "CH",
+  "CZ",
+  "FR",
+  "NL",
+  "PL"
+ ],
+ "station_types": [
+  "traffic",
+  "background"
+ ],
+ "analysis_window": {
+  "years": [
+   2018,
+   2019,
+   2022,
+   2023,
+   2024,
+   2025
+  ],
+  "start": "2018-01-01",
+  "end": "2025-12-31",
+  "excluded_years": [
+   2020,
+   2021
+  ]
+ },
+ "weather_grid_deg": 1.0
+}

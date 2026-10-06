@@ -1,345 +1,212 @@
 {
  "status": "PROVISIONAL",
- "estimates": [
+ "generated_utc": "2026-10-06T03:04:39Z",
+ "primary": [
   {
-   "family": "primary",
-   "spec": "\u20ac9-Ticket: triple difference (Jun\u2013Aug vs Jan\u2013May 2022)",
    "outcome": "ratio_pct",
-   "estimate": 5.5020321413,
-   "ci_low": 2.8769659595,
-   "ci_high": 8.1270983231,
-   "n_stations": 457,
-   "n_station_days": 329333
+   "estimate": 5.5,
+   "lo": 2.88,
+   "hi": 8.13
   },
   {
-   "family": "primary",
-   "spec": "\u20ac9-Ticket: triple difference",
    "outcome": "resid_ugm3",
-   "estimate": 0.0016207088,
-   "ci_low": -0.7598613237,
-   "ci_high": 0.7631027414,
-   "n_stations": 457,
-   "n_station_days": 329335
+   "estimate": 0.0,
+   "lo": -0.76,
+   "hi": 0.76
+  }
+ ],
+ "rows": [
+  {
+   "kind": "country",
+   "label": "AT",
+   "outcome": "ratio_pct",
+   "estimate": -6.19,
+   "lo": -11.37,
+   "hi": -1.0
   },
   {
-   "family": "placebo country: primary",
-   "spec": "AT",
+   "kind": "country",
+   "label": "BE",
    "outcome": "ratio_pct",
-   "estimate": -6.1864182417,
-   "ci_low": -11.3702692537,
-   "ci_high": -1.0025672297,
-   "n_stations": 173,
-   "n_station_days": 123832
+   "estimate": 3.44,
+   "lo": -2.44,
+   "hi": 9.33
   },
   {
-   "family": "placebo country: primary",
-   "spec": "BE",
+   "kind": "country",
+   "label": "CH",
    "outcome": "ratio_pct",
-   "estimate": 3.444271167,
-   "ci_low": -2.4449867639,
-   "ci_high": 9.333529098,
-   "n_stations": 173,
-   "n_station_days": 123832
+   "estimate": 1.26,
+   "lo": -4.36,
+   "hi": 6.88
   },
   {
-   "family": "placebo country: primary",
-   "spec": "CH",
+   "kind": "country",
+   "label": "CZ",
    "outcome": "ratio_pct",
-   "estimate": 1.2623812323,
-   "ci_low": -4.3581132496,
-   "ci_high": 6.8828757141,
-   "n_stations": 173,
-   "n_station_days": 123832
+   "estimate": -3.2,
+   "lo": -9.99,
+   "hi": 3.6
   },
   {
-   "family": "placebo country: primary",
-   "spec": "CZ",
+   "kind": "country",
+   "label": "FR",
    "outcome": "ratio_pct",
-   "estimate": -3.1968762992,
-   "ci_low": -9.9894809785,
-   "ci_high": 3.5957283802,
-   "n_stations": 173,
-   "n_station_days": 123832
+   "estimate": 5.12,
+   "lo": 0.46,
+   "hi": 9.78
   },
   {
-   "family": "placebo country: primary",
-   "spec": "FR",
+   "kind": "country",
+   "label": "NL",
    "outcome": "ratio_pct",
-   "estimate": 5.1237727812,
-   "ci_low": 0.4643642103,
-   "ci_high": 9.7831813521,
-   "n_stations": 173,
-   "n_station_days": 123832
+   "estimate": 2.95,
+   "lo": -1.93,
+   "hi": 7.84
   },
   {
-   "family": "placebo country: primary",
-   "spec": "NL",
+   "kind": "country",
+   "label": "PL",
    "outcome": "ratio_pct",
-   "estimate": 2.953817343,
-   "ci_low": -1.930870739,
-   "ci_high": 7.8385054249,
-   "n_stations": 173,
-   "n_station_days": 123832
+   "estimate": -4.66,
+   "lo": -11.13,
+   "hi": 1.81
   },
   {
-   "family": "placebo country: primary",
-   "spec": "PL",
-   "outcome": "ratio_pct",
-   "estimate": -4.6603049075,
-   "ci_low": -11.1338381008,
-   "ci_high": 1.8132282859,
-   "n_stations": 173,
-   "n_station_days": 123832
+   "kind": "country",
+   "label": "AT",
+   "outcome": "resid_ugm3",
+   "estimate": -1.47,
+   "lo": -2.68,
+   "hi": -0.26
   },
   {
-   "family": "placebo country: switch-off",
-   "spec": "AT",
-   "outcome": "ratio_pct",
-   "estimate": -4.5877069603,
-   "ci_low": -9.6688332975,
-   "ci_high": 0.4934193768,
-   "n_stations": 173,
-   "n_station_days": 139569
+   "kind": "country",
+   "label": "BE",
+   "outcome": "resid_ugm3",
+   "estimate": 0.8,
+   "lo": -0.54,
+   "hi": 2.14
   },
   {
-   "family": "placebo country: switch-off",
-   "spec": "BE",
-   "outcome": "ratio_pct",
-   "estimate": 7.6405870835,
-   "ci_low": 2.0887515009,
-   "ci_high": 13.1924226661,
-   "n_stations": 173,
-   "n_station_days": 139569
+   "kind": "country",
+   "label": "CH",
+   "outcome": "resid_ugm3",
+   "estimate": -0.21,
+   "lo": -1.46,
+   "hi": 1.03
   },
   {
-   "family": "placebo country: switch-off",
-   "spec": "CH",
-   "outcome": "ratio_pct",
-   "estimate": 2.1244883472,
-   "ci_low": -7.5358974111,
-   "ci_high": 11.7848741056,
-   "n_stations": 173,
-   "n_station_days": 139569
+   "kind": "country",
+   "label": "CZ",
+   "outcome": "resid_ugm3",
+   "estimate": -1.99,
+   "lo": -3.23,
+   "hi": -0.74
   },
   {
-   "family": "placebo country: switch-off",
-   "spec": "CZ",
-   "outcome": "ratio_pct",
-   "estimate": -4.1778147036,
-   "ci_low": -8.9001657964,
-   "ci_high": 0.5445363891,
-   "n_stations": 173,
-   "n_station_days": 139569
+   "kind": "country",
+   "label": "FR",
+   "outcome": "resid_ugm3",
+   "estimate": 2.16,
+   "lo": 0.89,
+   "hi": 3.43
   },
   {
-   "family": "placebo country: switch-off",
-   "spec": "FR",
-   "outcome": "ratio_pct",
-   "estimate": 1.3363417556,
-   "ci_low": -3.3065785409,
-   "ci_high": 5.9792620521,
-   "n_stations": 173,
-   "n_station_days": 139569
+   "kind": "country",
+   "label": "NL",
+   "outcome": "resid_ugm3",
+   "estimate": 0.26,
+   "lo": -1.0,
+   "hi": 1.52
   },
   {
-   "family": "placebo country: switch-off",
-   "spec": "NL",
-   "outcome": "ratio_pct",
-   "estimate": 4.8537408739,
-   "ci_low": 0.3511041148,
-   "ci_high": 9.3563776329,
-   "n_stations": 173,
-   "n_station_days": 139569
+   "kind": "country",
+   "label": "PL",
+   "outcome": "resid_ugm3",
+   "estimate": -1.8,
+   "lo": -3.74,
+   "hi": 0.14
   },
   {
-   "family": "placebo country: switch-off",
-   "spec": "PL",
+   "kind": "date",
+   "label": "Jun–Aug 2019 vs Jan–May, baseline 2018",
    "outcome": "ratio_pct",
-   "estimate": -9.0540024943,
-   "ci_low": -17.5657476587,
-   "ci_high": -0.5422573299,
-   "n_stations": 173,
-   "n_station_days": 139569
+   "estimate": -1.01,
+   "lo": -5.12,
+   "hi": 3.09
   },
   {
-   "family": "placebo country: Deutschlandticket",
-   "spec": "AT",
+   "kind": "date",
+   "label": "Jun–Aug 2018 vs Jan–May, baseline 2019",
    "outcome": "ratio_pct",
-   "estimate": -1.9478550198,
-   "ci_low": -6.0280838602,
-   "ci_high": 2.1323738206,
-   "n_stations": 173,
-   "n_station_days": 186296
+   "estimate": 1.01,
+   "lo": -3.09,
+   "hi": 5.12
   },
   {
-   "family": "placebo country: Deutschlandticket",
-   "spec": "BE",
+   "kind": "date",
+   "label": "Jan–Mar 2018 vs rest of 2018, baseline 2019",
    "outcome": "ratio_pct",
-   "estimate": 0.2856042548,
-   "ci_low": -4.5536680441,
-   "ci_high": 5.1248765538,
-   "n_stations": 173,
-   "n_station_days": 186296
+   "estimate": -1.76,
+   "lo": -5.87,
+   "hi": 2.34
   },
   {
-   "family": "placebo country: Deutschlandticket",
-   "spec": "CH",
+   "kind": "date",
+   "label": "Apr–Jun 2018 vs rest of 2018, baseline 2019",
    "outcome": "ratio_pct",
-   "estimate": 2.5032415464,
-   "ci_low": -2.4484238276,
-   "ci_high": 7.4549069203,
-   "n_stations": 173,
-   "n_station_days": 186296
+   "estimate": 2.79,
+   "lo": -0.66,
+   "hi": 6.23
   },
   {
-   "family": "placebo country: Deutschlandticket",
-   "spec": "CZ",
+   "kind": "date",
+   "label": "Jul–Sep 2018 vs rest of 2018, baseline 2019",
    "outcome": "ratio_pct",
-   "estimate": 1.2706773639,
-   "ci_low": -3.8301698682,
-   "ci_high": 6.3715245961,
-   "n_stations": 173,
-   "n_station_days": 186296
+   "estimate": 0.94,
+   "lo": -2.55,
+   "hi": 4.43
   },
   {
-   "family": "placebo country: Deutschlandticket",
-   "spec": "FR",
+   "kind": "date",
+   "label": "Oct–Dec 2018 vs rest of 2018, baseline 2019",
    "outcome": "ratio_pct",
-   "estimate": 2.56858893,
-   "ci_low": -1.0355745299,
-   "ci_high": 6.1727523898,
-   "n_stations": 173,
-   "n_station_days": 186296
+   "estimate": -1.95,
+   "lo": -5.73,
+   "hi": 1.83
   },
   {
-   "family": "placebo country: Deutschlandticket",
-   "spec": "NL",
+   "kind": "date",
+   "label": "Jan–Mar 2019 vs rest of 2019, baseline 2018",
    "outcome": "ratio_pct",
-   "estimate": 0.9584288884,
-   "ci_low": -2.7779991877,
-   "ci_high": 4.6948569646,
-   "n_stations": 173,
-   "n_station_days": 186296
+   "estimate": 1.76,
+   "lo": -2.34,
+   "hi": 5.87
   },
   {
-   "family": "placebo country: Deutschlandticket",
-   "spec": "PL",
+   "kind": "date",
+   "label": "Apr–Jun 2019 vs rest of 2019, baseline 2018",
    "outcome": "ratio_pct",
-   "estimate": -4.9267297756,
-   "ci_low": -10.3549172061,
-   "ci_high": 0.5014576549,
-   "n_stations": 173,
-   "n_station_days": 186296
+   "estimate": -2.79,
+   "lo": -6.23,
+   "hi": 0.66
   },
   {
-   "family": "placebo industrial",
-   "spec": "industrial stations, primary formula",
+   "kind": "date",
+   "label": "Jul–Sep 2019 vs rest of 2019, baseline 2018",
    "outcome": "ratio_pct",
-   "estimate": 4.0617271369,
-   "ci_low": -2.6503017905,
-   "ci_high": 10.7737560643,
-   "n_stations": 34,
-   "n_station_days": 24482
+   "estimate": -0.94,
+   "lo": -4.43,
+   "hi": 2.55
   },
   {
-   "family": "placebo date",
-   "spec": "Jun\u2013Aug 2019 vs Jan\u2013May, baseline 2018",
+   "kind": "date",
+   "label": "Oct–Dec 2019 vs rest of 2019, baseline 2018",
    "outcome": "ratio_pct",
-   "estimate": -1.0137923017,
-   "ci_low": -5.1188126497,
-   "ci_high": 3.0912280464,
-   "n_stations": 457,
-   "n_station_days": 219551
-  },
-  {
-   "family": "placebo date",
-   "spec": "Jun\u2013Aug 2018 vs Jan\u2013May, baseline 2019",
-   "outcome": "ratio_pct",
-   "estimate": 1.0137923017,
-   "ci_low": -3.0912280464,
-   "ci_high": 5.1188126497,
-   "n_stations": 457,
-   "n_station_days": 219551
-  },
-  {
-   "family": "placebo date",
-   "spec": "Jan\u2013Mar 2018 vs rest of 2018, baseline 2019",
-   "outcome": "ratio_pct",
-   "estimate": -1.7644389478,
-   "ci_low": -5.8723109241,
-   "ci_high": 2.3434330285,
-   "n_stations": 457,
-   "n_station_days": 330177
-  },
-  {
-   "family": "placebo date",
-   "spec": "Apr\u2013Jun 2018 vs rest of 2018, baseline 2019",
-   "outcome": "ratio_pct",
-   "estimate": 2.7866251599,
-   "ci_low": -0.6560314778,
-   "ci_high": 6.2292817976,
-   "n_stations": 457,
-   "n_station_days": 330177
-  },
-  {
-   "family": "placebo date",
-   "spec": "Jul\u2013Sep 2018 vs rest of 2018, baseline 2019",
-   "outcome": "ratio_pct",
-   "estimate": 0.9393711794,
-   "ci_low": -2.5463651721,
-   "ci_high": 4.4251075308,
-   "n_stations": 457,
-   "n_station_days": 330177
-  },
-  {
-   "family": "placebo date",
-   "spec": "Oct\u2013Dec 2018 vs rest of 2018, baseline 2019",
-   "outcome": "ratio_pct",
-   "estimate": -1.9514658788,
-   "ci_low": -5.7328142895,
-   "ci_high": 1.8298825319,
-   "n_stations": 457,
-   "n_station_days": 330177
-  },
-  {
-   "family": "placebo date",
-   "spec": "Jan\u2013Mar 2019 vs rest of 2019, baseline 2018",
-   "outcome": "ratio_pct",
-   "estimate": 1.7644389478,
-   "ci_low": -2.3434330285,
-   "ci_high": 5.8723109241,
-   "n_stations": 457,
-   "n_station_days": 330177
-  },
-  {
-   "family": "placebo date",
-   "spec": "Apr\u2013Jun 2019 vs rest of 2019, baseline 2018",
-   "outcome": "ratio_pct",
-   "estimate": -2.7866251599,
-   "ci_low": -6.2292817976,
-   "ci_high": 0.6560314778,
-   "n_stations": 457,
-   "n_station_days": 330177
-  },
-  {
-   "family": "placebo date",
-   "spec": "Jul\u2013Sep 2019 vs rest of 2019, baseline 2018",
-   "outcome": "ratio_pct",
-   "estimate": -0.9393711794,
-   "ci_low": -4.4251075308,
-   "ci_high": 2.5463651721,
-   "n_stations": 457,
-   "n_station_days": 330177
-  },
-  {
-   "family": "placebo date",
-   "spec": "Oct\u2013Dec 2019 vs rest of 2019, baseline 2018",
-   "outcome": "ratio_pct",
-   "estimate": 1.9514658788,
-   "ci_low": -1.8298825319,
-   "ci_high": 5.7328142895,
-   "n_stations": 457,
-   "n_station_days": 330177
+   "estimate": 1.95,
+   "lo": -1.83,
+   "hi": 5.73
   }
  ]
 }
