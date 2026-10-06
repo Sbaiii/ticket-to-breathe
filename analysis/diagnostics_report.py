@@ -195,12 +195,16 @@ def main() -> None:
     # 2) Commute excess
     com = est[est["block"] == "commute"]
     nan_rows = com[com["ci_low"].isna()]["spec"].tolist()
+    traffic_pl = com[(com["family"] == "placebo country")
+                     & com["spec"].str.startswith("traffic, reference Jan–May")]["spec"]
+    missing_traffic = sorted(set(COUNTRIES[1:]) - {s.split(" | ")[1] for s in traffic_pl})
     out += ["## 2) Mechanism inside stations: commute excess", "",
             ("Weekdays (Mon–Fri, no national public holiday). Per station-day: ratio over local "
              "06:00–09:59 + 16:00–19:59 (≥ 6 of 8 hours) minus ratio over 00:00–03:59 (≥ 3 of 4 "
              "hours), each 100 × (Σ observed / Σ predicted − 1). The hour windows are exploratory "
-             "(ADR-003). **A transport effect predicts a negative estimate.** CH has no traffic "
-             "stations with predictions yet."), "",
+             "(ADR-003). **A transport effect predicts a negative estimate.**"
+             + (f" No traffic-station placebo for: {', '.join(missing_traffic)} (no traffic "
+                "stations with predictions)." if missing_traffic else "")), "",
             md_table(rule_table(com)), ""]
     if nan_rows:
         out += [(f"No CI for the placebo {', '.join(nan_rows)}: the two-way clustered variance "
