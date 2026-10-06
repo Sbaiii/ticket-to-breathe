@@ -26,18 +26,20 @@
 - [x] ADR-009 post-hoc diagnostics (provisional) → `docs/diagnostics_provisional.md`
 - [x] ADR-010 final-run additions (resid_ugm3 placebo ranges + secondary-outcome verdicts), committed before the final run
 - [x] Case-study data contract `dashboard/data/` (+ `dashboard/README.md`), README results block, `make all` gated on complete weather + checklist
-- [ ] **Resume the weather download** (stopped 2026-10-03 08:01 UTC at 728/1,074; process gone), then `make all` = FINAL run (all 587 controls)
+- [x] Weather download resumed and completed (1,074/1,074); `make all` = FINAL run (all 587 controls, 887 stations) → `docs/results.md`, `docs/diagnostics.md`, `docs/provisional_vs_final.md`
 - [x] ADR-008 analysis plan pre-registered (committed before any estimate)
 - [x] PROVISIONAL run of every ADR-008 estimate → `docs/results_provisional.md` (`make analysis`)
-- [ ] FINAL: DiD on `ratio_pct` (primary) and `resid_ugm3` (station + date FE, SE clustered by station); traffic / background separately + pooled
-- [ ] Event study around 2022-06-01, 2022-09-01, 2023-05-01; pre-trend check
-- [ ] Synthetic control (Germany vs donor countries)
-- [ ] Placebos: fake dates (2019), fake treated country, industrial stations; leave-one-country-out (esp. FR); country-balanced weights
-- [ ] Exploratory hour-of-day windows (06–10, 16–20 local) — labelled exploratory (ADR-003)
+- [x] FINAL: DiD on `ratio_pct` (primary) and `resid_ugm3` (station + date FE, SE clustered by station); traffic / background separately + pooled
+- [x] Event study around 2022-06-01, 2022-09-01, 2023-05-01; pre-trend check
+- [x] Synthetic control (Germany vs donor countries)
+- [x] Placebos: fake dates (2019), fake treated country, industrial stations; leave-one-country-out (esp. FR); country-balanced weights
+- [x] Exploratory hour-of-day windows (06–10, 16–20 local) — commute excess, ADR-009 (exploratory, ADR-003)
 
 ## Day 4 — Confounders, methods, case study, publish
+- [x] Findings F-001…F-007 (lab-notebook/06 Findings)
 - [ ] Confounder section (Tankrabatt, COVID recovery, energy crisis, weather)
 - [ ] Methods appendix incl. residual uncertainties (time zone, weather grid, BLH gap)
 - [ ] Case study page: map, counterfactual chart, exec summary
-- [ ] README results from real outputs; Findings notes
+- [x] README results table generated from real outputs (summary paragraph: author)
+- [ ] Final reports' interpretation sections + README summary (author)
 - [ ] Final review, publish on sbaiii.com
