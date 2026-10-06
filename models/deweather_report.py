@@ -31,7 +31,7 @@ from pipeline.config import (
     REPO_ROOT,
     TREATED,
 )
-from pipeline.md import md_table
+from pipeline.md import interpretation, md_table
 
 WAREHOUSE = REPO_ROOT / "data" / "warehouse.duckdb"
 V1_SNAPSHOT = DEWEATHER_DIR / "v1_station_day_resid.parquet"
@@ -43,6 +43,7 @@ POST_START = "2022-06-01"
 WEATHER_VARS = ["temperature_2m", "relative_humidity_2m", "wind_speed_10m", "precipitation_sum",
                 "surface_pressure", "shortwave_radiation", "cloud_cover", "boundary_layer_height"]
 
+INTERPRETATION_RUN = "491 stations with predictions"
 INTERPRETATION = """
 **The artificial step at 2022-06-01 is gone.** In v1 the May → June 2022 change was −3.8 µg/m³ in
 DE and −0.8 to −4.2 µg/m³ in every control country, because May was in-sample and June was not.
@@ -340,7 +341,9 @@ def main() -> None:
                                        resid_ugm3=pre_months["resid_ugm3"].map(f2))),
             "", "</details>", ""]
 
-    out += ["## Interpretation", "", INTERPRETATION.strip(), ""]
+    run_label = f"{len(summary)} stations with predictions"
+    out += ["## Interpretation", "", interpretation(INTERPRETATION, INTERPRETATION_RUN, run_label),
+            ""]
     OUT_MD.write_text("\n".join(out))
     con.close()
     print(f"Wrote {OUT_MD}, {FIG_RATIO} and {FIG_RESID}")

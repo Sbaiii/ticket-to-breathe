@@ -19,11 +19,12 @@ import pandas as pd
 from analysis.causal import RESULTS
 from analysis.figures import FIG_DIR, INK, INK2, NINE_EURO, SERIES, SURFACE, save, style
 from pipeline.config import DOCS, REPO_ROOT, TREATED, WAREHOUSE_SEEDS
-from pipeline.md import md_table
+from pipeline.md import interpretation, md_table
 
 OXCGRT = REPO_ROOT / "data" / "raw" / "oxcgrt" / "stringency_national.parquet"
 COUNTRIES = ["DE", "AT", "BE", "CH", "CZ", "FR", "NL", "PL"]
 
+INTERPRETATION_RUN = "PROVISIONAL, 191 control stations with predictions"
 INTERPRETATION = """
 **Pre-registered verdict (ADR-008), unchanged:** +5.50 pp [+2.88, +8.13], "detected", opposite sign to H1.
 **Exploratory evidence (post hoc, provisional):**
@@ -273,7 +274,11 @@ def main() -> None:
              "generation per unit; EEA E-PRTR / LCP emissions), then the residual as a function "
              "of distance to and output of nearby plants, before vs during 2022."), ""]
 
-    out += ["## Interpretation", "", INTERPRETATION.strip(), ""]
+    meta = pd.read_parquet(RESULTS / "run_meta.parquet").iloc[0]
+    run_label = (f"{meta['status']}, {int(meta['control_stations_with_predictions'])} control "
+                 "stations with predictions")
+    out += ["## Interpretation", "", interpretation(INTERPRETATION, INTERPRETATION_RUN, run_label),
+            ""]
     out_md = DOCS / ("diagnostics_provisional.md" if status == "PROVISIONAL" else "diagnostics.md")
     out_md.write_text("\n".join(out))
     print(f"Wrote {out_md} and figures in {FIG_DIR}")

@@ -13,8 +13,9 @@ import pandas as pd
 
 from analysis.causal import RESULTS
 from pipeline.config import DOCS
-from pipeline.md import md_table
+from pipeline.md import interpretation, md_table
 
+INTERPRETATION_RUN = "PROVISIONAL, 191 control stations with predictions"
 INTERPRETATION = """
 By the pre-registered rule the primary estimate is "detected", but with a **positive** sign: +5.5 pp
 [+2.9, +8.1], just above the largest placebo country (FR +5.1). In this run, German NO2 relative to
@@ -28,15 +29,6 @@ the same months. Deutschlandticket: not detected; persistence depends on the tre
 All of this is provisional (191 of 587 control stations).
 """
 
-RULE_SPECS = {  # decision-rule estimate → its placebo-country family (ADR-008)
-    "primary": ("€9-Ticket: triple difference (Jun–Aug vs Jan–May 2022)",
-                "placebo country: primary"),
-    "secondary (a)": ("switch-off: Sep–Dec vs Jan–May 2022", "placebo country: switch-off"),
-    "secondary (b)": ("Deutschlandticket: May–Dec vs Jan–Apr 2023",
-                      "placebo country: Deutschlandticket"),
-}
-
-
 def f(v, nd: int = 2) -> str:
     return "" if pd.isna(v) else f"{v:+.{nd}f}"
 
@@ -45,22 +37,29 @@ def ci(r) -> str:
     return f"[{r['ci_low']:+.2f}, {r['ci_high']:+.2f}]"
 
 
-def decision_table(est: pd.DataFrame) -> pd.DataFrame:
-    rows = []
-    for family, (spec, placebo_family) in RULE_SPECS.items():
-        r = est[(est["family"] == family) & (est["outcome"] == "ratio_pct")
-                & (est["spec"] == spec)].iloc[0]
-        pl = est[est["family"] == placebo_family]["estimate"]
-        excl0 = r["ci_low"] > 0 or r["ci_high"] < 0
-        outside = r["estimate"] < pl.min() or r["estimate"] > pl.max()
-        rows.append({"estimate (ADR-008 rule)": r["spec"], "ratio_pct, pp": f(r["estimate"]),
-                     "95 % CI": ci(r), "(1) CI excludes 0": "yes" if excl0 else "no",
-                     "placebo-country range": f"[{pl.min():+.2f}, {pl.max():+.2f}] (n={len(pl)})",
-                     "(2) outside range": "yes" if outside else "no",
-                     "verdict": "detected" if excl0 and outside else "not detected",
-                     "direction": ("higher NO2 than expected" if r["estimate"] > 0
-                                   else "lower NO2 than expected")})
-    return pd.DataFrame(rows)
+def decision_table(ver: pd.DataFrame, rule: str) -> pd.DataFrame:
+    v = ver[ver["rule"] == rule]
+    return pd.DataFrame({
+        "estimate": v["spec"], "outcome": v["outcome"], "value": v["estimate"].map(f),
+        "95 % CI": v.apply(ci, axis=1),
+        "(1) CI excludes 0": v["ci_excludes_0"].map({True: "yes", False: "no"}),
+        "placebo-country range": v.apply(
+            lambda r: f"[{r['placebo_min']:+.2f}, {r['placebo_max']:+.2f}] (n={r['n_placebo']})",
+            axis=1),
+        "(2) outside range": v["outside_placebo_range"].map({True: "yes", False: "no"}),
+        "verdict": v["verdict"],
+        "direction": v["direction"].map({"higher": "higher NO2 than expected",
+                                         "lower": "lower NO2 than expected"})})
+
+
+def all_verdicts_table(ver: pd.DataFrame) -> pd.DataFrame:
+    return pd.DataFrame({
+        "id": ver["id"], "spec": ver["spec"], "outcome": ver["outcome"],
+        "estimate": ver["estimate"].map(f), "95 % CI": ver.apply(ci, axis=1),
+        "placebo-country range": ver.apply(
+            lambda r: "" if r["n_placebo"] == 0 else
+            f"[{r['placebo_min']:+.2f}, {r['placebo_max']:+.2f}] (n={r['n_placebo']})", axis=1),
+        "rule": ver["rule"], "verdict": ver["verdict"]})
 
 
 def estimates_table(est: pd.DataFrame) -> pd.DataFrame:
@@ -76,6 +75,7 @@ def estimates_table(est: pd.DataFrame) -> pd.DataFrame:
 
 def main() -> None:
     est = pd.read_parquet(RESULTS / "estimates.parquet")
+    ver = pd.read_parquet(RESULTS / "verdicts.parquet")
     meta = pd.read_parquet(RESULTS / "run_meta.parquet").iloc[0]
     boot = pd.read_parquet(RESULTS / "wild_bootstrap.parquet").iloc[0]
     es = pd.read_parquet(RESULTS / "event_study.parquet")
@@ -84,6 +84,8 @@ def main() -> None:
     slopes = pd.read_parquet(RESULTS / "country_trend_slopes.parquet")
     cmap = pd.read_parquet(RESULTS / "country_map.parquet")
     status = str(meta["status"])
+    run_label = (f"{status}, {int(meta['control_stations_with_predictions'])} control stations "
+                 "with predictions")
     out_md = DOCS / ("results_provisional.md" if status == "PROVISIONAL" else "results.md")
 
     out = [f"# Results — {status}", ""]
@@ -102,8 +104,17 @@ def main() -> None:
 
     out += ["## 1) Decision rule (ADR-008), applied mechanically", "",
             ("Detected = (1) two-way clustered 95 % CI excludes 0 **and** (2) estimate outside the "
-             "range of the placebo-country estimates of the same formula."), "",
-            md_table(decision_table(est)), ""]
+             "range of the placebo-country estimates of the same formula and outcome."), "",
+            "**Headline: ratio_pct (primary outcome, ADR-008)**", "",
+            md_table(decision_table(ver, "headline (ADR-008)")), "",
+            ("**Secondary outcome: resid_ugm3 (ADR-010, added after the provisional run, before "
+             "the final run).** Reported next to the headline; it never replaces it."), "",
+            md_table(decision_table(ver, "secondary outcome (ADR-010)")), "",
+            "### Placebo-country ranges for every estimate (ADR-010)", "",
+            ("ratio_pct placebo ranges exist for the three rule estimates (ADR-008); resid_ugm3 "
+             "ranges for every primary, secondary and heterogeneity estimate (ADR-010). Estimates "
+             "outside the rule are 'not evaluated'."), "",
+            md_table(all_verdicts_table(ver)), ""]
 
     out += ["## 2) Every estimate", "",
             ("Triple differences: [gap(window) − gap(reference)] in the policy year minus the same "
@@ -117,10 +128,11 @@ def main() -> None:
             f"95 % CI by test inversion [{boot['ci_low']:+.2f}, {boot['ci_high']:+.2f}]. With one "
             "treated cluster this bootstrap is known to be unreliable (ADR-008); it is not part "
             "of the decision rule."), ""]
+    sl = slopes.pivot(index="country_code", columns="outcome", values="slope_per_year")
     out += [("**Country-specific linear trends** used in the trend-adjusted persistence runs "
-            "(fitted on the 29 pre-treatment months; slopes relative to AT, % points per year):"),
-            "", md_table(slopes[["country_code", "slope_pp_per_year"]].assign(
-                slope_pp_per_year=lambda d: d["slope_pp_per_year"].map(f))), ""]
+            "(fitted on the 29 pre-treatment months; slopes relative to AT, per year: % points "
+            "for ratio_pct, µg/m³ for resid_ugm3):"), "",
+            md_table(sl.map(f).reset_index()), ""]
 
     pd_ = est[est["family"] == "placebo date"]["estimate"]
     pc = est[est["family"] == "placebo country: primary"]["estimate"]
@@ -169,7 +181,7 @@ def main() -> None:
                      .drop(columns=["status"])), ""]
 
     out += ["## Interpretation (bound by the ADR-008 rule; provisional)", "",
-            INTERPRETATION.strip(), ""]
+            interpretation(INTERPRETATION, INTERPRETATION_RUN, run_label), ""]
     out_md.write_text("\n".join(out))
     print(f"Wrote {out_md}")
 

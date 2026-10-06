@@ -34,6 +34,7 @@ from pipeline.config import CONTROL_COUNTRIES, DATA_PROCESSED, REPO_ROOT, TREATE
 WAREHOUSE = REPO_ROOT / "data" / "warehouse.duckdb"
 RESULTS = DATA_PROCESSED / "results"
 MAIN_TYPES = ("traffic", "background")
+OUTCOMES = ("ratio_pct", "resid_ugm3")  # primary, secondary (ADR-010)
 CLUSTERS = "sid+cw"
 SEED = 42
 N_BOOT = 9_999
@@ -376,6 +377,38 @@ def country_map(df: pd.DataFrame, coords: pd.DataFrame) -> pd.DataFrame:
 
 
 # --------------------------------------------------------------------------------------------
+# Decision rule (ADR-008; resid_ugm3 as secondary outcome, ADR-010)
+# --------------------------------------------------------------------------------------------
+RULE_IDS = ("nine_euro", "switch_off", "dticket")
+
+
+def verdicts(est: pd.DataFrame) -> pd.DataFrame:
+    """One row per (estimate id, outcome): estimate, CI, own placebo-country range, verdict.
+    The rule is applied to RULE_IDS only: ratio_pct = headline (ADR-008), resid_ugm3 = secondary
+    outcome (ADR-010); every other estimate is 'not evaluated'."""
+    rows = []
+    for _, r in est[est["id"].notna()].iterrows():
+        pl = est[(est["target_id"] == r["id"]) & (est["outcome"] == r["outcome"])]["estimate"]
+        excl0 = bool(r["ci_low"] > 0 or r["ci_high"] < 0)
+        outside = bool(len(pl) and (r["estimate"] < pl.min() or r["estimate"] > pl.max()))
+        applies = r["id"] in RULE_IDS
+        rows.append({
+            "id": r["id"], "family": r["family"], "spec": r["spec"], "outcome": r["outcome"],
+            "estimate": r["estimate"], "ci_low": r["ci_low"], "ci_high": r["ci_high"],
+            "placebo_min": pl.min() if len(pl) else np.nan,
+            "placebo_max": pl.max() if len(pl) else np.nan, "n_placebo": len(pl),
+            "ci_excludes_0": excl0, "outside_placebo_range": outside if len(pl) else None,
+            "rule": ("headline (ADR-008)" if r["outcome"] == "ratio_pct"
+                     else "secondary outcome (ADR-010)") if applies else "not applied",
+            "verdict": ("detected" if excl0 and outside else "not detected") if applies
+                       else "not evaluated",
+            "direction": "higher" if r["estimate"] > 0 else "lower",
+            "n_de": r["n_treated_stations"], "n_ctrl": r["n_control_stations"],
+            "n_station_days": r["n_station_days"]})
+    return pd.DataFrame(rows)
+
+
+# --------------------------------------------------------------------------------------------
 # Main
 # --------------------------------------------------------------------------------------------
 def main() -> None:
@@ -400,38 +433,70 @@ def main() -> None:
     dticket = triple(2023, MD, JA, tw="MD", tr="JA")
     rows = []
 
-    def run(family, spec, design, data=panel, y="ratio_pct", **kw):
+    def run(family, spec, design, data=panel, y="ratio_pct", id=None, target_id=None, **kw):
         t = time.time()
         r = estimate(data, design, y=y, **kw)
-        rows.append({"family": family, "spec": spec, "outcome": y, **r})
-        print(f"  {family:<22} {spec:<55} {r['estimate']:+8.3f} "
+        rows.append({"id": id, "target_id": target_id, "family": family, "spec": spec,
+                     "outcome": y, **r})
+        print(f"  {family:<32} {spec[:50]:<50} {y:<10} {r['estimate']:+8.3f} "
               f"[{r['ci_low']:+.3f}, {r['ci_high']:+.3f}]  ({time.time() - t:.0f} s)", flush=True)
 
-    # Primary and secondary
-    run("primary", "€9-Ticket: triple difference (Jun–Aug vs Jan–May 2022)", primary)
-    run("primary", "€9-Ticket: triple difference", primary, y="resid_ugm3")
-    run("secondary (a)", "switch-off: Sep–Dec vs Jan–May 2022", switch_off)
-    run("secondary (a)", "switch-off: Sep–Dec vs Jan–May 2022, controls AT+CH",
-        switch_off, data=panel[panel["country_code"].isin([TREATED, *NO_FUEL_CUT_CONTROLS])])
-    run("secondary (b)", "Deutschlandticket: May–Dec vs Jan–Apr 2023", dticket)
-    trended = detrend(panel)
+    def placebo_countries(family, target_id, design, data, y):
+        """Each control country of the estimate's sample as fake treated, DE excluded."""
+        no_de = data[data["country_code"] != TREATED]
+        for c in CONTROL_COUNTRIES:
+            if c in set(no_de["country_code"]):
+                run(family, c, design, no_de.assign(fake=(no_de["country_code"] == c).astype(float)),
+                    y=y, target_id=target_id, treated="fake")
+
+    # Primary, secondary and heterogeneity estimates, both outcomes (ratio_pct primary; resid_ugm3
+    # secondary, ADR-010). (id, family, spec, design, data for an outcome)
+    trended = {y: detrend(panel, y=y) for y in OUTCOMES}
+    atch = panel[panel["country_code"].isin([TREATED, *NO_FUEL_CUT_CONTROLS])]
+    specs = [
+        ("nine_euro", "primary", "€9-Ticket: triple difference (Jun–Aug vs Jan–May 2022)",
+         primary, lambda y: panel),
+        ("switch_off", "secondary (a)", "switch-off: Sep–Dec vs Jan–May 2022", switch_off,
+         lambda y: panel),
+        ("switch_off_atch", "secondary (a)", "switch-off: Sep–Dec vs Jan–May 2022, controls AT+CH",
+         switch_off, lambda y: atch),
+        ("dticket", "secondary (b)", "Deutschlandticket: May–Dec vs Jan–Apr 2023", dticket,
+         lambda y: panel),
+    ]
     for year in (2024, 2025):
         pers = did(f"Y{year}", [(year, YEAR)], "JA2023", [(2023, JA)])
-        run("secondary (b)", f"persistence: {year} vs Jan–Apr 2023", pers)
-        run("secondary (b)", f"persistence: {year} vs Jan–Apr 2023, country trends", pers,
-            data=trended)
-    run("secondary (c)", "classic TWFE DiD: Jun–Aug 2022 vs full pre-period (BIASED by pre-trend)",
-        did("S2022", [(2022, S)], "PRE", PRE_BLOCKS))
+        specs += [(f"persist_{year}", "secondary (b)", f"persistence: {year} vs Jan–Apr 2023",
+                   pers, lambda y: panel),
+                  (f"persist_{year}_trend", "secondary (b)",
+                   f"persistence: {year} vs Jan–Apr 2023, country trends", pers,
+                   lambda y: trended[y])]
+    specs += [
+        ("classic_twfe", "secondary (c)",
+         "classic TWFE DiD: Jun–Aug 2022 vs full pre-period (BIASED by pre-trend)",
+         did("S2022", [(2022, S)], "PRE", PRE_BLOCKS), lambda y: panel),
+        ("traffic", "heterogeneity", "traffic stations", primary,
+         lambda y: panel[panel["station_type"] == "traffic"]),
+        ("background", "heterogeneity", "background stations", primary,
+         lambda y: panel[panel["station_type"] == "background"]),
+        ("weekday", "heterogeneity", "weekdays (Mon–Fri)", primary,
+         lambda y: panel[panel["weekday"]]),
+        ("weekend", "heterogeneity", "weekends (Sat–Sun)", primary,
+         lambda y: panel[~panel["weekday"]]),
+    ]
+    for id_, family, spec, design, data_for in specs:
+        for y in OUTCOMES:
+            run(family, spec, design, data_for(y), y=y, id=id_)
 
-    # Placebo countries (each formula of the decision rule)
-    no_de = panel[panel["country_code"] != TREATED].copy()
-    for name, design in (("primary", primary), ("switch-off", switch_off),
-                         ("Deutschlandticket", dticket)):
-        for c in CONTROL_COUNTRIES:
-            if c not in set(no_de["country_code"]):
-                continue
-            data = no_de.assign(fake=(no_de["country_code"] == c).astype(float))
-            run(f"placebo country: {name}", c, design, data=data, treated="fake")
+    # Placebo countries: ratio_pct for the three ADR-008 rule estimates; resid_ugm3 for every
+    # estimate above (ADR-010).
+    rule_names = {"nine_euro": "primary", "switch_off": "switch-off",
+                  "dticket": "Deutschlandticket"}
+    for id_, family, spec, design, data_for in specs:
+        if id_ in rule_names:
+            placebo_countries(f"placebo country: {rule_names[id_]}", id_, design,
+                              data_for("ratio_pct"), "ratio_pct")
+        placebo_countries("placebo country (resid_ugm3)", id_, design, data_for("resid_ugm3"),
+                          "resid_ugm3")
     run("placebo industrial", "industrial stations, primary formula", primary, data=industrial)
 
     # Placebo dates
@@ -444,12 +509,6 @@ def main() -> None:
             rest = [m for m in YEAR if m not in q]
             run("placebo date", f"{qn} {T} vs rest of {T}, baseline {b}",
                 triple(T, q, rest, (b,)))
-
-    # Heterogeneity
-    for st in MAIN_TYPES:
-        run("heterogeneity", f"{st} stations", primary, data=panel[panel["station_type"] == st])
-    run("heterogeneity", "weekdays (Mon–Fri)", primary, data=panel[panel["weekday"]])
-    run("heterogeneity", "weekends (Sat–Sun)", primary, data=panel[~panel["weekday"]])
 
     # Robustness
     run("robustness", "ratio_noblh (no-BLH prediction everywhere)", primary, y="ratio_noblh")
@@ -469,8 +528,11 @@ def main() -> None:
     est = pd.DataFrame(rows)
     est["status"] = status
     est.to_parquet(RESULTS / "estimates.parquet", index=False)
-    slopes = pd.DataFrame([{"country_code": c, "slope_pp_per_year": s}
-                           for c, s in trended.attrs["slopes"].items()])
+    ver = verdicts(est)
+    ver["status"] = status
+    ver.to_parquet(RESULTS / "verdicts.parquet", index=False)
+    slopes = pd.DataFrame([{"outcome": y, "country_code": c, "slope_per_year": s}
+                           for y in OUTCOMES for c, s in trended[y].attrs["slopes"].items()])
     slopes["status"] = status
     slopes.to_parquet(RESULTS / "country_trend_slopes.parquet", index=False)
 

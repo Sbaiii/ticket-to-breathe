@@ -17,3 +17,13 @@ def md_table(df: pd.DataFrame) -> str:
     lines = ["| " + " | ".join(str(c) for c in df.columns) + " |", "|" + "---|" * len(df.columns)]
     lines += ["| " + " | ".join(fmt(v) for v in row) + " |" for row in df.itertuples(index=False)]
     return "\n".join(lines)
+
+
+def interpretation(text: str, written_for: str, current: str) -> str:
+    """The hand-written interpretation, but only for the run it was written for. For any other run
+    a 'pending' note is returned, so prose numbers never outlive the facts they describe."""
+    if written_for == current:
+        return text.strip()
+    return (f"_Interpretation pending. The text in the script was written for the run "
+            f"\"{written_for}\"; this run is \"{current}\". Rewrite it after reading the facts "
+            "above._")
