@@ -74,6 +74,8 @@ COVID restriction periods, school holidays (strong NO2 signal).
 - Gohl & Schrauth (2024), "Ticket to paradise? The effect of a public transport subsidy on air quality",
   *Journal of Urban Economics* 142 — DiD, reports a >8% drop in an air-pollution index, reversing after the ticket ended.
 - Aydin & Kürschner Rauck (2023), Swiss Finance Institute RP 23-109 — PM10 −0.44 and PM2.5 −0.41 µg/m³ at traffic stations.
-- Liebensteiner et al. (CESifo WP 11229) — mobility: train trips +~35%, car traffic −1 to −5%; adjust for Tankrabatt
-  via fuel-price elasticities.
+- Liebensteiner, Losert, Necker, Neumeier, Paetzold & Wichert, "Almost Fare Free" (CESifo WP 11229,
+  version May 2026), <https://www.ifo.de/DocDL/cesifo1_wp11229.pdf>, fetched 2026-10-02 (re-checked
+  2026-10-06) — mobility: train trips +~35%, car traffic −1% to −5% "depending on the measure and
+  dataset"; adjust for Tankrabatt via fuel-price elasticities.
 - Albalate, Borsati & Gragera (2024, IREA WP 2024/14) — Spain's Sept 2022 fare discounts: no detectable air-quality effect.
