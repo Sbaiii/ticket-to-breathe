@@ -39,7 +39,7 @@ Sources: `source_url` column of `warehouse/seeds/policy_calendar.csv` (all fetch
 
 OxCGRT `OxCGRT_timeseries_StringencyIndex_v1.csv` (official GitHub repository OxCGRT/covid-policy-dataset), CC BY 4.0, Hale et al. (2021) https://doi.org/10.1038/s41562-021-01079-8. Set to 0 in 2018–19 for the covariate run (no measures existed).
 
-![Stringency vs gap](figures/diag_stringency.png)
+![Stringency vs gap](figures/provisional/diag_stringency.png)
 
 ### Primary formula with other references / a stringency covariate
 
@@ -97,7 +97,7 @@ Mean predicted NO2, residual and ratio (station-day means) by period and year:
 
 ## 4) Energy-crisis hypothesis (descriptive only)
 
-![Gap by station type](figures/diag_gap_by_type.png)
+![Gap by station type](figures/provisional/diag_gap_by_type.png)
 
 Monthly DE − controls gap in ratio_pct (simple means of station-days), minus the same calendar month's gap averaged over 2018–19; 2022:
 

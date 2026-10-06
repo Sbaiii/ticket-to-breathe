@@ -237,7 +237,7 @@ Triple differences: [gap(window) − gap(reference)] in the policy year minus th
 
 ## 3) Placebo distributions (primary formula)
 
-![Placebos](figures/placebos.png)
+![Placebos](figures/provisional/placebos.png)
 
 | distribution | min | max | mean | SD | |estimate| ≥ |primary| |
 |---|---|---|---|---|---|
@@ -246,7 +246,7 @@ Triple differences: [gap(window) − gap(reference)] in the policy year minus th
 
 ## 4) Event study
 
-![Event study](figures/event_study.png)
+![Event study](figures/provisional/event_study.png)
 
 Jan 2022 – Jun 2023 (all 72 months in `dashboard/data/event_study.json`):
 
@@ -273,7 +273,7 @@ Jan 2022 – Jun 2023 (all 72 months in `dashboard/data/event_study.json`):
 
 ## 5) Synthetic control (country level)
 
-![Synthetic control](figures/synthetic_control.png)
+![Synthetic control](figures/provisional/synthetic_control.png)
 
 Donor weights for Germany:
 
