@@ -45,13 +45,32 @@ Verified on 2026-10-02 from official documentation. Live API probes are Task 1 o
   Free tier is for non-commercial use — a public portfolio project qualifies.
 
 ## 3. Policy calendar (treatment & confounders)
-Hand-built seed table, every row with a source link **[to build]**:
+Hand-built seed table `warehouse/seeds/policy_calendar.csv` (built), every row with a fetched source link and a `verified` flag:
 9-Euro-Ticket (2022-06-01 → 2022-08-31), Deutschlandticket (from 2023-05-01; price changes 2025/2026),
 Tankrabatt (2022-06-01 → 2022-08-31), control-country fuel discounts and transit offers in 2022
 (e.g. France remise carburant, Spain transit discounts from Sept 2022 — Spain excluded as control),
 COVID restriction periods, school holidays (strong NO2 signal).
 
-## 4. Prior literature (context, not data)
+## 4. OxCGRT COVID-19 stringency index (exploratory covariate, ADR-009)
+- **Source:** Oxford COVID-19 Government Response Tracker, official repository
+  `github.com/OxCGRT/covid-policy-dataset`, file
+  `data/timeseries_indices/OxCGRT_timeseries_StringencyIndex_v1.csv` (national rows; daily,
+  2020-01-01 → 2023-02-28).
+- **Licence:** CC BY 4.0 (`LICENSE.txt` in the repository). Cite: Hale et al. (2021), *Nature Human
+  Behaviour*, https://doi.org/10.1038/s41562-021-01079-8.
+- **Script:** `pipeline/oxcgrt_download.py` → `data/raw/oxcgrt/` (manifest with SHA-256).
+
+## 5. Natural Earth admin-0 boundaries (case-study map)
+- **Source:** Natural Earth 1:50m Admin 0 – Countries, GeoJSON from the official repository
+  `github.com/nvkelso/natural-earth-vector` (`geojson/ne_50m_admin_0_countries.geojson`).
+- **Licence:** public domain ("All versions of Natural Earth raster + vector map data found on this
+  website are in the public domain." — naturalearthdata.com/about/terms-of-use). No attribution
+  required; we credit "Made with Natural Earth."
+- **Script:** `pipeline/boundaries_download.py` → `data/processed/countries.geojson` (DE, AT, BE, CH,
+  CZ, FR metropolitan, NL, PL, DK, LU, IT, ES; parts outside Europe dropped; simplified, ≤ 250 KB),
+  copied to `dashboard/data/countries.geojson` by `analysis/dashboard_data.py`.
+
+## 6. Prior literature (context, not data)
 - Gohl & Schrauth (2024), "Ticket to paradise? The effect of a public transport subsidy on air quality",
   *Journal of Urban Economics* 142 — DiD, reports a >8% drop in an air-pollution index, reversing after the ticket ended.
 - Aydin & Kürschner Rauck (2023), Swiss Finance Institute RP 23-109 — PM10 −0.44 and PM2.5 −0.41 µg/m³ at traffic stations.
