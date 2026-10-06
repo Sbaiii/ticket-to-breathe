@@ -1,1015 +1,1015 @@
 {
- "status": "PROVISIONAL",
- "generated_utc": "2026-10-06T03:04:39Z",
+ "status": "FINAL",
+ "generated_utc": "2026-10-06T08:26:46Z",
  "outcome": "ratio_pct",
  "rows": [
   {
    "month": "2018-01",
    "variant": "ref_janmay",
-   "est": 14.06,
-   "lo": 8.57,
-   "hi": 19.55
+   "est": 14.51,
+   "lo": 10.72,
+   "hi": 18.3
   },
   {
    "month": "2018-02",
    "variant": "ref_janmay",
-   "est": 6.48,
-   "lo": 3.56,
-   "hi": 9.4
+   "est": 7.3,
+   "lo": 4.75,
+   "hi": 9.85
   },
   {
    "month": "2018-03",
    "variant": "ref_janmay",
-   "est": 4.65,
-   "lo": 0.92,
-   "hi": 8.39
+   "est": 5.05,
+   "lo": 0.58,
+   "hi": 9.53
   },
   {
    "month": "2018-04",
    "variant": "ref_janmay",
-   "est": 9.88,
-   "lo": 5.91,
-   "hi": 13.86
+   "est": 13.55,
+   "lo": 9.94,
+   "hi": 17.16
   },
   {
    "month": "2018-05",
    "variant": "ref_janmay",
-   "est": 9.79,
-   "lo": 5.35,
-   "hi": 14.23
+   "est": 11.75,
+   "lo": 7.55,
+   "hi": 15.94
   },
   {
    "month": "2018-06",
    "variant": "ref_janmay",
-   "est": 7.36,
-   "lo": 3.93,
-   "hi": 10.79
+   "est": 7.88,
+   "lo": 4.39,
+   "hi": 11.37
   },
   {
    "month": "2018-07",
    "variant": "ref_janmay",
-   "est": 4.13,
-   "lo": 0.3,
-   "hi": 7.97
+   "est": 5.49,
+   "lo": 1.99,
+   "hi": 8.98
   },
   {
    "month": "2018-08",
    "variant": "ref_janmay",
-   "est": 8.32,
-   "lo": 4.47,
-   "hi": 12.17
+   "est": 10.95,
+   "lo": 7.36,
+   "hi": 14.54
   },
   {
    "month": "2018-09",
    "variant": "ref_janmay",
-   "est": 7.62,
-   "lo": 4.0,
-   "hi": 11.23
+   "est": 8.69,
+   "lo": 5.92,
+   "hi": 11.46
   },
   {
    "month": "2018-10",
    "variant": "ref_janmay",
-   "est": 5.28,
-   "lo": 1.01,
-   "hi": 9.54
+   "est": 6.61,
+   "lo": 3.65,
+   "hi": 9.58
   },
   {
    "month": "2018-11",
    "variant": "ref_janmay",
-   "est": 7.59,
-   "lo": 4.0,
-   "hi": 11.19
+   "est": 7.8,
+   "lo": 4.01,
+   "hi": 11.59
   },
   {
    "month": "2018-12",
    "variant": "ref_janmay",
-   "est": 3.23,
-   "lo": -0.25,
-   "hi": 6.7
+   "est": 5.51,
+   "lo": 1.6,
+   "hi": 9.42
   },
   {
    "month": "2019-01",
    "variant": "ref_janmay",
-   "est": 4.24,
-   "lo": -0.59,
-   "hi": 9.08
+   "est": 4.98,
+   "lo": 0.28,
+   "hi": 9.68
   },
   {
    "month": "2019-02",
    "variant": "ref_janmay",
-   "est": 10.91,
-   "lo": 7.4,
-   "hi": 14.42
+   "est": 11.17,
+   "lo": 7.99,
+   "hi": 14.34
   },
   {
    "month": "2019-03",
    "variant": "ref_janmay",
-   "est": 7.08,
-   "lo": 2.44,
-   "hi": 11.72
+   "est": 8.13,
+   "lo": 3.94,
+   "hi": 12.31
   },
   {
    "month": "2019-04",
    "variant": "ref_janmay",
-   "est": 3.42,
-   "lo": 0.09,
-   "hi": 6.74
+   "est": 3.34,
+   "lo": -0.04,
+   "hi": 6.73
   },
   {
    "month": "2019-05",
    "variant": "ref_janmay",
-   "est": 8.31,
-   "lo": 4.23,
-   "hi": 12.38
+   "est": 10.0,
+   "lo": 6.21,
+   "hi": 13.79
   },
   {
    "month": "2019-06",
    "variant": "ref_janmay",
-   "est": 1.53,
-   "lo": -1.74,
-   "hi": 4.81
+   "est": 2.84,
+   "lo": -0.49,
+   "hi": 6.18
   },
   {
    "month": "2019-07",
    "variant": "ref_janmay",
-   "est": 3.35,
-   "lo": 0.47,
-   "hi": 6.23
+   "est": 2.42,
+   "lo": -0.22,
+   "hi": 5.07
   },
   {
    "month": "2019-08",
    "variant": "ref_janmay",
-   "est": 5.04,
-   "lo": 2.31,
-   "hi": 7.77
+   "est": 3.4,
+   "lo": 0.89,
+   "hi": 5.91
   },
   {
    "month": "2019-09",
    "variant": "ref_janmay",
-   "est": 2.19,
-   "lo": -0.57,
-   "hi": 4.95
+   "est": 2.73,
+   "lo": 0.47,
+   "hi": 4.98
   },
   {
    "month": "2019-10",
    "variant": "ref_janmay",
-   "est": 2.58,
-   "lo": -1.25,
-   "hi": 6.41
+   "est": 3.77,
+   "lo": 0.52,
+   "hi": 7.03
   },
   {
    "month": "2019-11",
    "variant": "ref_janmay",
-   "est": 4.96,
-   "lo": 2.39,
-   "hi": 7.54
+   "est": 4.32,
+   "lo": 1.92,
+   "hi": 6.71
   },
   {
    "month": "2019-12",
    "variant": "ref_janmay",
-   "est": 5.48,
-   "lo": 2.06,
-   "hi": 8.89
+   "est": 7.04,
+   "lo": 4.15,
+   "hi": 9.93
   },
   {
    "month": "2022-01",
    "variant": "ref_janmay",
-   "est": -2.38,
-   "lo": -4.37,
-   "hi": -0.39
+   "est": -1.6,
+   "lo": -3.17,
+   "hi": -0.02
   },
   {
    "month": "2022-02",
    "variant": "ref_janmay",
-   "est": 0.18,
-   "lo": -1.71,
-   "hi": 2.07
+   "est": 1.57,
+   "lo": -0.0,
+   "hi": 3.15
   },
   {
    "month": "2022-03",
    "variant": "ref_janmay",
-   "est": 0.3,
-   "lo": -2.2,
-   "hi": 2.81
+   "est": -0.63,
+   "lo": -2.39,
+   "hi": 1.14
   },
   {
    "month": "2022-04",
    "variant": "ref_janmay",
-   "est": 1.26,
-   "lo": -0.56,
-   "hi": 3.07
+   "est": 0.07,
+   "lo": -1.7,
+   "hi": 1.83
   },
   {
    "month": "2022-05",
    "variant": "ref_janmay",
-   "est": 0.64,
-   "lo": -1.6,
-   "hi": 2.89
+   "est": 0.58,
+   "lo": -1.3,
+   "hi": 2.47
   },
   {
    "month": "2022-06",
    "variant": "ref_janmay",
-   "est": 2.73,
-   "lo": 0.24,
-   "hi": 5.21
+   "est": 0.17,
+   "lo": -2.29,
+   "hi": 2.63
   },
   {
    "month": "2022-07",
    "variant": "ref_janmay",
-   "est": 4.02,
-   "lo": 1.65,
-   "hi": 6.39
+   "est": 2.38,
+   "lo": 0.23,
+   "hi": 4.53
   },
   {
    "month": "2022-08",
    "variant": "ref_janmay",
-   "est": 0.97,
-   "lo": -1.51,
-   "hi": 3.44
+   "est": -2.31,
+   "lo": -5.28,
+   "hi": 0.67
   },
   {
    "month": "2022-09",
    "variant": "ref_janmay",
-   "est": 1.52,
-   "lo": -0.81,
-   "hi": 3.86
+   "est": 0.8,
+   "lo": -1.49,
+   "hi": 3.08
   },
   {
    "month": "2022-10",
    "variant": "ref_janmay",
-   "est": 1.55,
-   "lo": -0.93,
-   "hi": 4.04
+   "est": 1.8,
+   "lo": -0.2,
+   "hi": 3.8
   },
   {
    "month": "2022-11",
    "variant": "ref_janmay",
-   "est": 4.61,
-   "lo": 2.39,
-   "hi": 6.84
+   "est": 3.76,
+   "lo": 2.09,
+   "hi": 5.44
   },
   {
    "month": "2022-12",
    "variant": "ref_janmay",
-   "est": 7.09,
-   "lo": 4.18,
-   "hi": 10.0
+   "est": 5.83,
+   "lo": 2.27,
+   "hi": 9.4
   },
   {
    "month": "2023-01",
    "variant": "ref_janmay",
-   "est": 3.04,
-   "lo": 0.15,
-   "hi": 5.94
+   "est": 2.96,
+   "lo": 0.33,
+   "hi": 5.58
   },
   {
    "month": "2023-02",
    "variant": "ref_janmay",
-   "est": 1.71,
-   "lo": -1.11,
-   "hi": 4.53
+   "est": 1.65,
+   "lo": -1.52,
+   "hi": 4.83
   },
   {
    "month": "2023-03",
    "variant": "ref_janmay",
-   "est": 2.03,
-   "lo": -0.21,
-   "hi": 4.28
+   "est": 1.1,
+   "lo": -0.97,
+   "hi": 3.18
   },
   {
    "month": "2023-04",
    "variant": "ref_janmay",
-   "est": 2.21,
-   "lo": -0.42,
-   "hi": 4.83
+   "est": 3.75,
+   "lo": 1.7,
+   "hi": 5.8
   },
   {
    "month": "2023-05",
    "variant": "ref_janmay",
-   "est": 1.22,
-   "lo": -0.85,
-   "hi": 3.29
+   "est": 0.13,
+   "lo": -1.75,
+   "hi": 2.01
   },
   {
    "month": "2023-06",
    "variant": "ref_janmay",
-   "est": 2.43,
-   "lo": -0.12,
-   "hi": 4.99
+   "est": -0.88,
+   "lo": -3.26,
+   "hi": 1.51
   },
   {
    "month": "2023-07",
    "variant": "ref_janmay",
-   "est": 2.74,
-   "lo": -0.06,
-   "hi": 5.54
+   "est": 3.22,
+   "lo": 1.15,
+   "hi": 5.28
   },
   {
    "month": "2023-08",
    "variant": "ref_janmay",
-   "est": -3.01,
-   "lo": -5.58,
-   "hi": -0.44
+   "est": -3.66,
+   "lo": -6.11,
+   "hi": -1.21
   },
   {
    "month": "2023-09",
    "variant": "ref_janmay",
-   "est": -1.74,
-   "lo": -4.35,
-   "hi": 0.86
+   "est": -3.14,
+   "lo": -5.29,
+   "hi": -0.99
   },
   {
    "month": "2023-10",
    "variant": "ref_janmay",
-   "est": 0.21,
-   "lo": -2.23,
-   "hi": 2.65
+   "est": 1.6,
+   "lo": -1.08,
+   "hi": 4.28
   },
   {
    "month": "2023-11",
    "variant": "ref_janmay",
-   "est": -1.57,
-   "lo": -4.18,
-   "hi": 1.04
+   "est": 0.11,
+   "lo": -1.94,
+   "hi": 2.15
   },
   {
    "month": "2023-12",
    "variant": "ref_janmay",
-   "est": 0.15,
-   "lo": -3.73,
-   "hi": 4.03
+   "est": 0.0,
+   "lo": -3.68,
+   "hi": 3.68
   },
   {
    "month": "2024-01",
    "variant": "ref_janmay",
-   "est": 2.21,
-   "lo": -1.68,
-   "hi": 6.09
+   "est": 2.07,
+   "lo": -1.64,
+   "hi": 5.78
   },
   {
    "month": "2024-02",
    "variant": "ref_janmay",
-   "est": 0.74,
-   "lo": -1.84,
-   "hi": 3.32
+   "est": 1.81,
+   "lo": -0.66,
+   "hi": 4.29
   },
   {
    "month": "2024-03",
    "variant": "ref_janmay",
-   "est": 5.15,
-   "lo": 2.07,
-   "hi": 8.23
+   "est": 5.98,
+   "lo": 1.83,
+   "hi": 10.12
   },
   {
    "month": "2024-04",
    "variant": "ref_janmay",
-   "est": 3.89,
-   "lo": 1.38,
-   "hi": 6.4
+   "est": 4.82,
+   "lo": 2.26,
+   "hi": 7.37
   },
   {
    "month": "2024-05",
    "variant": "ref_janmay",
-   "est": -0.12,
-   "lo": -2.58,
-   "hi": 2.35
+   "est": 0.42,
+   "lo": -2.04,
+   "hi": 2.87
   },
   {
    "month": "2024-06",
    "variant": "ref_janmay",
-   "est": 0.5,
-   "lo": -1.84,
-   "hi": 2.84
+   "est": 0.64,
+   "lo": -1.47,
+   "hi": 2.75
   },
   {
    "month": "2024-07",
    "variant": "ref_janmay",
-   "est": -1.37,
-   "lo": -3.97,
-   "hi": 1.23
+   "est": -0.86,
+   "lo": -2.92,
+   "hi": 1.19
   },
   {
    "month": "2024-08",
    "variant": "ref_janmay",
-   "est": -3.8,
-   "lo": -6.6,
-   "hi": -0.99
+   "est": -4.33,
+   "lo": -6.36,
+   "hi": -2.3
   },
   {
    "month": "2024-09",
    "variant": "ref_janmay",
-   "est": -0.81,
-   "lo": -4.27,
-   "hi": 2.65
+   "est": 0.09,
+   "lo": -2.46,
+   "hi": 2.64
   },
   {
    "month": "2024-10",
    "variant": "ref_janmay",
-   "est": 1.44,
-   "lo": -0.75,
-   "hi": 3.63
+   "est": 1.93,
+   "lo": -0.02,
+   "hi": 3.89
   },
   {
    "month": "2024-11",
    "variant": "ref_janmay",
-   "est": 0.82,
-   "lo": -2.07,
-   "hi": 3.71
+   "est": 2.57,
+   "lo": -0.19,
+   "hi": 5.33
   },
   {
    "month": "2024-12",
    "variant": "ref_janmay",
-   "est": 0.74,
-   "lo": -1.67,
-   "hi": 3.14
+   "est": 0.01,
+   "lo": -2.25,
+   "hi": 2.26
   },
   {
    "month": "2025-01",
    "variant": "ref_janmay",
-   "est": 6.18,
-   "lo": 3.26,
-   "hi": 9.1
+   "est": 6.22,
+   "lo": 3.59,
+   "hi": 8.85
   },
   {
    "month": "2025-02",
    "variant": "ref_janmay",
-   "est": 4.39,
-   "lo": 1.88,
-   "hi": 6.9
+   "est": 3.26,
+   "lo": 0.84,
+   "hi": 5.68
   },
   {
    "month": "2025-03",
    "variant": "ref_janmay",
-   "est": 8.75,
-   "lo": 6.6,
-   "hi": 10.91
+   "est": 7.46,
+   "lo": 5.01,
+   "hi": 9.91
   },
   {
    "month": "2025-04",
    "variant": "ref_janmay",
-   "est": 6.74,
-   "lo": 4.28,
-   "hi": 9.21
+   "est": 5.76,
+   "lo": 3.76,
+   "hi": 7.75
   },
   {
    "month": "2025-05",
    "variant": "ref_janmay",
-   "est": 4.5,
-   "lo": 2.15,
-   "hi": 6.85
+   "est": 4.25,
+   "lo": 2.23,
+   "hi": 6.27
   },
   {
    "month": "2025-06",
    "variant": "ref_janmay",
-   "est": 3.04,
-   "lo": 0.55,
-   "hi": 5.53
+   "est": 1.61,
+   "lo": -0.68,
+   "hi": 3.9
   },
   {
    "month": "2025-07",
    "variant": "ref_janmay",
-   "est": 2.65,
-   "lo": 0.36,
-   "hi": 4.95
+   "est": 0.51,
+   "lo": -1.67,
+   "hi": 2.69
   },
   {
    "month": "2025-08",
    "variant": "ref_janmay",
-   "est": -0.28,
-   "lo": -2.52,
-   "hi": 1.96
+   "est": -2.65,
+   "lo": -4.76,
+   "hi": -0.54
   },
   {
    "month": "2025-09",
    "variant": "ref_janmay",
-   "est": 2.14,
-   "lo": -0.01,
-   "hi": 4.29
+   "est": 1.43,
+   "lo": -0.3,
+   "hi": 3.15
   },
   {
    "month": "2025-10",
    "variant": "ref_janmay",
-   "est": 1.42,
-   "lo": -0.93,
-   "hi": 3.77
+   "est": 0.87,
+   "lo": -1.2,
+   "hi": 2.93
   },
   {
    "month": "2025-11",
    "variant": "ref_janmay",
-   "est": 2.68,
-   "lo": -0.64,
-   "hi": 5.99
+   "est": 2.15,
+   "lo": -0.45,
+   "hi": 4.75
   },
   {
    "month": "2025-12",
    "variant": "ref_janmay",
-   "est": 5.31,
-   "lo": 1.92,
-   "hi": 8.7
+   "est": 3.36,
+   "lo": 1.0,
+   "hi": 5.72
   },
   {
    "month": "2018-01",
    "variant": "season_adjusted",
-   "est": 4.91,
-   "lo": 1.56,
-   "hi": 8.26
+   "est": 4.77,
+   "lo": 2.0,
+   "hi": 7.54
   },
   {
    "month": "2018-02",
    "variant": "season_adjusted",
-   "est": -2.21,
-   "lo": -3.99,
-   "hi": -0.44
+   "est": -1.93,
+   "lo": -3.66,
+   "hi": -0.21
   },
   {
    "month": "2018-03",
    "variant": "season_adjusted",
-   "est": -1.21,
-   "lo": -3.77,
-   "hi": 1.34
+   "est": -1.54,
+   "lo": -4.38,
+   "hi": 1.3
   },
   {
    "month": "2018-04",
    "variant": "season_adjusted",
-   "est": 3.23,
-   "lo": 0.98,
-   "hi": 5.48
+   "est": 5.1,
+   "lo": 2.82,
+   "hi": 7.38
   },
   {
    "month": "2018-05",
    "variant": "season_adjusted",
-   "est": 0.74,
-   "lo": -1.9,
-   "hi": 3.38
+   "est": 0.87,
+   "lo": -1.74,
+   "hi": 3.49
   },
   {
    "month": "2018-06",
    "variant": "season_adjusted",
-   "est": 2.91,
-   "lo": 0.61,
-   "hi": 5.21
+   "est": 2.52,
+   "lo": 0.08,
+   "hi": 4.96
   },
   {
    "month": "2018-07",
    "variant": "season_adjusted",
-   "est": 0.39,
-   "lo": -2.09,
-   "hi": 2.87
+   "est": 1.53,
+   "lo": -0.69,
+   "hi": 3.76
   },
   {
    "month": "2018-08",
    "variant": "season_adjusted",
-   "est": 1.64,
-   "lo": -0.82,
-   "hi": 4.11
+   "est": 3.77,
+   "lo": 1.49,
+   "hi": 6.06
   },
   {
    "month": "2018-09",
    "variant": "season_adjusted",
-   "est": 2.71,
-   "lo": 0.47,
-   "hi": 4.96
+   "est": 2.98,
+   "lo": 1.19,
+   "hi": 4.77
   },
   {
    "month": "2018-10",
    "variant": "season_adjusted",
-   "est": 1.35,
-   "lo": -1.5,
-   "hi": 4.19
+   "est": 1.42,
+   "lo": -0.76,
+   "hi": 3.6
   },
   {
    "month": "2018-11",
    "variant": "season_adjusted",
-   "est": 1.31,
-   "lo": -0.74,
-   "hi": 3.37
+   "est": 1.74,
+   "lo": -0.42,
+   "hi": 3.91
   },
   {
    "month": "2018-12",
    "variant": "season_adjusted",
-   "est": -1.13,
-   "lo": -3.5,
-   "hi": 1.25
+   "est": -0.77,
+   "lo": -3.19,
+   "hi": 1.66
   },
   {
    "month": "2019-01",
    "variant": "season_adjusted",
-   "est": -4.91,
-   "lo": -8.26,
-   "hi": -1.56
+   "est": -4.77,
+   "lo": -7.54,
+   "hi": -2.0
   },
   {
    "month": "2019-02",
    "variant": "season_adjusted",
-   "est": 2.21,
-   "lo": 0.44,
-   "hi": 3.99
+   "est": 1.93,
+   "lo": 0.21,
+   "hi": 3.66
   },
   {
    "month": "2019-03",
    "variant": "season_adjusted",
-   "est": 1.21,
-   "lo": -1.34,
-   "hi": 3.77
+   "est": 1.54,
+   "lo": -1.3,
+   "hi": 4.38
   },
   {
    "month": "2019-04",
    "variant": "season_adjusted",
-   "est": -3.23,
-   "lo": -5.48,
-   "hi": -0.98
+   "est": -5.1,
+   "lo": -7.38,
+   "hi": -2.82
   },
   {
    "month": "2019-05",
    "variant": "season_adjusted",
-   "est": -0.74,
-   "lo": -3.38,
-   "hi": 1.9
+   "est": -0.87,
+   "lo": -3.49,
+   "hi": 1.74
   },
   {
    "month": "2019-06",
    "variant": "season_adjusted",
-   "est": -2.91,
-   "lo": -5.21,
-   "hi": -0.61
+   "est": -2.52,
+   "lo": -4.96,
+   "hi": -0.08
   },
   {
    "month": "2019-07",
    "variant": "season_adjusted",
-   "est": -0.39,
-   "lo": -2.87,
-   "hi": 2.09
+   "est": -1.53,
+   "lo": -3.76,
+   "hi": 0.69
   },
   {
    "month": "2019-08",
    "variant": "season_adjusted",
-   "est": -1.64,
-   "lo": -4.11,
-   "hi": 0.82
+   "est": -3.77,
+   "lo": -6.06,
+   "hi": -1.49
   },
   {
    "month": "2019-09",
    "variant": "season_adjusted",
-   "est": -2.71,
-   "lo": -4.96,
-   "hi": -0.47
+   "est": -2.98,
+   "lo": -4.77,
+   "hi": -1.19
   },
   {
    "month": "2019-10",
    "variant": "season_adjusted",
-   "est": -1.35,
-   "lo": -4.19,
-   "hi": 1.5
+   "est": -1.42,
+   "lo": -3.6,
+   "hi": 0.76
   },
   {
    "month": "2019-11",
    "variant": "season_adjusted",
-   "est": -1.31,
-   "lo": -3.37,
-   "hi": 0.74
+   "est": -1.74,
+   "lo": -3.91,
+   "hi": 0.42
   },
   {
    "month": "2019-12",
    "variant": "season_adjusted",
-   "est": 1.13,
-   "lo": -1.25,
-   "hi": 3.5
+   "est": 0.77,
+   "lo": -1.66,
+   "hi": 3.19
   },
   {
    "month": "2022-01",
    "variant": "season_adjusted",
-   "est": -11.54,
-   "lo": -16.06,
-   "hi": -7.01
+   "est": -11.34,
+   "lo": -15.02,
+   "hi": -7.66
   },
   {
    "month": "2022-02",
    "variant": "season_adjusted",
-   "est": -8.51,
-   "lo": -11.9,
-   "hi": -5.13
+   "est": -7.66,
+   "lo": -10.54,
+   "hi": -4.77
   },
   {
    "month": "2022-03",
    "variant": "season_adjusted",
-   "est": -5.57,
-   "lo": -10.03,
-   "hi": -1.1
+   "est": -7.22,
+   "lo": -10.99,
+   "hi": -3.45
   },
   {
    "month": "2022-04",
    "variant": "season_adjusted",
-   "est": -5.4,
-   "lo": -8.84,
-   "hi": -1.95
+   "est": -8.38,
+   "lo": -11.66,
+   "hi": -5.1
   },
   {
    "month": "2022-05",
    "variant": "season_adjusted",
-   "est": -8.4,
-   "lo": -12.76,
-   "hi": -4.05
+   "est": -10.29,
+   "lo": -14.1,
+   "hi": -6.47
   },
   {
    "month": "2022-06",
    "variant": "season_adjusted",
-   "est": -1.72,
-   "lo": -5.06,
-   "hi": 1.62
+   "est": -5.19,
+   "lo": -8.46,
+   "hi": -1.92
   },
   {
    "month": "2022-07",
    "variant": "season_adjusted",
-   "est": 0.27,
-   "lo": -2.8,
-   "hi": 3.35
+   "est": -1.57,
+   "lo": -4.4,
+   "hi": 1.25
   },
   {
    "month": "2022-08",
    "variant": "season_adjusted",
-   "est": -5.71,
-   "lo": -8.68,
-   "hi": -2.75
+   "est": -9.48,
+   "lo": -12.85,
+   "hi": -6.12
   },
   {
    "month": "2022-09",
    "variant": "season_adjusted",
-   "est": -3.38,
-   "lo": -6.11,
-   "hi": -0.64
+   "est": -4.91,
+   "lo": -7.4,
+   "hi": -2.42
   },
   {
    "month": "2022-10",
    "variant": "season_adjusted",
-   "est": -2.38,
-   "lo": -5.67,
-   "hi": 0.92
+   "est": -3.39,
+   "lo": -5.99,
+   "hi": -0.8
   },
   {
    "month": "2022-11",
    "variant": "season_adjusted",
-   "est": -1.67,
-   "lo": -4.29,
-   "hi": 0.96
+   "est": -2.29,
+   "lo": -4.7,
+   "hi": 0.11
   },
   {
    "month": "2022-12",
    "variant": "season_adjusted",
-   "est": 2.74,
-   "lo": -0.6,
-   "hi": 6.08
+   "est": -0.44,
+   "lo": -4.51,
+   "hi": 3.63
   },
   {
    "month": "2023-01",
    "variant": "season_adjusted",
-   "est": -6.11,
-   "lo": -10.38,
-   "hi": -1.84
+   "est": -6.79,
+   "lo": -10.56,
+   "hi": -3.02
   },
   {
    "month": "2023-02",
    "variant": "season_adjusted",
-   "est": -6.98,
-   "lo": -10.14,
-   "hi": -3.83
+   "est": -7.58,
+   "lo": -11.04,
+   "hi": -4.11
   },
   {
    "month": "2023-03",
    "variant": "season_adjusted",
-   "est": -3.83,
-   "lo": -7.22,
-   "hi": -0.44
+   "est": -5.49,
+   "lo": -8.95,
+   "hi": -2.02
   },
   {
    "month": "2023-04",
    "variant": "season_adjusted",
-   "est": -4.45,
-   "lo": -7.7,
-   "hi": -1.19
+   "est": -4.7,
+   "lo": -7.59,
+   "hi": -1.81
   },
   {
    "month": "2023-05",
    "variant": "season_adjusted",
-   "est": -7.83,
-   "lo": -11.19,
-   "hi": -4.47
+   "est": -10.74,
+   "lo": -13.89,
+   "hi": -7.6
   },
   {
    "month": "2023-06",
    "variant": "season_adjusted",
-   "est": -2.01,
-   "lo": -5.19,
-   "hi": 1.16
+   "est": -6.24,
+   "lo": -9.33,
+   "hi": -3.15
   },
   {
    "month": "2023-07",
    "variant": "season_adjusted",
-   "est": -1.0,
-   "lo": -4.19,
-   "hi": 2.19
+   "est": -0.74,
+   "lo": -3.36,
+   "hi": 1.89
   },
   {
    "month": "2023-08",
    "variant": "season_adjusted",
-   "est": -9.69,
-   "lo": -12.58,
-   "hi": -6.79
+   "est": -10.83,
+   "lo": -13.66,
+   "hi": -8.01
   },
   {
    "month": "2023-09",
    "variant": "season_adjusted",
-   "est": -6.64,
-   "lo": -9.63,
-   "hi": -3.66
+   "est": -8.85,
+   "lo": -11.15,
+   "hi": -6.54
   },
   {
    "month": "2023-10",
    "variant": "season_adjusted",
-   "est": -3.72,
-   "lo": -6.95,
-   "hi": -0.48
+   "est": -3.59,
+   "lo": -6.66,
+   "hi": -0.52
   },
   {
    "month": "2023-11",
    "variant": "season_adjusted",
-   "est": -7.85,
-   "lo": -10.84,
-   "hi": -4.87
+   "est": -5.95,
+   "lo": -8.61,
+   "hi": -3.29
   },
   {
    "month": "2023-12",
    "variant": "season_adjusted",
-   "est": -4.2,
-   "lo": -8.45,
-   "hi": 0.05
+   "est": -6.27,
+   "lo": -10.42,
+   "hi": -2.12
   },
   {
    "month": "2024-01",
    "variant": "season_adjusted",
-   "est": -6.94,
-   "lo": -11.99,
-   "hi": -1.9
+   "est": -7.67,
+   "lo": -12.18,
+   "hi": -3.17
   },
   {
    "month": "2024-02",
    "variant": "season_adjusted",
-   "est": -7.96,
-   "lo": -10.81,
-   "hi": -5.1
+   "est": -7.42,
+   "lo": -10.24,
+   "hi": -4.6
   },
   {
    "month": "2024-03",
    "variant": "season_adjusted",
-   "est": -0.72,
-   "lo": -4.63,
-   "hi": 3.19
+   "est": -0.62,
+   "lo": -5.56,
+   "hi": 4.33
   },
   {
    "month": "2024-04",
    "variant": "season_adjusted",
-   "est": -2.76,
-   "lo": -5.98,
-   "hi": 0.46
+   "est": -3.63,
+   "lo": -6.85,
+   "hi": -0.41
   },
   {
    "month": "2024-05",
    "variant": "season_adjusted",
-   "est": -9.16,
-   "lo": -12.83,
-   "hi": -5.5
+   "est": -10.46,
+   "lo": -13.91,
+   "hi": -7.0
   },
   {
    "month": "2024-06",
    "variant": "season_adjusted",
-   "est": -3.95,
-   "lo": -6.9,
-   "hi": -0.99
+   "est": -4.72,
+   "lo": -7.52,
+   "hi": -1.92
   },
   {
    "month": "2024-07",
    "variant": "season_adjusted",
-   "est": -5.11,
-   "lo": -8.21,
-   "hi": -2.01
+   "est": -4.82,
+   "lo": -7.39,
+   "hi": -2.25
   },
   {
    "month": "2024-08",
    "variant": "season_adjusted",
-   "est": -10.48,
-   "lo": -13.67,
-   "hi": -7.28
+   "est": -11.5,
+   "lo": -14.0,
+   "hi": -9.01
   },
   {
    "month": "2024-09",
    "variant": "season_adjusted",
-   "est": -5.71,
-   "lo": -9.54,
-   "hi": -1.88
+   "est": -5.62,
+   "lo": -8.34,
+   "hi": -2.89
   },
   {
    "month": "2024-10",
    "variant": "season_adjusted",
-   "est": -2.49,
-   "lo": -5.59,
-   "hi": 0.61
+   "est": -3.26,
+   "lo": -5.76,
+   "hi": -0.76
   },
   {
    "month": "2024-11",
    "variant": "season_adjusted",
-   "est": -5.46,
-   "lo": -8.72,
-   "hi": -2.2
+   "est": -3.49,
+   "lo": -6.73,
+   "hi": -0.25
   },
   {
    "month": "2024-12",
    "variant": "season_adjusted",
-   "est": -3.62,
-   "lo": -6.43,
-   "hi": -0.8
+   "est": -6.27,
+   "lo": -9.15,
+   "hi": -3.38
   },
   {
    "month": "2025-01",
    "variant": "season_adjusted",
-   "est": -2.97,
-   "lo": -7.22,
-   "hi": 1.28
+   "est": -3.52,
+   "lo": -7.18,
+   "hi": 0.13
   },
   {
    "month": "2025-02",
    "variant": "season_adjusted",
-   "est": -4.31,
-   "lo": -7.21,
-   "hi": -1.4
+   "est": -5.97,
+   "lo": -8.74,
+   "hi": -3.21
   },
   {
    "month": "2025-03",
    "variant": "season_adjusted",
-   "est": 2.88,
-   "lo": -0.43,
-   "hi": 6.2
+   "est": 0.87,
+   "lo": -2.82,
+   "hi": 4.56
   },
   {
    "month": "2025-04",
    "variant": "season_adjusted",
-   "est": 0.09,
-   "lo": -3.12,
-   "hi": 3.3
+   "est": -2.69,
+   "lo": -5.59,
+   "hi": 0.21
   },
   {
    "month": "2025-05",
    "variant": "season_adjusted",
-   "est": -4.54,
-   "lo": -8.16,
-   "hi": -0.93
+   "est": -6.62,
+   "lo": -9.86,
+   "hi": -3.38
   },
   {
    "month": "2025-06",
    "variant": "season_adjusted",
-   "est": -1.41,
-   "lo": -4.57,
-   "hi": 1.76
+   "est": -3.75,
+   "lo": -6.81,
+   "hi": -0.7
   },
   {
    "month": "2025-07",
    "variant": "season_adjusted",
-   "est": -1.09,
-   "lo": -3.98,
-   "hi": 1.8
+   "est": -3.44,
+   "lo": -6.15,
+   "hi": -0.74
   },
   {
    "month": "2025-08",
    "variant": "season_adjusted",
-   "est": -6.96,
-   "lo": -9.67,
-   "hi": -4.26
+   "est": -9.83,
+   "lo": -12.42,
+   "hi": -7.23
   },
   {
    "month": "2025-09",
    "variant": "season_adjusted",
-   "est": -2.76,
-   "lo": -5.32,
-   "hi": -0.2
+   "est": -4.28,
+   "lo": -6.26,
+   "hi": -2.3
   },
   {
    "month": "2025-10",
    "variant": "season_adjusted",
-   "est": -2.51,
-   "lo": -5.72,
-   "hi": 0.7
+   "est": -4.33,
+   "lo": -6.95,
+   "hi": -1.7
   },
   {
    "month": "2025-11",
    "variant": "season_adjusted",
-   "est": -3.6,
-   "lo": -7.21,
-   "hi": 0.01
+   "est": -3.91,
+   "lo": -7.01,
+   "hi": -0.8
   },
   {
    "month": "2025-12",
    "variant": "season_adjusted",
-   "est": 0.96,
-   "lo": -2.76,
-   "hi": 4.68
+   "est": -2.92,
+   "lo": -5.93,
+   "hi": 0.1
   }
  ]
 }

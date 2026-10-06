@@ -1,217 +1,217 @@
 {
- "status": "PROVISIONAL",
- "generated_utc": "2026-10-06T03:04:39Z",
+ "status": "FINAL",
+ "generated_utc": "2026-10-06T08:26:46Z",
  "variant": "raw",
  "outcome": "ratio_pct",
  "weights": {
-  "AT": 0.15,
+  "AT": 0.0,
   "BE": 0.43,
-  "CH": 0.12,
-  "CZ": 0.0,
-  "FR": 0.09,
-  "NL": 0.2,
+  "CH": 0.29,
+  "CZ": 0.02,
+  "FR": 0.0,
+  "NL": 0.26,
   "PL": 0.0
  },
  "series": [
   {
    "month": "2018-01",
    "actual": 13.69,
-   "synthetic": 9.34
+   "synthetic": 11.58
   },
   {
    "month": "2018-02",
    "actual": 5.68,
-   "synthetic": 5.07
+   "synthetic": 5.16
   },
   {
    "month": "2018-03",
    "actual": 10.42,
-   "synthetic": 12.18
+   "synthetic": 12.89
   },
   {
    "month": "2018-04",
    "actual": 17.27,
-   "synthetic": 15.74
+   "synthetic": 15.46
   },
   {
    "month": "2018-05",
    "actual": 19.81,
-   "synthetic": 16.25
+   "synthetic": 15.36
   },
   {
    "month": "2018-06",
    "actual": 6.69,
-   "synthetic": 3.7
+   "synthetic": 5.41
   },
   {
    "month": "2018-07",
    "actual": 9.23,
-   "synthetic": 11.59
+   "synthetic": 10.9
   },
   {
    "month": "2018-08",
    "actual": 11.87,
-   "synthetic": 9.39
+   "synthetic": 8.42
   },
   {
    "month": "2018-09",
    "actual": 15.01,
-   "synthetic": 10.45
+   "synthetic": 10.06
   },
   {
    "month": "2018-10",
    "actual": 16.69,
-   "synthetic": 14.68
+   "synthetic": 14.67
   },
   {
    "month": "2018-11",
    "actual": 7.34,
-   "synthetic": 6.77
+   "synthetic": 6.35
   },
   {
    "month": "2018-12",
    "actual": 4.31,
-   "synthetic": 6.09
+   "synthetic": 4.31
   },
   {
    "month": "2019-01",
    "actual": 9.91,
-   "synthetic": 10.48
+   "synthetic": 10.89
   },
   {
    "month": "2019-02",
    "actual": 24.73,
-   "synthetic": 19.7
+   "synthetic": 19.83
   },
   {
    "month": "2019-03",
    "actual": 6.69,
-   "synthetic": 8.3
+   "synthetic": 6.66
   },
   {
    "month": "2019-04",
    "actual": 5.58,
-   "synthetic": 7.86
+   "synthetic": 6.9
   },
   {
    "month": "2019-05",
    "actual": 8.88,
-   "synthetic": 5.59
+   "synthetic": 5.19
   },
   {
    "month": "2019-06",
    "actual": -8.39,
-   "synthetic": -2.5
+   "synthetic": -4.09
   },
   {
    "month": "2019-07",
    "actual": -9.2,
-   "synthetic": -10.91
+   "synthetic": -10.67
   },
   {
    "month": "2019-08",
    "actual": -11.59,
-   "synthetic": -11.43
+   "synthetic": -10.32
   },
   {
    "month": "2019-09",
    "actual": -11.49,
-   "synthetic": -8.12
+   "synthetic": -8.06
   },
   {
    "month": "2019-10",
    "actual": -13.0,
-   "synthetic": -10.93
+   "synthetic": -12.04
   },
   {
    "month": "2019-11",
    "actual": -6.52,
-   "synthetic": -7.99
+   "synthetic": -6.24
   },
   {
    "month": "2019-12",
    "actual": -2.0,
-   "synthetic": -3.64
+   "synthetic": -3.88
   },
   {
    "month": "2022-01",
    "actual": -22.88,
-   "synthetic": -19.3
+   "synthetic": -19.02
   },
   {
    "month": "2022-02",
    "actual": -23.73,
-   "synthetic": -20.45
+   "synthetic": -21.05
   },
   {
    "month": "2022-03",
    "actual": -15.69,
-   "synthetic": -14.45
+   "synthetic": -13.7
   },
   {
    "month": "2022-04",
    "actual": -23.13,
-   "synthetic": -22.75
+   "synthetic": -22.87
   },
   {
    "month": "2022-05",
    "actual": -22.59,
-   "synthetic": -19.5
+   "synthetic": -18.97
   },
   {
    "month": "2022-06",
    "actual": -23.68,
-   "synthetic": -23.04
+   "synthetic": -23.07
   },
   {
    "month": "2022-07",
    "actual": -25.0,
-   "synthetic": -27.22
+   "synthetic": -26.98
   },
   {
    "month": "2022-08",
    "actual": -27.9,
-   "synthetic": -26.68
+   "synthetic": -26.33
   },
   {
    "month": "2022-09",
    "actual": -26.43,
-   "synthetic": -23.67
+   "synthetic": -23.61
   },
   {
    "month": "2022-10",
    "actual": -27.07,
-   "synthetic": -23.99
+   "synthetic": -24.39
   },
   {
    "month": "2022-11",
    "actual": -23.17,
-   "synthetic": -25.89
+   "synthetic": -24.86
   },
   {
    "month": "2022-12",
    "actual": -18.65,
-   "synthetic": -21.93
+   "synthetic": -20.12
   },
   {
    "month": "2023-01",
    "actual": -25.19,
-   "synthetic": -23.13
+   "synthetic": -23.44
   },
   {
    "month": "2023-02",
    "actual": -20.46,
-   "synthetic": -17.88
+   "synthetic": -17.62
   },
   {
    "month": "2023-03",
    "actual": -25.36,
-   "synthetic": -23.66
+   "synthetic": -23.62
   },
   {
    "month": "2023-04",
    "actual": -24.34,
-   "synthetic": -22.87
+   "synthetic": -23.2
   },
   {
    "month": "2023-05",
@@ -221,160 +221,160 @@
   {
    "month": "2023-06",
    "actual": -25.74,
-   "synthetic": -25.4
+   "synthetic": -24.01
   },
   {
    "month": "2023-07",
    "actual": -29.11,
-   "synthetic": -27.48
+   "synthetic": -27.34
   },
   {
    "month": "2023-08",
    "actual": -38.35,
-   "synthetic": -32.19
+   "synthetic": -32.23
   },
   {
    "month": "2023-09",
    "actual": -34.92,
-   "synthetic": -32.3
+   "synthetic": -32.36
   },
   {
    "month": "2023-10",
    "actual": -27.26,
-   "synthetic": -24.44
+   "synthetic": -25.79
   },
   {
    "month": "2023-11",
    "actual": -28.69,
-   "synthetic": -24.42
+   "synthetic": -26.05
   },
   {
    "month": "2023-12",
    "actual": -25.05,
-   "synthetic": -23.98
+   "synthetic": -23.47
   },
   {
    "month": "2024-01",
    "actual": -20.13,
-   "synthetic": -19.17
+   "synthetic": -21.34
   },
   {
    "month": "2024-02",
    "actual": -30.82,
-   "synthetic": -26.48
+   "synthetic": -25.2
   },
   {
    "month": "2024-03",
    "actual": -29.97,
-   "synthetic": -30.47
+   "synthetic": -29.82
   },
   {
    "month": "2024-04",
    "actual": -29.41,
-   "synthetic": -29.39
+   "synthetic": -29.03
   },
   {
    "month": "2024-05",
    "actual": -32.24,
-   "synthetic": -27.4
+   "synthetic": -27.78
   },
   {
    "month": "2024-06",
    "actual": -33.9,
-   "synthetic": -28.43
+   "synthetic": -28.1
   },
   {
    "month": "2024-07",
    "actual": -40.72,
-   "synthetic": -35.41
+   "synthetic": -35.27
   },
   {
    "month": "2024-08",
    "actual": -40.78,
-   "synthetic": -35.56
+   "synthetic": -35.67
   },
   {
    "month": "2024-09",
    "actual": -34.52,
-   "synthetic": -32.16
+   "synthetic": -33.36
   },
   {
    "month": "2024-10",
    "actual": -35.73,
-   "synthetic": -32.97
+   "synthetic": -32.75
   },
   {
    "month": "2024-11",
    "actual": -31.51,
-   "synthetic": -30.61
+   "synthetic": -31.03
   },
   {
    "month": "2024-12",
    "actual": -33.63,
-   "synthetic": -31.78
+   "synthetic": -31.05
   },
   {
    "month": "2025-01",
    "actual": -23.7,
-   "synthetic": -25.18
+   "synthetic": -25.4
   },
   {
    "month": "2025-02",
    "actual": -28.22,
-   "synthetic": -29.22
+   "synthetic": -28.99
   },
   {
    "month": "2025-03",
    "actual": -23.63,
-   "synthetic": -28.54
+   "synthetic": -26.95
   },
   {
    "month": "2025-04",
    "actual": -27.84,
-   "synthetic": -29.6
+   "synthetic": -29.37
   },
   {
    "month": "2025-05",
    "actual": -29.07,
-   "synthetic": -28.9
+   "synthetic": -29.89
   },
   {
    "month": "2025-06",
    "actual": -32.34,
-   "synthetic": -30.28
+   "synthetic": -31.78
   },
   {
    "month": "2025-07",
    "actual": -37.78,
-   "synthetic": -37.25
+   "synthetic": -38.05
   },
   {
    "month": "2025-08",
    "actual": -38.79,
-   "synthetic": -34.9
+   "synthetic": -35.87
   },
   {
    "month": "2025-09",
    "actual": -40.21,
-   "synthetic": -36.87
+   "synthetic": -37.43
   },
   {
    "month": "2025-10",
    "actual": -37.46,
-   "synthetic": -33.24
+   "synthetic": -35.29
   },
   {
    "month": "2025-11",
    "actual": -29.54,
-   "synthetic": -31.49
+   "synthetic": -31.12
   },
   {
    "month": "2025-12",
    "actual": -34.21,
-   "synthetic": -34.36
+   "synthetic": -34.21
   }
  ],
- "rank_jun_aug_2022": 8,
- "rank_may_dec_2023": 3,
+ "rank_jun_aug_2022": 6,
+ "rank_may_dec_2023": 4,
  "n_units": 8
 }

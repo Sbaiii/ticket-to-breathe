@@ -63,30 +63,28 @@ flowchart LR
 
 ## Results
 <!-- RESULTS:START -->
-> **PROVISIONAL — do not cite.** Only 191 of 587 control stations have deweathered predictions so far (weather download incomplete). Every number below will change in the final run.
-
 | Estimate | Outcome | Estimate [95 % CI] | Placebo-country range | Verdict | Stations DE / controls |
 |---|---|---|---|---|---|
-| 9-Euro-Ticket (Jun–Aug 2022) | ratio_pct (% pts) | +5.50 [+2.88, +8.13] | [-6.19, +5.12] | detected (higher NO₂) | 284 / 173 |
-| 9-Euro-Ticket, µg/m³ | resid_ugm3 (µg/m³) | +0.00 [-0.76, +0.76] | [-1.99, +2.16] | not detected | 284 / 173 |
-| Switch-off (Sep–Dec 2022) | ratio_pct (% pts) | +6.73 [+4.01, +9.45] | [-9.05, +7.64] | not detected | 284 / 173 |
-| Switch-off, controls AT+CH | ratio_pct (% pts) | +9.61 [+4.60, +14.62] | – | not evaluated | 284 / 56 |
-| Deutschlandticket (May–Dec 2023) | ratio_pct (% pts) | -0.08 [-2.28, +2.11] | [-4.93, +2.57] | not detected | 284 / 173 |
-| Deutschlandticket, µg/m³ | resid_ugm3 (µg/m³) | -0.72 [-1.40, -0.05] | [-1.50, +0.89] | not detected | 284 / 173 |
-| Persistence 2024 | ratio_pct (% pts) | -1.40 [-3.02, +0.23] | – | not evaluated | 284 / 173 |
-| Persistence 2024, country trends | ratio_pct (% pts) | +1.33 [-0.27, +2.94] | – | not evaluated | 284 / 173 |
-| Persistence 2025 | ratio_pct (% pts) | +1.62 [-0.04, +3.27] | – | not evaluated | 284 / 173 |
-| Persistence 2025, country trends | ratio_pct (% pts) | +6.34 [+4.64, +8.04] | – | not evaluated | 284 / 173 |
-| Classic two-way FE DiD (biased) | ratio_pct (% pts) | -2.50 [-4.79, -0.22] | – | not evaluated | 284 / 173 |
-| Traffic stations | ratio_pct (% pts) | +1.53 [-1.29, +4.36] | – | not evaluated | 113 / 54 |
-| Background stations | ratio_pct (% pts) | +7.30 [+4.17, +10.43] | – | not evaluated | 171 / 119 |
-| Weekdays | ratio_pct (% pts) | +4.78 [+2.07, +7.50] | – | not evaluated | 284 / 173 |
-| Weekends | ratio_pct (% pts) | +7.29 [+3.48, +11.09] | – | not evaluated | 284 / 173 |
-| Commute excess, traffic (weekdays) | commute_excess (% pts) | -1.66 [-6.06, +2.74] | [-5.00, +5.63] | not evaluated | 113 / 54 |
+| 9-Euro-Ticket (Jun–Aug 2022) | ratio_pct (% pts) | +3.60 [+0.98, +6.22] | [-7.76, +8.31] | not detected | 284 / 549 |
+| 9-Euro-Ticket, µg/m³ | resid_ugm3 (µg/m³) | +0.19 [-0.42, +0.80] | [-2.25, +1.47] | not detected | 284 / 549 |
+| Switch-off (Sep–Dec 2022) | ratio_pct (% pts) | +6.25 [+3.72, +8.79] | [-7.97, +5.66] | detected (higher NO₂) | 284 / 549 |
+| Switch-off, controls AT+CH | ratio_pct (% pts) | +7.30 [+3.63, +10.98] | – | not evaluated | 284 / 113 |
+| Deutschlandticket (May–Dec 2023) | ratio_pct (% pts) | -0.54 [-2.80, +1.72] | [-1.55, +1.76] | not detected | 284 / 549 |
+| Deutschlandticket, µg/m³ | resid_ugm3 (µg/m³) | -0.56 [-1.17, +0.05] | [-0.90, +0.74] | not detected | 284 / 549 |
+| Persistence 2024 | ratio_pct (% pts) | -1.05 [-2.65, +0.56] | – | not evaluated | 284 / 549 |
+| Persistence 2024, country trends | ratio_pct (% pts) | +2.18 [+0.61, +3.75] | – | not evaluated | 284 / 549 |
+| Persistence 2025 | ratio_pct (% pts) | +0.51 [-1.08, +2.11] | – | not evaluated | 284 / 549 |
+| Persistence 2025, country trends | ratio_pct (% pts) | +6.17 [+4.59, +7.74] | – | not evaluated | 284 / 549 |
+| Classic two-way FE DiD (biased) | ratio_pct (% pts) | -5.73 [-7.86, -3.59] | – | not evaluated | 284 / 549 |
+| Traffic stations | ratio_pct (% pts) | +1.54 [-1.08, +4.16] | – | not evaluated | 113 / 154 |
+| Background stations | ratio_pct (% pts) | +4.39 [+1.31, +7.47] | – | not evaluated | 171 / 395 |
+| Weekdays | ratio_pct (% pts) | +3.29 [+0.58, +6.00] | – | not evaluated | 284 / 549 |
+| Weekends | ratio_pct (% pts) | +4.34 [+0.57, +8.12] | – | not evaluated | 284 / 549 |
+| Commute excess, traffic (weekdays) | commute_excess (% pts) | -0.17 [-6.76, +6.41] | [-4.16, +5.60] | not evaluated | 113 / 154 |
 
 ratio_pct: observed / deweathered prediction − 1, in percentage points; negative = less NO₂ than expected. Verdict = ADR-008 rule (CI excludes 0 and outside the placebo-country range); the headline is the ratio_pct verdict, the µg/m³ verdicts are a secondary outcome (ADR-010); "not evaluated" = outside the rule. Full tables: [`docs/results_provisional.md`](docs/results_provisional.md) / `docs/results.md`, [`docs/diagnostics_provisional.md`](docs/diagnostics_provisional.md).
 
-_Generated from `dashboard/data/headline.json` (2026-10-06T03:04:39Z) by `analysis/readme_results.py`._
+_Generated from `dashboard/data/headline.json` (2026-10-06T08:26:46Z) by `analysis/readme_results.py`._
 <!-- RESULTS:END -->
 
 ## How to run

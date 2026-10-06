@@ -1,22 +1,22 @@
 {
- "status": "PROVISIONAL",
- "generated_utc": "2026-10-06T03:04:39Z",
+ "status": "FINAL",
+ "generated_utc": "2026-10-06T08:26:46Z",
  "n_stations": {
   "DE": 284,
-  "controls": 173,
+  "controls": 549,
   "by_country": {
-   "AT": 53,
-   "BE": 19,
-   "CH": 3,
-   "CZ": 7,
+   "AT": 91,
+   "BE": 23,
+   "CH": 22,
+   "CZ": 45,
    "DE": 284,
-   "FR": 44,
-   "NL": 34,
-   "PL": 13
+   "FR": 253,
+   "NL": 39,
+   "PL": 76
   }
  },
- "n_station_days": 976897,
- "control_stations_with_predictions": 191,
+ "n_station_days": 1762413,
+ "control_stations_with_predictions": 587,
  "control_stations_in_study": 587,
  "control_countries": [
   "AT",

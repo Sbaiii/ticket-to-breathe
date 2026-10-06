@@ -1,18 +1,18 @@
 {
- "status": "PROVISIONAL",
- "generated_utc": "2026-10-06T03:04:39Z",
+ "status": "FINAL",
+ "generated_utc": "2026-10-06T08:26:46Z",
  "primary": [
   {
    "outcome": "ratio_pct",
-   "estimate": 5.5,
-   "lo": 2.88,
-   "hi": 8.13
+   "estimate": 3.6,
+   "lo": 0.98,
+   "hi": 6.22
   },
   {
    "outcome": "resid_ugm3",
-   "estimate": 0.0,
-   "lo": -0.76,
-   "hi": 0.76
+   "estimate": 0.19,
+   "lo": -0.42,
+   "hi": 0.8
   }
  ],
  "rows": [
@@ -20,193 +20,193 @@
    "kind": "country",
    "label": "AT",
    "outcome": "ratio_pct",
-   "estimate": -6.19,
-   "lo": -11.37,
-   "hi": -1.0
+   "estimate": -6.02,
+   "lo": -10.16,
+   "hi": -1.89
   },
   {
    "kind": "country",
    "label": "BE",
    "outcome": "ratio_pct",
-   "estimate": 3.44,
-   "lo": -2.44,
-   "hi": 9.33
+   "estimate": 0.41,
+   "lo": -5.08,
+   "hi": 5.91
   },
   {
    "kind": "country",
    "label": "CH",
    "outcome": "ratio_pct",
-   "estimate": 1.26,
-   "lo": -4.36,
-   "hi": 6.88
+   "estimate": -2.01,
+   "lo": -6.53,
+   "hi": 2.5
   },
   {
    "kind": "country",
    "label": "CZ",
    "outcome": "ratio_pct",
-   "estimate": -3.2,
-   "lo": -9.99,
-   "hi": 3.6
+   "estimate": -3.41,
+   "lo": -7.94,
+   "hi": 1.12
   },
   {
    "kind": "country",
    "label": "FR",
    "outcome": "ratio_pct",
-   "estimate": 5.12,
-   "lo": 0.46,
-   "hi": 9.78
+   "estimate": 8.31,
+   "lo": 5.18,
+   "hi": 11.44
   },
   {
    "kind": "country",
    "label": "NL",
    "outcome": "ratio_pct",
-   "estimate": 2.95,
-   "lo": -1.93,
-   "hi": 7.84
+   "estimate": 0.55,
+   "lo": -4.21,
+   "hi": 5.31
   },
   {
    "kind": "country",
    "label": "PL",
    "outcome": "ratio_pct",
-   "estimate": -4.66,
-   "lo": -11.13,
-   "hi": 1.81
+   "estimate": -7.76,
+   "lo": -12.64,
+   "hi": -2.88
   },
   {
    "kind": "country",
    "label": "AT",
    "outcome": "resid_ugm3",
-   "estimate": -1.47,
-   "lo": -2.68,
-   "hi": -0.26
+   "estimate": -0.29,
+   "lo": -1.25,
+   "hi": 0.67
   },
   {
    "kind": "country",
    "label": "BE",
    "outcome": "resid_ugm3",
-   "estimate": 0.8,
-   "lo": -0.54,
-   "hi": 2.14
+   "estimate": 0.66,
+   "lo": -0.55,
+   "hi": 1.88
   },
   {
    "kind": "country",
    "label": "CH",
    "outcome": "resid_ugm3",
-   "estimate": -0.21,
-   "lo": -1.46,
-   "hi": 1.03
+   "estimate": -0.0,
+   "lo": -1.08,
+   "hi": 1.07
   },
   {
    "kind": "country",
    "label": "CZ",
    "outcome": "resid_ugm3",
-   "estimate": -1.99,
-   "lo": -3.23,
-   "hi": -0.74
+   "estimate": -1.37,
+   "lo": -2.19,
+   "hi": -0.56
   },
   {
    "kind": "country",
    "label": "FR",
    "outcome": "resid_ugm3",
-   "estimate": 2.16,
-   "lo": 0.89,
-   "hi": 3.43
+   "estimate": 1.47,
+   "lo": 0.78,
+   "hi": 2.16
   },
   {
    "kind": "country",
    "label": "NL",
    "outcome": "resid_ugm3",
-   "estimate": 0.26,
-   "lo": -1.0,
-   "hi": 1.52
+   "estimate": 0.37,
+   "lo": -0.71,
+   "hi": 1.46
   },
   {
    "kind": "country",
    "label": "PL",
    "outcome": "resid_ugm3",
-   "estimate": -1.8,
-   "lo": -3.74,
-   "hi": 0.14
+   "estimate": -2.25,
+   "lo": -3.23,
+   "hi": -1.27
   },
   {
    "kind": "date",
    "label": "Jun–Aug 2019 vs Jan–May, baseline 2018",
    "outcome": "ratio_pct",
-   "estimate": -1.01,
-   "lo": -5.12,
-   "hi": 3.09
+   "estimate": -2.27,
+   "lo": -6.27,
+   "hi": 1.74
   },
   {
    "kind": "date",
    "label": "Jun–Aug 2018 vs Jan–May, baseline 2019",
    "outcome": "ratio_pct",
-   "estimate": 1.01,
-   "lo": -3.09,
-   "hi": 5.12
+   "estimate": 2.27,
+   "lo": -1.74,
+   "hi": 6.27
   },
   {
    "kind": "date",
    "label": "Jan–Mar 2018 vs rest of 2018, baseline 2019",
    "outcome": "ratio_pct",
-   "estimate": -1.76,
-   "lo": -5.87,
-   "hi": 2.34
+   "estimate": -3.25,
+   "lo": -7.08,
+   "hi": 0.59
   },
   {
    "kind": "date",
    "label": "Apr–Jun 2018 vs rest of 2018, baseline 2019",
    "outcome": "ratio_pct",
-   "estimate": 2.79,
-   "lo": -0.66,
-   "hi": 6.23
+   "estimate": 2.89,
+   "lo": -0.76,
+   "hi": 6.55
   },
   {
    "kind": "date",
    "label": "Jul–Sep 2018 vs rest of 2018, baseline 2019",
    "outcome": "ratio_pct",
-   "estimate": 0.94,
-   "lo": -2.55,
-   "hi": 4.43
+   "estimate": 2.81,
+   "lo": -0.47,
+   "hi": 6.08
   },
   {
    "kind": "date",
    "label": "Oct–Dec 2018 vs rest of 2018, baseline 2019",
    "outcome": "ratio_pct",
-   "estimate": -1.95,
-   "lo": -5.73,
-   "hi": 1.83
+   "estimate": -2.48,
+   "lo": -5.92,
+   "hi": 0.97
   },
   {
    "kind": "date",
    "label": "Jan–Mar 2019 vs rest of 2019, baseline 2018",
    "outcome": "ratio_pct",
-   "estimate": 1.76,
-   "lo": -2.34,
-   "hi": 5.87
+   "estimate": 3.25,
+   "lo": -0.59,
+   "hi": 7.08
   },
   {
    "kind": "date",
    "label": "Apr–Jun 2019 vs rest of 2019, baseline 2018",
    "outcome": "ratio_pct",
-   "estimate": -2.79,
-   "lo": -6.23,
-   "hi": 0.66
+   "estimate": -2.89,
+   "lo": -6.55,
+   "hi": 0.76
   },
   {
    "kind": "date",
    "label": "Jul–Sep 2019 vs rest of 2019, baseline 2018",
    "outcome": "ratio_pct",
-   "estimate": -0.94,
-   "lo": -4.43,
-   "hi": 2.55
+   "estimate": -2.81,
+   "lo": -6.08,
+   "hi": 0.47
   },
   {
    "kind": "date",
    "label": "Oct–Dec 2019 vs rest of 2019, baseline 2018",
    "outcome": "ratio_pct",
-   "estimate": 1.95,
-   "lo": -1.83,
-   "hi": 5.73
+   "estimate": 2.48,
+   "lo": -0.97,
+   "hi": 5.92
   }
  ]
 }
