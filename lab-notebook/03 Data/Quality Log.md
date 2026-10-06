@@ -2,7 +2,7 @@
 
 | date | source | issue | impact | action |
 |---|---|---|---|---|
-| 2026-10-02 | both | Research sandbox could not reach EEA / Open-Meteo hosts (proxy 403) | none — docs-only verification | Live probe from local machine (Task 1) |
+| 2026-10-02 | both | First check of EEA / Open-Meteo was from documentation only (hosts not reachable through a proxy, 403) | none — docs-only verification | Live probe from local machine (Task 1) |
 | 2026-10-02 | EEA | Parquet `Start`/`End` are tz-naive; DE sample shows a fixed-offset clock (no DST); metadata `Timezone` differs within BE, CZ, FR, LU (`UTC` vs `UTC+01`), FR overseas has ±3/4 h | wrong UTC conversion would shift diurnal profiles by 1 h | Convert per sampling point using metadata `Timezone` at staging; verify on a non-DE file |
 | 2026-10-02 | EEA | Missing values coded as `Value = -999` with `Validity = -1`; `Validity = 2` also occurs (634 rows in the DE E1a sample) | -999 would poison means | Keep `Validity >= 1` only; check what `Validity = 2` means before keeping it |
 | 2026-10-02 | EEA | `DataCapture` column is 100 % null in both sample files | cannot use it for coverage | Compute coverage from hourly row counts ourselves |

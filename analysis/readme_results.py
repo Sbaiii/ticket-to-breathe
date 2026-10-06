@@ -2,7 +2,7 @@
 
 Replaces everything between <!-- RESULTS:START --> and <!-- RESULTS:END --> in README.md with a
 table of the headline estimates, behind a visible PROVISIONAL banner until status = FINAL. Numbers
-only; the prose summary is written by the author after the final run.
+only; the prose summary above the block is written by hand.
 
 Run: uv run python -m analysis.readme_results
 """

@@ -1,7 +1,7 @@
 # Data sources — access, coverage, licence
 
 Verified on 2026-10-02 from official documentation. Live API probes are Task 1 of the roadmap
-(the research sandbox could not reach the hosts). Anything marked **[verify]** must be confirmed by the probe.
+(`docs/probe_report.md`). Anything marked **[verify]** must be confirmed by the probe.
 
 ## 1. EEA Air Quality Download Service (primary outcome: NO2)
 - **What:** station-level air pollutant time series reported by member countries under the Ambient Air

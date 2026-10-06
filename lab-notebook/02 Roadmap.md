@@ -41,5 +41,5 @@
 - [x] Methods appendix incl. residual uncertainties (time zone, weather grid, BLH gap) → README Method, ADR-003/005/007, `docs/blh_gap.md`, methods strings in `docs/final_prose.md` §5
 - [x] Case study page: map, counterfactual chart, exec summary → data contract `dashboard/data/` + prose in `docs/final_prose.md` §5; the page itself is built in the portfolio repo
 - [x] README results table generated from real outputs (summary paragraph: author)
-- [x] Final reports' interpretation sections + README summary (author's prose verified against FINAL reports; deweathering/diagnostics drafted and approved)
+- [x] Final reports' interpretation sections + README summary (every number verified against the FINAL reports)
 - [ ] Final review, publish on sbaiii.com

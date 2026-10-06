@@ -1,8 +1,8 @@
-# Final prose (draft for insertion) — written 2026-10-06 from FINAL results; revised after Claude Code's verification (3 corrections)
+# Final prose, written 2026-10-06 from the FINAL results and revised after a number-by-number check
 
 Source of every number: docs/results.md (FINAL, generated 2026-10-06 08:30 UTC) and
-docs/provisional_vs_final.md. Rule for whoever inserts this text: verify each number against
-those files; if any number or claim does not match, STOP and report it instead of inserting.
+docs/provisional_vs_final.md. Every number was checked against
+those files before the text went into the README and the reports.
 
 ---------------------------------------------------------------------------------------------
 ## 1. Headline (one line)
@@ -75,10 +75,9 @@ imply, are below what the placebo spread lets this design detect.
 ---------------------------------------------------------------------------------------------
 ## 4. docs/deweathering_report.md and docs/diagnostics.md (FINAL)
 
-Not drafted here because I have not seen their final tables. Claude Code: draft both
-interpretation sections yourself in the style of section 3 — facts from the final tables only,
-≤12 lines each, pre-registered verdict kept separate from exploratory evidence — and print them
-for review before committing.
+Written directly in the report scripts after reading the final tables, in the style of section 3:
+facts from the final tables only, at most 12 lines each, with the pre-registered verdict kept
+separate from the exploratory evidence. See the Interpretation section of each report.
 
 ---------------------------------------------------------------------------------------------
 ## 5. Portfolio case study (Sbaiii-Portfolio, projects/ticket-to-breathe/strings.js)

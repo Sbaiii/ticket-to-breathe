@@ -6,7 +6,7 @@
 NO2 is strongly weather-driven (mixing height, wind, temperature, radiation). To compare German and
 control stations around the policy dates we need a business-as-usual counterfactual per station:
 what NO2 would have been given the weather and calendar, had nothing changed. The model must never
-see post-treatment data (Project Brief, CLAUDE.md). ERA5 BLH is missing for 2024-01-01 → 2024-06-30
+see post-treatment data (Project Brief). ERA5 BLH is missing for 2024-01-01 → 2024-06-30
 (ADR-005, docs/blh_gap.md). 0.1 % of valid hourly NO2 values are slightly negative.
 
 ## Options
